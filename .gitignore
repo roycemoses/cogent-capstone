@@ -9,6 +9,7 @@ pom.xml
 .DS_Store
 nbactions.xml
 .metadata/
+/src/main/resources/application.properties
 
 
 ### STS ###
