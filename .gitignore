@@ -8,6 +8,8 @@ pom.xml
 !**/src/test/**/target/
 .DS_Store
 nbactions.xml
+.metadata/
+
 
 ### STS ###
 .apt_generated
