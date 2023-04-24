@@ -9,5 +9,5 @@ public class CogentCapstoneApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CogentCapstoneApplication.class, args);
 	}
-
+	
 }
