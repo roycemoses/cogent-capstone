@@ -4,6 +4,8 @@ target/
 mvnw
 mvnw.cmd
 pom.xml
+.DS_Store
+.metadata/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
