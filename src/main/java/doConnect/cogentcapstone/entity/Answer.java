@@ -30,7 +30,7 @@ public class Answer {
 	
 	// @OneToOne
 	private String approved_by;
-	
+        
 	// @OneToOne
 	private String created_by;
 }
