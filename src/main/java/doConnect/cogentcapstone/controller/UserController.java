@@ -13,7 +13,8 @@ import doConnect.cogentcapstone.entity.AuthRequest;
 import doConnect.cogentcapstone.util.JwtUtil;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200/")
+@CrossOrigin("*")
+//@CrossOrigin(origins="http://localhost:4200/")
 public class UserController {
 
 	@Autowired
@@ -21,7 +22,7 @@ public class UserController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
-	@GetMapping("/")
+	@GetMapping("/authenticate")
 	public String home() {
 		return "This is home";
 	}
