@@ -33,6 +33,9 @@ public class CogentCapstoneApplication {
 	   Port for TLS/STARTTLS: 587
 	 */
 	public static void main(String[] args) {
+            SpringApplication.run(CogentCapstoneApplication.class, args);
+            
+                /*
 		final String fromEmail = "group5newmailbot@gmail.com"; //requires valid gmail id
 		final String password = "zzrxjmzwjakafdwx"; // correct password for gmail id
 		final String toEmail = "group5newmailbot@gmail.com"; // can be any email id 
@@ -112,11 +115,11 @@ public class CogentCapstoneApplication {
 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠉⠉⠉⠙⠛⠛⠛⠛⠛⠛⠛⠛⠛⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀\n" +
 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠙⠛⠛⠛⠛⠛⠛⠿⠟⠛⠛⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
                 );
-                
+                */
 	}
 	
 
-}
+
 
 	@Autowired
     private UserRepository repository;
