@@ -10,13 +10,14 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
     title = 'hi';
     loginForm:Login;
-    toggleEditForm:boolean=false;
     token:String;
+    loginSuccessful:boolean;
 
     constructor(private loginService:LoginService) 
     {
         this.loginForm = new Login();
         this.token = "";
+        this.loginSuccessful = false;
     }
 
     ngOnInit(): void {
@@ -31,10 +32,15 @@ export class LoginComponent implements OnInit {
         console.log(this.loginForm.password);
         // console.log(loginform.value);
 
-        this.loginService.postRequestForToken(this.loginForm).subscribe((data:String)=>{
-            console.log(data.toString());
-            this.token = new String(data.toString());
-        })
+        try {
+            this.loginService.postRequestForToken(this.loginForm).subscribe((data:String)=>{
+                console.log(data.toString());
+                this.token = new String(data.toString());
+            })
+        } catch(e:any)
+        {
+            console.log(e);
+        }
 
     }
 
@@ -49,7 +55,6 @@ export class LoginComponent implements OnInit {
             console.log(data.toString());
         })
     }
-
 
     refresh()
     {
