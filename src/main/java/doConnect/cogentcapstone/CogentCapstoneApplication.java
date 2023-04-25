@@ -149,7 +149,7 @@ public class CogentCapstoneApplication {
         
         List<Answer> answers = null;
         List<Question> questions = Stream.of(
-                new Question(100,"i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", answers, "ok", "hi")
+                new Question(100,"i am bad at sqrts so help", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", answers, "william", "travis")
         ).collect(Collectors.toList());
         qstn_repository.saveAll(questions);
     }
