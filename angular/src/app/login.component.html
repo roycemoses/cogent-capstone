@@ -1,0 +1,15 @@
+<form novalidate #LOGIN_FORM="ngForm" (ngSubmit)="onSubmit(LOGIN_FORM)">
+    <div>
+        <label for="userName">Username</label>
+        <input type="text" [(ngModel)]="loginForm.userName" name="userName" required>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="text" [(ngModel)]="loginForm.password" name="password" required minlength="4">
+    </div> 
+    <button [disabled]="LOGIN_FORM.invalid" type="submit">Login</button>
+</form>
+
+<button (click)="printToken()">Print Token</button>
+
+<button (click)="goHome()">Go to Home</button>
