@@ -1,6 +1,8 @@
 package doConnect.cogentcapstone;
 
 
+import doConnect.cogentcapstone.entity.Answer;
+import doConnect.cogentcapstone.entity.Question;
 import doConnect.cogentcapstone.mail.EmailUtil;
 import java.util.Properties;
 import javax.mail.Authenticator;
@@ -9,6 +11,7 @@ import javax.mail.Session;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import search_func.search;
 
 import javax.annotation.PostConstruct;
 
@@ -18,13 +21,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import doConnect.cogentcapstone.entity.User;
+import doConnect.cogentcapstone.repository.QuestionRepository;
 import doConnect.cogentcapstone.repository.UserRepository;
 
 @SpringBootApplication
 public class CogentCapstoneApplication {
 
 
-		//SpringApplication.run(CogentCapstoneApplication.class, args);
                 
                 /**
 	   Outgoing Mail (SMTP) Server
@@ -33,7 +36,16 @@ public class CogentCapstoneApplication {
 	   Port for TLS/STARTTLS: 587
 	 */
 	public static void main(String[] args) {
-            SpringApplication.run(CogentCapstoneApplication.class, args);
+            
+            //QuestionRepository qRepo = new QuestionRepository("what is the square root of 4");
+            
+            search src = new search();
+            src.doSearch();
+            
+            
+            
+            
+            //SpringApplication.run(CogentCapstoneApplication.class, args);
             
                 /*
 		final String fromEmail = "group5newmailbot@gmail.com"; //requires valid gmail id
@@ -123,6 +135,7 @@ public class CogentCapstoneApplication {
 
 	@Autowired
     private UserRepository repository;
+    private QuestionRepository qstn_repository;
 
     @PostConstruct
     public void initUsers() {
@@ -133,6 +146,12 @@ public class CogentCapstoneApplication {
                 new User(104, "User3", "user3", "pwd3", "user3@gmail.com", "user")
         ).collect(Collectors.toList());
         repository.saveAll(users);
+        
+        List<Answer> answers = null;
+        List<Question> questions = Stream.of(
+                new Question(100,"i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", answers, "ok", "hi")
+        ).collect(Collectors.toList());
+        qstn_repository.saveAll(questions);
     }
 	
 }
