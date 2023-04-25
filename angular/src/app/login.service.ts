@@ -26,7 +26,7 @@ export class LoginService
             // .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
             // .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
         
-        return this.httpClient.get<String>(this.baseUrl, {"headers" : headers});
+        return this.httpClient.get(this.baseUrl, { responseType: 'text'});
     }
 
     // getLogins():Observable<Login[]> {
