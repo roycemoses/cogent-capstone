@@ -8,25 +8,28 @@ import { Injectable } from '@angular/core';
 })
 export class LoginService
 {
-    private baseUrl = 'http://localhost:8080/authenticate';
+    private baseUrl = 'http://localhost:8080';
     
     constructor (private httpClient:HttpClient) {}
 
     postRequestForToken(login:Login):Observable<String> {
         // console.log(this.httpClient.post<String>(this.baseUrl, login));
-        return this.httpClient.post(this.baseUrl, login, { responseType: 'text' });
+        return this.httpClient.post(`${this.baseUrl}/authenticate`, login, { responseType: 'text' });
         // this.http.post(url, body, { responseType: 'text' }).subscribe();
     };
 
-    getHomeString(token:string):Observable<String>
+    
+
+    getHomeString(token:string):any
     {
         const headers= new HttpHeaders()
-            .set('Authorization', 'Bearer ' + token)
-            .set('Access-Control-Allow-Origin', '*');
-            // .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-            // .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+            .set('Authorization', 'Bearer ' + token).set('Access-Control-Allow-Credentials','true').set('Access-Control-Allow-Headers','Content-Type')
+            .set('Access-Control-Allow-Origin', '*')
+        .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+            .set('Access-Control-Allow-Headers','*');
         
-        return this.httpClient.get(this.baseUrl, { responseType: 'text'});
+        //return (`http://localhost:8080/`);
+        return this.httpClient.get('http://localhost:8080/',{'headers':headers});
     }
 
     // getLogins():Observable<Login[]> {

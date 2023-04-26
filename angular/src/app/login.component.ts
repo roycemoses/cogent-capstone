@@ -40,12 +40,12 @@ export class LoginComponent implements OnInit {
 
     printToken()
     {
-        console.log(this.token);
+        console.log(this.token.toString);
     }
 
     goHome()
     {
-        this.loginService.getHomeString(this.token.toString()).subscribe((data:String)=>{
+        this.loginService.getHomeString('http://localhost:8080').subscribe((data:String)=>{
             console.log(data.toString());
         })
     }

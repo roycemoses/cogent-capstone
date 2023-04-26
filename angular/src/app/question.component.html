@@ -1,0 +1,12 @@
+
+<ul>
+    <ng-container *ngFor="let question of questions">
+        {{question.title}}
+        <ng-container *ngFor="let answer of question.answers">
+            {{answer.image_src}}
+        </ng-container>
+
+    </ng-container>
+    
+    
+</ul>
