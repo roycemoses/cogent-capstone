@@ -26,7 +26,7 @@ export class AnswerComponent implements OnInit {
   @Output()
   answerEventEmitter = new EventEmitter();
   onSubmitAnswer() { 
-      this.answers.push(this.answer_form);
+      this.answers.push(new Answer(this.answer_form.description_answer, this.answer_form.image_src, this.answer_form.datetime, this.answer_form.status, this.answer_form.acreated_by, this.answer_form.aapproved_by));
       this.answerEventEmitter.emit(this.answers); // send it to parent
   }
 }

@@ -44,8 +44,8 @@ export class QuestionComponent implements OnInit {
   }
 
   onSubmitQuestion(questionform:any) {
-    this.questions.push(questionform);
-    console.log(questionform.value);
+    this.questions.push(new Question(questionform.description_question, questionform.image_src, questionform.datetime, questionform.status, questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by, questionform.toggleAnswer) );
+    console.log(this.question_form);
   }
 
   onOpenAnswerForm(question:Question) {
