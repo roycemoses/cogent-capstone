@@ -7,10 +7,11 @@ import { QuestionComponent } from './question.component';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user.component';
 import { LoginComponent } from './login.component';
+import { AnswerComponent } from './answer.component';
 
 @NgModule({
   declarations: [
-    AppComponent, UserComponent, LoginComponent, QuestionComponent
+    AppComponent, UserComponent, LoginComponent, QuestionComponent, AnswerComponent
   ],
   imports: [
     BrowserModule,
