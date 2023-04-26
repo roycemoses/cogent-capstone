@@ -1,11 +1,61 @@
 
+<form novalidate #QUESTION_FORM="ngForm" (ngSubmit)="onSubmitQuestion()">
+    <div>
+        <label for="qcreated_by">Creator</label>
+        <input type="text" [(ngModel)]="question_form.qcreated_by" name="qcreated_by" required>
+        <label for="qapproved_by">Acceptor</label>
+        <input type="text" [(ngModel)]="question_form.qapproved_by" name="qapproved_by" required>
+
+        <button (click)="onAnswer()">Answer</button>
+
+        <label for="topic">Topic</label>
+        <input type="text" [(ngModel)]="question_form.topic" name="topic" required>
+        
+        <form action="/action_page.php">
+            <label for="img">Select image:</label>
+            <input type="file" [(ngModel)]="question_form.image_src" id="img" name="img" accept="image/*">
+            </form>
+    </div>
+    
+    <button [disabled]="QUESTION_FORM.invalid" type="submit">Submit</button>
+</form>
+
+<div *ngIf='toggleAnswer'>
+    <form novalidate #ANSWER_FORM="ngForm" (ngSubmit)="onSubmitAnswer()">
+        <div>
+            <label for="acreated_by">Answer C</label>
+            <input type="text" [(ngModel)]="answer_form.qcreated_by" name="acreated_by" required>
+            <label for="aapproved_by">Answer A</label>
+            <input type="text" [(ngModel)]="answer_form.qapproved_by" name="aapproved_by" required>
+    
+            
+    
+            <label for="topic">Topic</label>
+            <input type="text" [(ngModel)]="answer_form.topic" name="topic" required>
+            
+            <form action="/action_page.php">
+                <label for="img">Select image:</label>
+                <input type="file" [(ngModel)]="answer_form.image_src" id="img" name="img" accept="image/*">
+                </form>
+        </div>
+        
+        <button [disabled]="ANSWER_FORM.invalid" type="submit">Submit</button>
+    </form>
+</div>
+
 <ul>
+    
+
+
     <ng-container *ngFor="let question of questions">
         {{question.title}}
+        <li>
+
+        
         <ng-container *ngFor="let answer of question.answers">
             {{answer.image_src}}
         </ng-container>
-
+        </li>
     </ng-container>
     
     

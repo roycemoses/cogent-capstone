@@ -6,13 +6,10 @@ import { Answer } from './answer';
   templateUrl: './answer.component.html'
 })
 export class AnswerComponent implements OnInit {
-
-  answers: Answer[];
+  //answer_form=new Answer("","","","","","");
+  //answers: Answer[];
   constructor() {
-    this.answers = [
-      new Answer("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted","ok", "hi"),
-      new Answer("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted","ok", "hi")
-    ];
+   
   }
   
   ngOnInit(): void {
