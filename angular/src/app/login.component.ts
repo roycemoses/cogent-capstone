@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from './login';
 import { LoginService } from './login.service';
+import { User } from './user';
 
 @Component({
     selector: 'login',
@@ -12,12 +13,14 @@ export class LoginComponent implements OnInit {
     loginForm:Login;
     token:String;
     loginSuccessful:boolean;
+    user:User;
 
     constructor(private loginService:LoginService) 
     {
         this.loginForm = new Login();
         this.token = "";
         this.loginSuccessful = false;
+        this.user = new User(-1, "", "", "", "", "None");
     }
 
     ngOnInit(): void {
@@ -26,42 +29,46 @@ export class LoginComponent implements OnInit {
         // })
     }
 
-    onSubmit(loginform:any) // update
+    onSubmitLogin(loginform:any) // update
     {
         console.log(this.loginForm.userName);
         console.log(this.loginForm.password);
         // console.log(loginform.value);
-
-        try {
-            this.loginService.postRequestForToken(this.loginForm).subscribe((data:String)=>{
-                console.log(data.toString());
-                this.token = new String(data.toString());
-            })
-        } catch(e:any)
-        {
-            console.log(e);
-        }
-
+        this.generateToken();
+        // this.generateUser(this.loginForm.userName);
     }
+
+    generateToken()
+    {
+        this.loginService.postRequestForToken(this.loginForm).subscribe((data:String)=>{
+            console.log(data.toString());
+            this.token = new String(data.toString());
+        })
+    }
+
+    generateUser(userName:string)
+    {
+        this.loginService.getUser(userName).subscribe((data:User)=>{
+            console.log(data);
+            this.user = data;
+        })
+    }
+
 
     printToken()
     {
         console.log(this.token);
     }
 
-    goHome()
+    goHome() // GET Request to the Home Handler
     {
-        this.loginService.getHomeString(this.token.toString()).subscribe((data:String)=>{
+        this.loginService.getHomeString(this.token.toString()).subscribe((data:Object)=>{
             console.log(data.toString());
         })
     }
 
-    refresh()
-    {
-        window.location.reload();
-    }
-    delay(ms: number) {
-        return new Promise( resolve => setTimeout(resolve, ms) );
+    getUserType():string {
+        return this.user.userType;
     }
 
 }
