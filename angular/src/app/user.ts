@@ -2,8 +2,16 @@ export class User
 {
     public id!:number;
     public name!:string;
-    public age!:number;
-    public salary!:number;
+    public username!:string;
+    public password!:string;
+    public email!:string;
+    public userType!:string;
+
+
+    // public id!:number;
+    // public name!:string;
+    // public age!:number;
+    // public salary!:number;
 
     // constructor(id:number, name:string, age:number, salary:number)
     // {

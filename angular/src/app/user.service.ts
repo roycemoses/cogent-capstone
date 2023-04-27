@@ -4,11 +4,12 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-    providedIn:`root`
+    providedIn:'root'
 })
 export class UserService
 {
-    private baseUrl = 'http://localhost:8080/api/users';
+    // private baseUrl = 'http://localhost:8080/api/users';
+    private baseUrl = 'http://localhost:8080/addnewuser';
     
     constructor (private httpClient:HttpClient) {}
 

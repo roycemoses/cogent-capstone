@@ -41,17 +41,17 @@ export class UserComponent implements OnInit {
 
     onSubmitEdit(adduserform:any) // update
     {
-        this.currUser.id = this.currUserID;
-        this.currUser.name = adduserform.value.name;
-        this.currUser.age = adduserform.value.age;
-        this.currUser.salary = adduserform.value.salary;
+        // this.currUser.id = this.currUserID;
+        // this.currUser.name = adduserform.value.name;
+        // this.currUser.age = adduserform.value.age;
+        // this.currUser.salary = adduserform.value.salary;
 
-        console.log(adduserform.value);
+        // console.log(adduserform.value);
 
-        this.toggleEditForm=false;
-        this.userService.updateUser(this.currUser).subscribe();
-        this.userService.getUsers();
-        this.refresh();
+        // this.toggleEditForm=false;
+        // this.userService.updateUser(this.currUser).subscribe();
+        // this.userService.getUsers();
+        // this.refresh();
     }
 
     delete(id:number)
@@ -64,16 +64,23 @@ export class UserComponent implements OnInit {
 
     onSubmitAdd(adduserform:any)
     {
-        this.currUser.id = adduserform.value.id;
-        this.currUser.name = adduserform.value.name;
-        this.currUser.age = adduserform.value.age;
-        this.currUser.salary = adduserform.value.salary;
-
-        console.log(adduserform.value);
+        this.currUser.id=adduserform.value.id;
+        this.currUser.name=adduserform.value.name;
+        this.currUser.password=adduserform.value.password;
+        this.currUser.email=adduserform.value.email;
+        this.currUser.userType='user';
 
         this.userService.addUser(this.currUser).subscribe();
-        this.userService.getUsers();
-        this.refresh();
+        // this.currUser.id = adduserform.value.id;
+        // this.currUser.name = adduserform.value.name;
+        // this.currUser.age = adduserform.value.age;
+        // this.currUser.salary = adduserform.value.salary;
+
+        // console.log(adduserform.value);
+
+        // this.userService.addUser(this.currUser).subscribe();
+        // this.userService.getUsers();
+        // this.refresh();
     }
 
     refresh()

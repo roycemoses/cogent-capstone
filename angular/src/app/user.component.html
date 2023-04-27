@@ -4,6 +4,32 @@
         <input type="text" [(ngModel)]="userAddForm.name" name="name" placeholder="Enter your name" required>
     </div>
     <div>
+        <label for="username">Username </label>
+        <input type="text" [(ngModel)]="userAddForm.username" name="username" placeholder="Enter a username" required>
+    </div>
+    <div>
+        <label for="password">Password </label>
+        <input type="password" [(ngModel)]="userAddForm.password" name="password" placeholder="Enter a password" required>
+    </div>
+    <div>
+        <label for="email">Email </label>
+        <input type="text" [(ngModel)]="userAddForm.email" name="email" placeholder="Enter an email" required>
+    </div>
+    <div>
+        <p>User Type </p>
+        <input type="checkbox" [(ngModel)]="userAddForm.userType" name="userType" value="admin">
+        <label for="userType" >Admin</label> <br>
+    </div>
+    <button [disabled]="ADD_USER_FORM.invalid" type="submit">Add</button>
+</form>
+<button (click)= 'resetForm(); refresh()'>Reset Form</button>
+
+<!-- <form novalidate #ADD_USER_FORM="ngForm" (ngSubmit)="onSubmitAdd(ADD_USER_FORM)" autocomplete="false">
+    <div>
+        <label for="name">Name </label>
+        <input type="text" [(ngModel)]="userAddForm.name" name="name" placeholder="Enter your name" required>
+    </div>
+    <div>
         <label for="age">Age </label>
         <input type="number" [(ngModel)]="userAddForm.age" name="age" placeholder="Enter your age" required>
     </div>
@@ -13,10 +39,10 @@
     </div>
     <button [disabled]="ADD_USER_FORM.invalid" type="submit">Add</button>
 </form>
-<button (click)= 'resetForm(); refresh()'>Reset Form</button>
+<button (click)= 'resetForm(); refresh()'>Reset Form</button> -->
 
 
-<div class="container">
+<!-- <div class="container">
     <div class="card">
         <h3 class="text-center">User List</h3>
         <div class="card-body">
@@ -42,11 +68,11 @@
             </table>
         </div>
     </div>
-</div>
+</div> -->
 
 <br>
 
-<div *ngIf="toggleEditForm">
+<!-- <div *ngIf="toggleEditForm">
     <h3>EDIT FORM</h3>
     <h4>Currently updating user #{{currUserID}}...</h4>
     <form novalidate #EDIT_USER_FORM="ngForm" (ngSubmit)="onSubmitEdit(EDIT_USER_FORM)">
@@ -64,4 +90,4 @@
         </div>
         <button [disabled]="EDIT_USER_FORM.invalid" type="submit">Finalize edit</button>
     </form>
-</div>
+</div> -->

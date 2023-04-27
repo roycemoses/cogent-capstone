@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import doConnect.cogentcapstone.entity.AuthRequest;
+import doConnect.cogentcapstone.entity.User;
+import doConnect.cogentcapstone.repository.UserRepository;
 import doConnect.cogentcapstone.util.JwtUtil;
 
 @RestController
@@ -21,6 +23,8 @@ public class UserController {
 	private JwtUtil jwtUtil;
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	@Autowired
+	private UserRepository repo;
 
 	@GetMapping("/authenticate")
 	public String home() {
@@ -36,5 +40,11 @@ public class UserController {
 			throw new Exception("inavalid username/password");
 		}
 		return jwtUtil.generateToken(authRequest.getUserName());
+	}
+	
+	@PostMapping("/addnewuser")
+	public String addNewUser(@RequestBody User user) {
+		repo.save(user);
+		return "The user with name "+user.getName()+" has been saved.";
 	}
 }
