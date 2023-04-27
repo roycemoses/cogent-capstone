@@ -18,8 +18,8 @@ import doConnect.cogentcapstone.repository.UserRepository;
 import doConnect.cogentcapstone.util.JwtUtil;
 
 @RestController
-//@CrossOrigin("*")
-@CrossOrigin(origins="http://localhost:4200/")
+@CrossOrigin("*")
+//@CrossOrigin(origins="http://localhost:4200/")
 public class UserController {
 
 	@Autowired
