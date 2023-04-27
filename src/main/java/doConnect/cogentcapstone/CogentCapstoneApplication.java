@@ -38,7 +38,6 @@ public class CogentCapstoneApplication {
 	public static void main(String[] args) {
             
             
-            
             //search src = new search();
             //src.doSearch();
             

@@ -1,2 +1,31 @@
-<question></question>
+<login></login>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+    <div class="container">
+        <a class="navbar-brand" href="#" (click)="toggleHome()">Angular routing!</a>
+            <div *ngIf="inHome" id="inHome">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" routerLink="/home" (click)="toggleHome()">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" routerLink="/about" (click)="toggleHome()">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" routerLink="/contact" (click)="toggleHome()">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" routerLink="/careers" (click)="toggleHome()">Careers</a>
+                    </li>
+                </ul>
+            </div>
+    </div>
+</nav>
+
+
+<div class="container text-center">
+    <router-outlet></router-outlet>
+</div>
+
+
 <!-- <user></user> -->
