@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
     printToken()
     {
-        console.log(this.token.toString);
+        console.log(this.token.toString());
     }
 
     goHome() // GET Request to the Home Handler
