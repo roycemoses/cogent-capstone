@@ -12,19 +12,34 @@ export class AppComponent {
     showLogin:boolean = false;
     showAdminDashboard:boolean = false;
 
-    toggleLanding()
+    toggleLandingOn()
     {
-        this.showLanding = !this.showLanding;
+        this.showLanding = true;
     }
 
-    toggleLogin()
+    toggleLandingOff()
     {
-        this.showLogin = !this.showLogin;
+        this.showLanding = false;
+    }
+
+    toggleLoginOn()
+    {
+        this.showLogin = true;
+    }
+
+    toggleLoginOff()
+    {
+        this.showLogin = false;
     }
     
-    toggleAdminDashboard()
+    toggleAdminDashboardOn()
     {
-        this.showAdminDashboard = !this.showAdminDashboard;    
+        this.showAdminDashboard = true;    
+    }
+
+    toggleAdminDashboardOff()
+    {
+        this.showAdminDashboard = false;    
     }
 
     toggleHome()

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Login } from './login';
 import { LoginService } from './login.service';
 import { User } from './user';
@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
     loginSuccessful:boolean;
     user:User;
 
+
     constructor(private loginService:LoginService) 
     {
         this.loginForm = new Login();
@@ -24,6 +25,9 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
+
+
         // this.loginService.getLogins().subscribe((data:Login[])=>{
         //     console.log(data);
         // })
@@ -70,9 +74,12 @@ export class LoginComponent implements OnInit {
     getUserType():string {
         return this.user.userType;
     }
-
+    
+    @Input() toggleLoginOff:any; toggleAdminDashboardOn:any;
     goToAdminDashboard()
     {
+        this.toggleLoginOff();
+        this.toggleAdminDashboardOn();
         // @Input() toggleLogin()
     }
 

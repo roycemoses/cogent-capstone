@@ -6,34 +6,55 @@
 </style>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-    <div class="container">
-        <a class="navbar-brand" href="#">Home</a>
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <button class="nav-link" routerLinkActive="active" routerLink="/login" (click)="toggleLogin(); toggleLanding()">Go To Login Page</button>
-                </li>
-            </ul>
-    </div>
-</nav>
 
 <ng-container *ngIf="showLanding">
-    <landing></landing>
+    <!-- <landing></landing> -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="#">Home</a>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <button class="nav-link" routerLinkActive="active" routerLink="/login" (click)="toggleLoginOn(); toggleLandingOff()">Go To Login Page</button>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+    
 </ng-container>
 
 <ng-container *ngIf="showLogin">
-    <login></login>
+    <!-- <login></login> -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="#">Home</a>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <button class="nav-link" routerLinkActive="active" routerLink="/admin-dashboard" (click)="toggleLoginOff(); toggleAdminDashboardOn()">Go To Admin Dash</button>
+                    </li>
+                </ul>
+        </div>
+    </nav>
 </ng-container>
 
 <ng-container *ngIf="showAdminDashboard">
-    <admin-dashboard></admin-dashboard>
+    <!-- <admin-dashboard></admin-dashboard> -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="#">Home</a>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <button class="nav-link" routerLinkActive="active" routerLink="/admin-dashboard" (click)="toggleLoginOff(); toggleAdminDashboardOn()">Go to Admin Dash</button>
+                    </li>
+                </ul>
+        </div>
+    </nav>
 </ng-container>
 
 
 
-<!-- <div class="container text-center">
+<div class="container text-center">
     <router-outlet></router-outlet>
-</div> -->
+</div>
 
 
 
