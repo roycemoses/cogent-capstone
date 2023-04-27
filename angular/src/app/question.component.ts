@@ -17,10 +17,13 @@ export class QuestionComponent implements OnInit {
 
     addQuestion(newQuestion:Question)
     {
-        // console.log("added a question to questions[]");
+        console.log("added a question to questions[]");
         this.questions.push(newQuestion);
     }
-
+    // NOTES: 
+    // * Questions array doesn't update properly across different routes....
+    // * Output decorator & Emit is working
+    // * 
 
     constructor(private questionService:QuestionService) {
 
