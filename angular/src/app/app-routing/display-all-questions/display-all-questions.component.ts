@@ -1,28 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { QuestionService } from './QuestionService';
-import { Question } from './question';
-import { Answer } from './answer';
-import { CreateQuestionComponent } from './app-routing/create-question/create-question.component';
+import { Component } from '@angular/core';
+import { QuestionService } from 'src/app/QuestionService';
+import { Answer } from 'src/app/answer';
+import { Question } from 'src/app/question';
 
 @Component({
-  selector: 'question',
-  templateUrl: './question.component.html'
+    selector: 'display-all-questions',
+    templateUrl: './create-question.component.html'
 })
-
-export class QuestionComponent implements OnInit {
+export class DisplayAllQuestionsComponent
+{
     question_form: Question;
-    answers1: Answer[];
-    answers2: Answer[];
-    questions: Question[];
+  answers1: Answer[];
+  answers2: Answer[];
+  questions: Question[];
 
-    addQuestion(newQuestion:Question)
-    {
-        // console.log("added a question to questions[]");
-        this.questions.push(newQuestion);
-    }
-
-
-    constructor(private questionService:QuestionService) {
+  constructor(private questionService:QuestionService) {
 
     this.question_form=new Question("","","","","","",[],"","", false);    
 
@@ -56,14 +48,4 @@ export class QuestionComponent implements OnInit {
     console.log(this.question_form);
   }
 
-  onOpenAnswerForm(question:Question) {
-    question.toggleAnswer = !question.toggleAnswer;
-    // question.answers.push()
-  }
-
-  updateCurrQuestionsAnswers(answers:Answer[], question:Question) {
-    console.log(answers);
-    console.log(question);
-    question.answers = answers;
-  }
 }

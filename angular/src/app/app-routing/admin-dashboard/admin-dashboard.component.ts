@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
 })
 export class AdminDashboardComponent
 {
-
+    displayForm!:boolean;
+    showQuestionForm()
+    {
+        this.displayForm = true;
+    }
 }
