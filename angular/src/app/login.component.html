@@ -1,4 +1,4 @@
-<form novalidate #LOGIN_FORM="ngForm" (ngSubmit)="onSubmit(LOGIN_FORM)">
+<form novalidate #LOGIN_FORM="ngForm" (ngSubmit)="onSubmitLogin(LOGIN_FORM)">
     <div>
         <label for="userName">Username</label>
         <input type="text" [(ngModel)]="loginForm.userName" name="userName" required>

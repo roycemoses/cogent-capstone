@@ -1,32 +1,76 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Login } from './login';
-import { Observable } from 'rxjs';
+import { Observable, ObservedValueOf } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { User } from './user';
 
 @Injectable({
     providedIn:'root'
 })
 export class LoginService
 {
-    private baseUrl = 'http://localhost:8080/authenticate';
+    private baseUrl = 'http://localhost:8080';
     
     constructor (private httpClient:HttpClient) {}
 
     postRequestForToken(login:Login):Observable<String> {
         // console.log(this.httpClient.post<String>(this.baseUrl, login));
-        return this.httpClient.post(this.baseUrl, login, { responseType: 'text' });
+        return this.httpClient.post(`${this.baseUrl}/authenticate`, login, { responseType: 'text' });
         // this.http.post(url, body, { responseType: 'text' }).subscribe();
     };
 
-    getHomeString(token:string):Observable<String>
+    getHomeString(token:string):Observable<Object> 
     {
-        const headers= new HttpHeaders()
+        const requestOptions= new HttpHeaders()
             .set('Authorization', 'Bearer ' + token)
             .set('Access-Control-Allow-Origin', '*');
-            // .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-            // .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
         
-        return this.httpClient.get(this.baseUrl, { responseType: 'text'});
+        // const headerDict = {
+        //     'Authorization': 'Bearer ' + token,
+        //     'Access-Control-Allow-Origin': '*'
+        //     }
+            
+        // const requestOptions = {                                                                                                                                                                                 
+        //     headers: new HttpHeaders(headerDict)
+        // };
+
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Access-Control-Allow-Origin': '*',
+              Authorization: 'Bearer' + token
+            }),
+            responseType: 'text'
+          };
+        
+
+        // const headers= new HttpHeaders()
+        //     .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTY4MjU2MTUzNCwiaWF0IjoxNjgyNTI1NTM0fQ.U6UkO2moV8JVvISiKrDwH7RN27gjOcJUsRsO0YNVyAc').set('ResponseType','text')
+        //     .set('Access-Control-Allow-Origin', '*')
+        // .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+        //     .set('Access-Control-Allow-Headers','*');
+        
+        //return (`http://localhost:8080/`);
+        // return this.httpClient.get('http://localhost:8080/',{'headers':headers});
+
+        // return this.httpClient.get(`${this.baseUrl}`, requestOptions);
+        return this.httpClient.get(`${this.baseUrl}/test`, {responseType: 'text'});
+    }
+
+    getUser(userName:string):Observable<User> 
+    {
+        // const headers= new HttpHeaders()
+        //     .set('Access-Control-Allow-Origin', '*');
+
+        const headerDict = {
+            'Access-Control-Allow-Origin': '*'
+        };
+            
+        const requestOptions = {                                                                                                                                                                                 
+            headers: new Headers(headerDict), 
+        };
+            
+
+        return this.httpClient.get<User>((`${this.baseUrl}/getbyname=${userName}`))
     }
 
     // getLogins():Observable<Login[]> {
