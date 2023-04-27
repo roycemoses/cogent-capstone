@@ -39,13 +39,13 @@ public class CogentCapstoneApplication {
             
             //QuestionRepository qRepo = new QuestionRepository("what is the square root of 4");
             
-            search src = new search();
-            src.doSearch();
+            //search src = new search();
+            //src.doSearch();
             
             
             
             
-            //SpringApplication.run(CogentCapstoneApplication.class, args);
+            SpringApplication.run(CogentCapstoneApplication.class, args);
             
                 /*
 		final String fromEmail = "group5newmailbot@gmail.com"; //requires valid gmail id
@@ -134,8 +134,9 @@ public class CogentCapstoneApplication {
 
 
 	@Autowired
-    private UserRepository repository;
-    private QuestionRepository qstn_repository;
+    private UserRepository uRepo;
+        @Autowired
+    private QuestionRepository qRepo;
 
     @PostConstruct
     public void initUsers() {
@@ -145,13 +146,13 @@ public class CogentCapstoneApplication {
                 new User(103, "User2", "user2", "pwd2", "user2@gmail.com", "user"),
                 new User(104, "User3", "user3", "pwd3", "user3@gmail.com", "user")
         ).collect(Collectors.toList());
-        repository.saveAll(users);
+        uRepo.saveAll(users);
         
         List<Answer> answers = null;
         List<Question> questions = Stream.of(
                 new Question(100,"i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", answers, "ok", "hi")
         ).collect(Collectors.toList());
-        qstn_repository.saveAll(questions);
+        qRepo.saveAll(questions);
     }
 	
 }
