@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
         this.loginForm = new Login();
         this.token = "";
         this.loginSuccessful = false;
-        this.user = new User(-1, "", "", "", "", "None");
+        this.user = new User(-1, "", "", "", "", "User");
     }
 
     ngOnInit(): void {
