@@ -7,11 +7,30 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'user-management-app';
-    inHome = true;
+    showHome:boolean = false;
+    showLanding:boolean = true;
+    showLogin:boolean = false;
+    showAdminDashboard:boolean = false;
+
+    toggleLanding()
+    {
+        this.showLanding = !this.showLanding;
+    }
+
+    toggleLogin()
+    {
+        this.showLogin = !this.showLogin;
+    }
+    
+    toggleAdminDashboard()
+    {
+        this.showAdminDashboard = !this.showAdminDashboard;    
+    }
 
     toggleHome()
     {
-        this.inHome = !this.inHome;    
+        this.showHome = !this.showHome;    
     }
+    
 
 }

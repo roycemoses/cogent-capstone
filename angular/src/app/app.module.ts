@@ -9,10 +9,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login.component';
 import { AnswerComponent } from './answer.component';
 import { ExampleInterceptor } from './example.interceptor';
+import { LandingComponent } from './landing.component';
+import { AdminDashboardComponent } from './admin-dashboard.component';
 
 @NgModule({
   declarations: [
-    AppComponent, /*UserComponent,*/ LoginComponent, QuestionComponent, AnswerComponent
+    AppComponent, /*UserComponent,*/ LoginComponent, QuestionComponent, AnswerComponent, LandingComponent, AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

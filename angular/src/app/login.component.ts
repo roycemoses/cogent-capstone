@@ -71,4 +71,9 @@ export class LoginComponent implements OnInit {
         return this.user.userType;
     }
 
+    goToAdminDashboard()
+    {
+        // @Input() toggleLogin()
+    }
+
 }

@@ -7,13 +7,17 @@ import { CareersComponent } from './app-routing/careers/careers.component';
 import { ContactComponent } from './app-routing/contact/contact.component';
 import { PageNotFoundComponent } from './app-routing/page-not-found/page-not-found.component';
 import { AuthGuard } from './services/auth.guard';
+import { LoginComponent } from './login.component';
+import { AdminDashboardComponent } from './admin-dashboard.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
-    { path: 'about', canActivate:[AuthGuard], component: AboutComponent },
-    { path: 'careers', canActivate:[AuthGuard], component: CareersComponent },
-    { path: 'contact', component: ContactComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'admin-dashboard', component: AdminDashboardComponent },
+    // { path: 'about', canActivate:[AuthGuard], component: AboutComponent },
+    // { path: 'careers', canActivate:[AuthGuard], component: CareersComponent },
+    // { path: 'contact', component: ContactComponent },
     { path: '**', component: PageNotFoundComponent }
 ]
 
