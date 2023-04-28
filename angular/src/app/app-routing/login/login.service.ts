@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Login } from './login';
-import { Observable, ObservedValueOf } from 'rxjs';
+import { BehaviorSubject, Observable, ObservedValueOf } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/user';
 
@@ -9,6 +9,8 @@ import { User } from 'src/app/user';
 })
 export class LoginService
 {
+    public isLoggedIn:boolean = false;
+    public userType:string = "";
     private baseUrl = 'http://localhost:8080';
     
     constructor (private httpClient:HttpClient) {}
@@ -25,6 +27,7 @@ export class LoginService
 
     postRequestForToken(login:Login):Observable<String> {
         // console.log(this.httpClient.post<String>(this.baseUrl, login));
+        this.isLoggedIn = true;
         return this.httpClient.post(`${this.baseUrl}/authenticate`, login, { responseType: 'text' });
         // this.http.post(url, body, { responseType: 'text' }).subscribe();
     };
@@ -36,25 +39,27 @@ export class LoginService
             .set('Access-Control-Allow-Origin', '*')
             .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
             .set('Access-Control-Allow-Headers','*');
+        
+        console.log(token);
 
         return this.httpClient.get(`${this.baseUrl}/test`, {'headers':headers, responseType:'text'});
     }
 
-    getUser(userName:string):Observable<User> 
+    getUser(userName:string, token:string):Observable<User> 
     {
-        // const headers= new HttpHeaders()
-        //     .set('Access-Control-Allow-Origin', '*');
+        const headers= new HttpHeaders()
+            .set('Authorization', 'Bearer ' + token)
+            .set('Access-Control-Allow-Origin', '*')
+            .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+            .set('Access-Control-Allow-Headers','*');            
 
-        const headerDict = {
-            'Access-Control-Allow-Origin': '*'
-        };
-            
-        const requestOptions = {                                                                                                                                                                                 
-            headers: new Headers(headerDict), 
-        };
-            
+        console.log(token);
+        this.httpClient.get<User>((`${this.baseUrl}/getbyname=${userName}`), {'headers':headers}).subscribe((data:User)=>{
+            console.log("hey, it's data: " + data.userType);
+            this.userType = data.userType;
+        })
 
-        return this.httpClient.get<User>((`${this.baseUrl}/getbyname=${userName}`))
+        return this.httpClient.get<User>((`${this.baseUrl}/getbyname=${userName}`), {'headers':headers});
     }
 
     // getLogins():Observable<Login[]> {

@@ -13,6 +13,7 @@ export class QuestionService {
   constructor(private http: HttpClient) { }
 
   getQuestions(): Observable<Question[]>{
+    // const headers = 
     return this.http.get<Question[]>(`${this.baseUrl}`);
   }
 }
