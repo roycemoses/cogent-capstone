@@ -18,11 +18,14 @@ import doConnect.cogentcapstone.entity.User;
 import doConnect.cogentcapstone.repository.UserRepository;
 import doConnect.cogentcapstone.service.UserService;
 import doConnect.cogentcapstone.util.JwtUtil;
+import java.util.Optional;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 //@CrossOrigin("*")
 @CrossOrigin(origins="http://localhost:4200/")
-//@RequestMapping("/User")
+@RequestMapping("/user")
 public class UserController {
 
 	@Autowired
@@ -30,18 +33,11 @@ public class UserController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	@Autowired
-	private UserService userService;
-	@Autowired
-	private UserRepository userRepository;
+	private UserService utr;
 
-	@GetMapping("/test")
+	@GetMapping("/")
 	public String home() {
 		return "This is home";
-	}
-		
-	@GetMapping("/getbyname={userName}")
-	public User getUser(@PathVariable String userName) {
-		return userRepository.findByUserName(userName);
 	}
 
 	@PostMapping("/authenticate")
@@ -54,21 +50,56 @@ public class UserController {
 		}
 		return jwtUtil.generateToken(authRequest.getUserName());
 	}
-	
-	@PutMapping("/User/adduser")
-	public String addUser(@RequestBody User user) {
-		userService.addUser(user);
-		return "User with name "+ user.getName()+" was saved.";
+        
+        //add
+        @PostMapping(value={"/adduser"})
+        public User addUser(@RequestBody @Validated User u) {
+            return utr.addUser(u);
+        }
+        
+        //addnewuser ?? what is that
+        
+        //getlogin idk
+        
+        //getall
+        @GetMapping("/getall")
+        public List<User> getAllUsers() {
+            return utr.getAll();
+        }
+        
+        //getbyid
+        @GetMapping("/getbyid/{id}")
+        public Optional<User> getById(@PathVariable("id") Integer id) {
+            return utr.getbyId(id);
+        }
+        
+        //update
+	@PutMapping("/updateuser")
+	public User updateUser(@RequestBody User user) {
+            System.out.println("User updated");
+            return utr.update(user);
+            
 	}
 	
-	@PutMapping("/User/updateuser")
-	public String updateUser(@RequestBody User user) {
-		//userRepository.save(user);
-		return "User updated";
+        //getbyusername
+	@GetMapping("/getbyname/{userName}")
+	public User getUser(@PathVariable("userName") String userName) {
+            return utr.getbyUserName(userName);
 	}
+        
+        //getbyusertype or something
+        @GetMapping("/getbyusertype/{userType}")
+        public List<User> getByUserType(@PathVariable("userType") String userType) {
+            return utr.getAllUsersByUserType(userType);
+        }
+        
+        
+        //userloginverify?
+        
+        //getbyloggedin bool
+        @GetMapping("/getbylogged")
+        public List<User> getByislogged() {
+            return utr.getByislogged(true);
+        }
 	
-	@GetMapping("/User/getbyallUserType")
-	public List<User> getUserByUserType(@PathVariable String userType) {
-		return userService.getAllUsersByUserType(userType);
-	}
 }

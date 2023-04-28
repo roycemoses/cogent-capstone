@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "CHAT_TABLE")
+@Table(name = "chat_table")
 public class Chat {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

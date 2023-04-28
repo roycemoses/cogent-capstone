@@ -21,8 +21,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import doConnect.cogentcapstone.entity.User;
+import doConnect.cogentcapstone.repository.AnswerRepository;
 import doConnect.cogentcapstone.repository.QuestionRepository;
 import doConnect.cogentcapstone.repository.UserRepository;
+import java.util.ArrayList;
 
 @SpringBootApplication
 public class CogentCapstoneApplication {
@@ -136,22 +138,43 @@ public class CogentCapstoneApplication {
         
     @Autowired
     private QuestionRepository qRepo;
+    
+    @Autowired
+    private AnswerRepository aRepo;
 
     @PostConstruct
     public void initUsers() {
         List<User> users = Stream.of(
-                new User(101, "Gyanendra", "gyanendra", "password", "gsytec@gmail.com", "admin"),
-                new User(102, "User1", "user1", "pwd1", "user1@gmail.com", "user"),
-                new User(103, "User2", "user2", "pwd2", "user2@gmail.com", "user"),
-                new User(104, "User3", "user3", "pwd3", "user3@gmail.com", "user")
+                new User(101, "Gyanendra", "gyanendra", "password", "gsytec@gmail.com", "admin",true),
+                new User(102, "User1", "user1", "pwd1", "user1@gmail.com", "user",false),
+                new User(103, "User2", "user2", "pwd2", "user2@gmail.com", "user",true),
+                new User(104, "User3", "user3", "pwd3", "user3@gmail.com", "user",false)
         ).collect(Collectors.toList());
         uRepo.saveAll(users);
         
-        List<Answer> answers = null;
+        
+        //List<Answer> answers = new ArrayList<Answer>();
+        Question q1 = new Question(100,"i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", new ArrayList<>(),"ok","hi");
+        Answer a1 = new Answer(1001,"it's 2","test_image1.png","accepted","4/4/3004",q1,"ok","hi");
+        
+        q1.getAnswers().add(a1);
+        
+        
         List<Question> questions = Stream.of(
-                new Question(100,"i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", answers, "ok", "hi")
+                q1
         ).collect(Collectors.toList());
         qRepo.saveAll(questions);
+        
+        
+        
+        /*
+        List<Answer> answers_temp = Stream.of(
+                new Answer(1001,"it's 2","test_image1.png","accepted","4/4/3004",qRepo.findById(100).get(),"ok","hi")
+        ).collect(Collectors.toList());
+        aRepo.saveAll(answers_temp);
+        
+        qRepo.findById(100).get().setAnswers(answers_temp);
+*/
     }
 	
 }

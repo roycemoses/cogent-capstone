@@ -1,9 +1,12 @@
 package doConnect.cogentcapstone.controller;
 
-import java.util.ArrayList;
+import doConnect.cogentcapstone.entity.Answer;
+import doConnect.cogentcapstone.entity.Question;
+import doConnect.cogentcapstone.service.AnswerService;
 import java.util.List;
-
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,30 +16,78 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import doConnect.cogentcapstone.entity.Answer;
-import doConnect.cogentcapstone.repository.AnswerRepository;
-import doConnect.cogentcapstone.service.AnswerService;
 
-@RestController
-//@CrossOrigin("*")
-@CrossOrigin(origins="http://localhost:4200/")
+@Controller
+@ResponseBody
+@CrossOrigin("*")
+//@CrossOrigin(origins="http://localhost:4200/")
 @RequestMapping("/answer")
 public class AnswerController {
 
-	
-	// TODO: move this functionality to AnswerService class
-	@Autowired
-	private AnswerRepository answerRepository; 
-	@Autowired
-	private AnswerService answerService;
-
-	@GetMapping("/")
-	public String home() {
-		return "This is home";
+    @Autowired
+    AnswerService atr;
+    
+    //add
+    @PostMapping(value={"/addanswer"})
+    public Answer addAnswer(@RequestBody @Validated Answer a) {
+        return atr.update(a);
+    }
+    
+    //update
+    @PutMapping(value={"/updateanswer"})
+    public Answer updateAnswer(@RequestBody Answer a) {
+        return atr.update(a);
+    }
+    
+    
+    //deletebyID
+    @DeleteMapping(value={"/deleteanswer/{id}"})
+    public String deleteAnswerbyId(@PathVariable("id") Integer id) {
+            Optional<Answer> a = atr.getById(id);
+            atr.delete(a.get());
+            return "Answer id "+id+" deleted successfully";
 	}
-	
+    
+    
+    //getAll
+    @GetMapping("/getallanswer")
+    public List<Answer> getAllAnswer() {
+        List<Answer> a = atr.getAll();
+        System.out.println("all as: " + a.size());
+        return a;
+    }
+    
+    //getAllFalse
+    @GetMapping(value={"/getallanswerfalse"})
+    public List<Answer> getAllAnswerFalse() {
+        List<Answer> a = atr.getByStatus("denied");
+        System.out.println("all denied as: " + a.size());
+        return a;
+    }
+    
+    
+    //getbyQuestionID
+    @GetMapping("/getanswerbyquestionid/{questionid}")
+    public List<Answer> getAnswerbyQuestionId(@PathVariable("questionid") Integer id) {
+        List<Answer> a = atr.getByquestion_id(id);
+        System.out.println("all as for question " + id + ": " + a.size());
+        return a;
+    }
+    
+    
+    //getbyID
+    @GetMapping(value={"/getanswerbyid/{id}"})
+    public Optional<Answer> getAnswerbyId(@PathVariable("id") Integer id) {
+        Optional<Answer> a = atr.getById(id);
+        return a;
+    }
+    
+    
+}
+
+        /*
 	@GetMapping("/getAllAnswers")
 	public List<Answer> getAllAnswers()
 	{
@@ -56,7 +107,7 @@ public class AnswerController {
 	}
 	
 	@PostMapping("/addAnswer")
-	public Answer addAnswer(@Validated @RequestBody Answer answer)
+	public Answer addAnswer(@Validated @ReauestBody Answer answer)
 	{
 		return answerRepository.save(answer);
 	}
@@ -68,7 +119,7 @@ public class AnswerController {
 	}
 	
 	@PutMapping("/updateAnswer")
-	public void updateAnswer(@Validated @RequestBody Answer answer)
+	public void updateAnswer(@Validated @ReauestBody Answer answer)
 	{
 		answerRepository.save(answer);
 	}
@@ -79,15 +130,16 @@ public class AnswerController {
 		answerRepository.deleteById(answerId);
 	}
 	
-	@GetMapping("getAnswersByQuestionId/id={questionId}")
-	public List<Answer> getAnswersByQuestionId(@PathVariable Integer questionId)
+	@GetMapping("getAnswersByAnswerId/id={answerId}")
+	public List<Answer> getAnswersByAnswerId(@PathVariable Integer answerId)
 	{
 		List<Answer> answers = answerRepository.findAll();
-		List<Answer> answersWithQuestionId = new ArrayList<>();
+		List<Answer> answersWithAnswerId = new ArrayList<>();
 		for (int i = 0; i < answers.size(); i++)
-			if (answers.get(i).getQuestion().getId() == questionId)
-				answersWithQuestionId.add(answers.get(i));
+			if (answers.get(i).getAnswer().getId() == answerId)
+				answersWithAnswerId.add(answers.get(i));
 		
-		return answersWithQuestionId;
+		return answersWithAnswerId;
 	}
-}
+        */
+
