@@ -12,6 +12,16 @@ export class LoginService
     private baseUrl = 'http://localhost:8080';
     
     constructor (private httpClient:HttpClient) {}
+    
+    getLogins():Observable<Object> {
+        const headers= new HttpHeaders()
+            .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTY4MjU2MTUzNCwiaWF0IjoxNjgyNTI1NTM0fQ.U6UkO2moV8JVvISiKrDwH7RN27gjOcJUsRsO0YNVyAc').set('ResponseType','text')
+            .set('Access-Control-Allow-Origin', '*')
+            .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+            .set('Access-Control-Allow-Headers','*');
+        
+        return this.httpClient.get(`${this.baseUrl}`, {'headers':headers, responseType:'text'});
+    }
 
     postRequestForToken(login:Login):Observable<String> {
         // console.log(this.httpClient.post<String>(this.baseUrl, login));
@@ -20,40 +30,14 @@ export class LoginService
     };
 
     getHomeString(token:string):Observable<Object> 
-    {
-        const requestOptions= new HttpHeaders()
+    {        
+        const headers= new HttpHeaders()
             .set('Authorization', 'Bearer ' + token)
-            .set('Access-Control-Allow-Origin', '*');
-        
-        // const headerDict = {
-        //     'Authorization': 'Bearer ' + token,
-        //     'Access-Control-Allow-Origin': '*'
-        //     }
-            
-        // const requestOptions = {                                                                                                                                                                                 
-        //     headers: new HttpHeaders(headerDict)
-        // };
+            .set('Access-Control-Allow-Origin', '*')
+            .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+            .set('Access-Control-Allow-Headers','*');
 
-        const httpOptions = {
-            headers: new HttpHeaders({
-              'Access-Control-Allow-Origin': '*',
-              Authorization: 'Bearer' + token
-            }),
-            responseType: 'text'
-          };
-        
-
-        // const headers= new HttpHeaders()
-        //     .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTY4MjU2MTUzNCwiaWF0IjoxNjgyNTI1NTM0fQ.U6UkO2moV8JVvISiKrDwH7RN27gjOcJUsRsO0YNVyAc').set('ResponseType','text')
-        //     .set('Access-Control-Allow-Origin', '*')
-        // .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-        //     .set('Access-Control-Allow-Headers','*');
-        
-        //return (`http://localhost:8080/`);
-        // return this.httpClient.get('http://localhost:8080/',{'headers':headers});
-
-        // return this.httpClient.get(`${this.baseUrl}`, requestOptions);
-        return this.httpClient.get(`${this.baseUrl}/test`, {responseType: 'text'});
+        return this.httpClient.get(`${this.baseUrl}/test`, {'headers':headers, responseType:'text'});
     }
 
     getUser(userName:string):Observable<User> 
