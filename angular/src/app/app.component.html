@@ -1,31 +1,65 @@
-<login></login>
+<!-- <style>
+    button 
+    { 
+        background-color:aqua ; font-family: serif;
+    }
+</style> -->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-    <div class="container">
-        <a class="navbar-brand" href="#" (click)="toggleHome()">Angular routing!</a>
-            <div *ngIf="inHome" id="inHome">
+
+
+<!-- <ng-container *ngIf="showLanding">
+    <landing></landing>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="#">Home</a>
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link" routerLinkActive="active" routerLink="/home" (click)="toggleHome()">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLinkActive="active" routerLink="/about" (click)="toggleHome()">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLinkActive="active" routerLink="/contact" (click)="toggleHome()">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLinkActive="active" routerLink="/careers" (click)="toggleHome()">Careers</a>
+                        <button class="nav-link" routerLinkActive="active" routerLink="/login" (click)="toggleLoginOn(); toggleLandingOff()">Go To Login Page</button>
                     </li>
                 </ul>
-            </div>
-    </div>
-</nav>
+        </div>
+    </nav>
+    
+</ng-container> -->
+
+<!-- <ng-container *ngIf="showLogin">
+    <login></login>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="#">Home</a>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <button class="nav-link" routerLinkActive="active" routerLink="/admin-dashboard" (click)="toggleLoginOff(); toggleAdminDashboardOn()">Go To Admin Dash</button>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+</ng-container> -->
+
+<!-- <ng-container *ngIf="showAdminDashboard">
+    <admin-dashboard></admin-dashboard>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="#">Home</a>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <button class="nav-link" routerLinkActive="active" routerLink="/admin-dashboard" (click)="toggleLoginOff(); toggleAdminDashboardOn()">Go to Admin Dash</button>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+</ng-container> -->
+
+
 
 
 <div class="container text-center">
     <router-outlet></router-outlet>
+    <!-- <admin-dashboard></admin-dashboard> -->
+    <!-- <landing></landing> -->
 </div>
 
 
+
+<!-- <question></question> -->
 <!-- <user></user> -->

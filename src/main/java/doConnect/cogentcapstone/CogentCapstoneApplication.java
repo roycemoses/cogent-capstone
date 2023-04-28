@@ -61,7 +61,6 @@ public class CogentCapstoneApplication implements WebMvcConfigurer {
     }
 	public static void main(String[] args) {
             
-            //QuestionRepository qRepo = new QuestionRepository("what is the square root of 4");
             
             //search src = new search();
             //src.doSearch();
@@ -155,11 +154,11 @@ public class CogentCapstoneApplication implements WebMvcConfigurer {
 	}
 	
 
-
-
-	@Autowired
+        
+    @Autowired
     private UserRepository uRepo;
-        @Autowired
+        
+    @Autowired
     private QuestionRepository qRepo;
 
     @PostConstruct

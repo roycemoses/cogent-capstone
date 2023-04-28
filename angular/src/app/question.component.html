@@ -1,0 +1,48 @@
+<!-- <form novalidate #QUESTION_FORM="ngForm" (ngSubmit)="onSubmitQuestion(question_form)">
+    <div>
+        <label for="qcreated_by">Creator</label>
+        <input type="text" [(ngModel)]="question_form.qcreated_by" name="qcreated_by" required>
+    </div>
+
+    <div>
+        <label for="qapproved_by">Acceptor</label>
+        <input type="text" [(ngModel)]="question_form.qapproved_by" name="qapproved_by" required>
+    </div>
+
+    <div> 
+        <label for="topic">Topic</label>
+        <input type="text" [(ngModel)]="question_form.topic" name="topic" required>
+    </div>
+
+    <div>
+        <form action="/action_page.php">
+            <label for="img">Select image:</label>
+            <input type="file" [(ngModel)]="question_form.image_src" id="img" name="img" accept="image/*">
+        </form>
+    </div>
+    
+    <button [disabled]="QUESTION_FORM.invalid" type="submit">Submit</button>
+</form> -->
+
+<ng-container *ngFor="let question of questions; let i = index">
+    {{question.qcreated_by}}
+    {{question.qapproved_by}}
+    {{question.topic}}
+    {{i}}
+    
+    <!-- <button (click)="onOpenAnswerForm(question)">Answer</button> <br>
+    
+    <div *ngIf='(question.toggleAnswer)'>
+        <answer (answerEventEmitter)='updateCurrQuestionsAnswers($event, question)'></answer>
+    </div>
+
+    <ng-container *ngFor="let answer of question.answers">
+        <div *ngIf='answer.status == "accepted"'>
+            {{answer.image_src}}
+        </div>
+    </ng-container> -->
+
+
+</ng-container>
+
+<create-question (newQuestionEvent)="addQuestion($event)"></create-question>

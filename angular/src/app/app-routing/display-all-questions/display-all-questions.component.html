@@ -1,0 +1,20 @@
+<p>we are in the display all questions component!!</p>
+
+<ng-container *ngFor="let question of questions; let i = index">
+    {{question.qcreated_by}}
+    {{question.qapproved_by}}
+    {{question.topic}}
+    {{i}}
+
+    <button (click)="onOpenAnswerForm(question)">Answer</button> <br>
+    
+    <div *ngIf='(question.toggleAnswer)'>
+        <answer (answerEventEmitter)='updateCurrQuestionsAnswers($event, question)'></answer>
+    </div>
+
+    <ng-container *ngFor="let answer of question.answers">
+        <div *ngIf='answer.status == "accepted"'>
+            {{answer.image_src}}
+        </div>
+    </ng-container>
+</ng-container>

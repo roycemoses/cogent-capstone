@@ -1,0 +1,30 @@
+<form novalidate #ANSWER_FORM="ngForm" (ngSubmit)="onSubmitAnswer()">
+    <div>
+        <label for="acreated_by">Answer Created By</label>
+        <input type="text" [(ngModel)]="answer_form.acreated_by" name="acreated_by" required>
+    </div>
+    
+    <div>
+        <label for="aapproved_by">Answer Approved By</label>
+        <input type="text" [(ngModel)]="answer_form.aapproved_by" name="aapproved_by" required>
+    </div>
+    
+    <div>  
+        <label for="description_answer">Answer Description</label>
+        <input type="text" [(ngModel)]="answer_form.description_answer" name="description_answer" required>
+    </div>
+
+    <div>  
+        <label for="status">Status</label>
+        <input type="text" [(ngModel)]="answer_form.status" name="status" required>
+    </div>
+    
+    <div>
+        <form action="/action_page.php">
+            <label for="img">Select image:</label>
+            <input type="file" [(ngModel)]="answer_form.image_src" id="img" name="img" accept="image/*">
+            </form>
+    </div>
+    
+    <button [disabled]="ANSWER_FORM.invalid" type="submit">Submit</button>
+</form>

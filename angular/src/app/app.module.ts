@@ -3,15 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-
+import { QuestionComponent } from './question.component';
 import { AppComponent } from './app.component';
-// import { UserComponent } from './user.component';
-import { LoginComponent } from './login.component';
+//import { UserComponent } from './user.component';
+import { LoginComponent } from './app-routing/login/login.component';
+import { AnswerComponent } from './answer.component';
 import { ExampleInterceptor } from './example.interceptor';
+import { LandingComponent } from './app-routing/landing/landing.component';
+import { AdminDashboardComponent } from './app-routing/admin-dashboard/admin-dashboard.component';
+import { CreateQuestionComponent } from './app-routing/create-question/create-question.component';
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent
+    AppComponent, /*UserComponent,*/ LoginComponent, QuestionComponent, AnswerComponent, LandingComponent, AdminDashboardComponent, CreateQuestionComponent
   ],
   imports: [
     BrowserModule,
