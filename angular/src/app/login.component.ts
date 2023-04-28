@@ -10,6 +10,8 @@ import { User } from './user';
 })
 export class LoginComponent implements OnInit {
     title = 'hi';
+
+    logins:Login[];
     loginForm:Login;
     token:String;
     loginSuccessful:boolean;
@@ -17,6 +19,7 @@ export class LoginComponent implements OnInit {
 
     constructor(private loginService:LoginService) 
     {
+        this.logins = [];
         this.loginForm = new Login();
         this.token = "";
         this.loginSuccessful = false;
@@ -24,9 +27,10 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // this.loginService.getLogins().subscribe((data:Login[])=>{
-        //     console.log(data);
-        // })
+        this.loginService.getLogins().subscribe((data:any)=>{
+            console.log(data);
+            this.logins = data;
+        })
     }
 
     onSubmitLogin(loginform:any) // update
