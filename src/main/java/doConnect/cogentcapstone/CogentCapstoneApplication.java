@@ -130,11 +130,11 @@ public class CogentCapstoneApplication {
 	}
 	
 
-
-
-	@Autowired
+        
+    @Autowired
     private UserRepository uRepo;
-        @Autowired
+        
+    @Autowired
     private QuestionRepository qRepo;
 
     @PostConstruct

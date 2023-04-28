@@ -22,15 +22,22 @@ public class QuestionService {
     
     //Get all qs
     public List<Question> getAll(){
-            return (List<Question>) qtr.findAll();
+        return (List<Question>) qtr.findAll();
     }
 
-    /*
     //Single Question get
-    public Optional<Question> get(int qId){
-            return qtr.findById(qId);
+    public Optional<Question> getById(int qId){
+        return qtr.findById(qId);
     }
     
+    //getbytopic
+    public List<Question> getByTopic(String topic) {
+        return qtr.findByTopic(topic);
+    }
+    
+    public List<Question> getByStatus(String status) {
+        return qtr.findByStatus(status);
+    }
     
     //Update/create q
     public Question update(Question q) {
@@ -44,5 +51,5 @@ public class QuestionService {
     public void deleteAll() {
             qtr.deleteAll();
     }
-    */
+    
 }

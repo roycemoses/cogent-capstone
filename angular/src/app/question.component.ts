@@ -36,11 +36,11 @@ export class QuestionComponent implements OnInit {
 
     this.answers2 = [
       new Answer("i am bad at sqrts?", "test_image2.png", "4/4/2004 22:22", "accepted","ok", "hi"),
-      new Answer("i am bad at sqrts", "test_image2.png", "4/4/2004 22:22", "no","ok", "hi")
+      new Answer("i am bad at sqrts", "test_image2.png", "4/4/2004 22:22", "denied","ok", "hi")
     ];
 
     this.questions = [
-      new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4",[], "ok", "hi", false),
+      new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "denied", "math", "what is the sqrt4",[], "ok", "hi", false),
       new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4",this.answers2, "ok", "hi", false)
     ];
 
