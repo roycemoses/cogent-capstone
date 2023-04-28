@@ -1,6 +1,7 @@
 package doConnect.cogentcapstone.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,6 +23,14 @@ public class UserService implements UserDetailsService{
 
 		User user=repo.findByUserName(username);
 		return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), new ArrayList<>());
+	}
+	
+	public User addUser(User user) {
+		return repo.save(user);
+	}
+	
+	public List<User> getAllUsersByUserType(String userType) {
+		return repo.findAllByUserType(userType);
 	}
 	
 	
