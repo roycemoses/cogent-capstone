@@ -1,9 +1,17 @@
 package doConnect.cogentcapstone;
 
 
+import doConnect.cogentcapstone.entity.Answer;
+import doConnect.cogentcapstone.entity.Question;
+import doConnect.cogentcapstone.mail.EmailUtil;
+import java.util.Properties;
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import search_func.search;
 
 import javax.annotation.PostConstruct;
 
@@ -14,13 +22,13 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import doConnect.cogentcapstone.entity.User;
+import doConnect.cogentcapstone.repository.QuestionRepository;
 import doConnect.cogentcapstone.repository.UserRepository;
 
 @SpringBootApplication
 public class CogentCapstoneApplication implements WebMvcConfigurer {
 
 
-		//SpringApplication.run(CogentCapstoneApplication.class, args);
                 
                 /**
 	   Outgoing Mail (SMTP) Server
@@ -52,6 +60,15 @@ public class CogentCapstoneApplication implements WebMvcConfigurer {
         WebMvcConfigurer.super.addCorsMappings(registry);
     }
 	public static void main(String[] args) {
+            
+            //QuestionRepository qRepo = new QuestionRepository("what is the square root of 4");
+            
+            //search src = new search();
+            //src.doSearch();
+            
+            
+            
+            
             SpringApplication.run(CogentCapstoneApplication.class, args);
             
                 /*
@@ -141,7 +158,9 @@ public class CogentCapstoneApplication implements WebMvcConfigurer {
 
 
 	@Autowired
-    private UserRepository repository;
+    private UserRepository uRepo;
+        @Autowired
+    private QuestionRepository qRepo;
 
     @PostConstruct
     public void initUsers() {
@@ -151,7 +170,13 @@ public class CogentCapstoneApplication implements WebMvcConfigurer {
                 new User(103, "User2", "user2", "pwd2", "user2@gmail.com", "user"),
                 new User(104, "User3", "user3", "pwd3", "user3@gmail.com", "user")
         ).collect(Collectors.toList());
-        repository.saveAll(users);
+        uRepo.saveAll(users);
+        
+        List<Answer> answers = null;
+        List<Question> questions = Stream.of(
+                new Question(100,"i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", answers, "ok", "hi")
+        ).collect(Collectors.toList());
+        qRepo.saveAll(questions);
     }
 	
 }
