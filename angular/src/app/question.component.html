@@ -30,7 +30,7 @@
     {{question.topic}}
     {{i}}
     
-    <!-- <button (click)="onOpenAnswerForm(question)">Answer</button> <br>
+    <button (click)="onOpenAnswerForm(question)">Answer</button> <br>
     
     <div *ngIf='(question.toggleAnswer)'>
         <answer (answerEventEmitter)='updateCurrQuestionsAnswers($event, question)'></answer>
@@ -40,9 +40,7 @@
         <div *ngIf='answer.status == "accepted"'>
             {{answer.image_src}}
         </div>
-    </ng-container> -->
-
-
+    </ng-container>
 </ng-container>
 
 <create-question (newQuestionEvent)="addQuestion($event)"></create-question>

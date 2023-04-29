@@ -28,8 +28,8 @@ export class LoginService
 
     postRequestForToken(login:Login):Observable<String> {
         // console.log(this.httpClient.post<String>(this.baseUrl, login));
-        this.isLoggedIn = true;
         this.httpClient.post(`${this.baseUrl}/authenticate`, login, { responseType: 'text' }).subscribe((data:String)=>{
+            this.isLoggedIn = true;
             this.token = data.toString();
         })
 
