@@ -13,6 +13,7 @@ import { LandingComponent } from './app-routing/landing/landing.component';
 import { AdminDashboardComponent } from './app-routing/admin-dashboard/admin-dashboard.component';
 import { CreateQuestionComponent } from './app-routing/create-question/create-question.component';
 import { QuestionDetailsComponent } from './app-routing/question-details/question-details';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { QuestionDetailsComponent } from './app-routing/question-details/questio
     HttpClientModule,
     FormsModule
   ],
-  providers: [LoginComponent,
+  providers: [LoginComponent, DatePipe,
 {
     provide: HTTP_INTERCEPTORS, useClass: ExampleInterceptor, multi: true   
 }],

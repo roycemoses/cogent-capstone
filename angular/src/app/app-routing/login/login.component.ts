@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, Injectable } from '@angular/core';
 import { Login } from './login';
 import { LoginService } from './login.service';
 import { User } from 'src/app/user';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     user:User;
 
 
-    constructor(private loginService:LoginService) 
+    constructor(private loginService:LoginService, private router:Router) 
     {
         this.logins = [];
         this.loginForm = new Login();
@@ -67,7 +68,6 @@ export class LoginComponent implements OnInit {
 
         // this.generateToken(); // promise me you'll finish this one first
         // this.generateUser(this.loginForm.userName, this.token.toString());
-        
 
         console.log("this.user.userType: " + this.user.userType);
     }
@@ -90,6 +90,10 @@ export class LoginComponent implements OnInit {
             console.log(data);
             this.user = data;
             console.log(this.user.userType);
+            if (this.user.userType == 'admin')
+                this.router.navigate(['/admin-dashboard']);
+            else if (this.user.userType == 'user')
+                this.router.navigate(['/user-dashboard']);
             console.log(this.user);
         })
     }

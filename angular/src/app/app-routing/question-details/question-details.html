@@ -1,3 +1,5 @@
+<button class="nav-link" routerLinkActive="active" routerLink="/admin-dashboard">Go To Admin Dash</button>
+
 <p>
     {{question_id}}
     {{question.description_question}}
@@ -11,4 +13,21 @@
     {{question.qapproved_by}}
 </p>
 
+<br><br><br>
+<ng-container *ngFor="let answer of answers; let i = index">
+
+    <ng-container *ngIf="answer.status == 'accepted'">
+    Answer index: {{i}}
+    {{answer.description_answer}}
+    {{answer.image_src}}
+    {{answer.status}}
+    {{answer.datetime}}
+    <!-- {{answer.question}} -->
+    {{answer.approved_by}}
+    {{answer.created_by}}
+    <br><br>
+    </ng-container>
+</ng-container>
+
 <answer></answer>
+

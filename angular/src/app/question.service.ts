@@ -14,7 +14,7 @@ export class QuestionService {
     private baseUrl = "http://localhost:8080/question";
     constructor(private httpClient: HttpClient, private loginService:LoginService) { }
 
-    setCurrQuestionId(id:any)
+    setCurrQuestionId(id:number)
     {
         this.currQuestionId = id;
     }

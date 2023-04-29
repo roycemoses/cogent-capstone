@@ -3,6 +3,7 @@ import { QuestionService } from './question.service';
 import { Question } from './question';
 import { Answer } from './answer';
 import { CreateQuestionComponent } from './app-routing/create-question/create-question.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'question',
@@ -25,25 +26,28 @@ export class QuestionComponent implements OnInit {
     // * Output decorator & Emit is working
     // * 
 
-    constructor(private questionService:QuestionService) {
+    constructor(private questionService:QuestionService, public datePipe:DatePipe) {
 
-    this.question_form=new Question("","","","","","",[],"","");    
+        let currentDateTime = this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss');
+        console.log(currentDateTime);
+        this.question_form=new Question("","","","","","",[],"","");    
 
-    // this.answers1 = [
-    //   new Answer("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted","ok", "hi"),
-    //   new Answer("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted","ok", "hi")
-    // ];
 
-    // this.answers2 = [
-    //   new Answer("i am bad at sqrts?", "test_image2.png", "4/4/2004 22:22", "accepted","ok", "hi"),
-    //   new Answer("i am bad at sqrts", "test_image2.png", "4/4/2004 22:22", "denied","ok", "hi")
-    // ];
+        // this.answers1 = [
+        //   new Answer("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted","ok", "hi"),
+        //   new Answer("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted","ok", "hi")
+        // ];
 
-    // this.questions = [
-    //   new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "denied", "math", "what is the sqrt4",[], "ok", "hi", false),
-    //   new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4",this.answers2, "ok", "hi", false)
-    // ];
-    this.questions = []; // updated in backend on ngOnInit
+        // this.answers2 = [
+        //   new Answer("i am bad at sqrts?", "test_image2.png", "4/4/2004 22:22", "accepted","ok", "hi"),
+        //   new Answer("i am bad at sqrts", "test_image2.png", "4/4/2004 22:22", "denied","ok", "hi")
+        // ];
+
+        // this.questions = [
+        //   new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "denied", "math", "what is the sqrt4",[], "ok", "hi", false),
+        //   new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4",this.answers2, "ok", "hi", false)
+        // ];
+        this.questions = []; // updated in backend on ngOnInit
 
   }
   
