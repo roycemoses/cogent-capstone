@@ -25,12 +25,16 @@
 </form> -->
 
 <ng-container *ngFor="let question of questions; let i = index">
+    {{question.id}}
     {{question.qcreated_by}}
     {{question.qapproved_by}}
     {{question.topic}}
     {{i}}
+
+    <button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
     
-    <button (click)="onOpenAnswerForm(question)">Answer</button> <br>
+    <!-- this is good code right here -->
+    <!-- <button (click)="onOpenAnswerForm(question)">Answer</button> <br>
     
     <div *ngIf='(question.toggleAnswer)'>
         <answer (answerEventEmitter)='updateCurrQuestionsAnswers($event, question)'></answer>
@@ -40,7 +44,7 @@
         <div *ngIf='answer.status == "accepted"'>
             {{answer.image_src}}
         </div>
-    </ng-container>
+    </ng-container> -->
 </ng-container>
 
-<create-question (newQuestionEvent)="addQuestion($event)"></create-question>
+<!-- <create-question (newQuestionEvent)="addQuestion($event)"></create-question> -->

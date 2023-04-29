@@ -11,8 +11,8 @@ import { CreateQuestionComponent } from './app-routing/create-question/create-qu
 
 export class QuestionComponent implements OnInit {
     question_form: Question;
-    answers1: Answer[];
-    answers2: Answer[];
+    // answers1: Answer[];
+    // answers2: Answer[];
     questions: Question[];
 
     addQuestion(newQuestion:Question)
@@ -27,17 +27,17 @@ export class QuestionComponent implements OnInit {
 
     constructor(private questionService:QuestionService) {
 
-    this.question_form=new Question("","","","","","",[],"","", false);    
+    this.question_form=new Question("","","","","","",[],"","");    
 
-    this.answers1 = [
-      new Answer("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted","ok", "hi"),
-      new Answer("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted","ok", "hi")
-    ];
+    // this.answers1 = [
+    //   new Answer("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted","ok", "hi"),
+    //   new Answer("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted","ok", "hi")
+    // ];
 
-    this.answers2 = [
-      new Answer("i am bad at sqrts?", "test_image2.png", "4/4/2004 22:22", "accepted","ok", "hi"),
-      new Answer("i am bad at sqrts", "test_image2.png", "4/4/2004 22:22", "denied","ok", "hi")
-    ];
+    // this.answers2 = [
+    //   new Answer("i am bad at sqrts?", "test_image2.png", "4/4/2004 22:22", "accepted","ok", "hi"),
+    //   new Answer("i am bad at sqrts", "test_image2.png", "4/4/2004 22:22", "denied","ok", "hi")
+    // ];
 
     // this.questions = [
     //   new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "denied", "math", "what is the sqrt4",[], "ok", "hi", false),
@@ -56,12 +56,28 @@ export class QuestionComponent implements OnInit {
   }
 
   onSubmitQuestion(questionform:any) {
-    this.questions.push(new Question(questionform.description_question, questionform.image_src, questionform.datetime, questionform.status, questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by, questionform.toggleAnswer) );
+    // this.questions.push(new Question(questionform.description_question, questionform.image_src, questionform.datetime, questionform.status, questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by, questionform.toggleAnswer) );
     console.log(this.question_form);
+    // this.questionService.addQuestion(new Question(questionform.description_question, questionform.image_src, questionform.datetime, questionform.status, questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by, questionform.toggleAnswer)).subscribe((data:Question) => {
+    //     console.log("hi i added a question to the backend");
+    //     console.log(data);
+    // })
+    this.questionService.addQuestion(new Question(questionform.description_question, questionform.image_src, questionform.datetime, 
+        questionform.status, questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by)).subscribe();
+
+    console.log(this.questions);
+    console.log("hi i added a question to the backend");
+    // console.log(this.questions[0].getId());
+    
+  }
+
+  setCurrQuestionId(id:number)
+  { 
+    this.questionService.setCurrQuestionId(id);
   }
 
   onOpenAnswerForm(question:Question) {
-    question.toggleAnswer = !question.toggleAnswer;
+    // question.toggleAnswer = !question.toggleAnswer;
     // question.answers.push()
   }
 

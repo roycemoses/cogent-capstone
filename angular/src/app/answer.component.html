@@ -1,4 +1,4 @@
-<form novalidate #ANSWER_FORM="ngForm" (ngSubmit)="onSubmitAnswer()">
+<form novalidate #ANSWER_FORM="ngForm" (ngSubmit)="onSubmitAnswer(answer_form)">
     <div>
         <label for="acreated_by">Answer Created By</label>
         <input type="text" [(ngModel)]="answer_form.acreated_by" name="acreated_by" required>

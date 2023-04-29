@@ -10,11 +10,10 @@ import { Question } from 'src/app/question';
 export class CreateQuestionComponent
 {
     question_form: Question;
-    displayForm:boolean = false;
 
     constructor(private questionService:QuestionService) {
 
-    this.question_form=new Question("","","","","","",[],"","", false);    
+    this.question_form=new Question("","","","","","",[],"","");
 
   }
   
@@ -31,16 +30,15 @@ export class CreateQuestionComponent
   newQuestionEvent = new EventEmitter<Question>();
   onSubmitQuestion(questionform:any) {
     console.log("emitting?");
-    this.newQuestionEvent.emit(new Question(questionform.description_question, questionform.image_src, 
-                                questionform.datetime, questionform.status, questionform.topic, questionform.title, 
-                                [], questionform.qcreated_by, questionform.qapproved_by, questionform.toggleAnswer));
+    console.log("hi i added a question to the backend");
+    this.questionService.addQuestion(new Question(questionform.description_question, questionform.image_src, questionform.datetime, 
+        questionform.status, questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by)).subscribe();
+
+    // this.newQuestionEvent.emit(new Question(questionform.description_question, questionform.image_src, 
+    //                             questionform.datetime, questionform.status, questionform.topic, questionform.title, 
+    //                             [], questionform.qcreated_by, questionform.qapproved_by, questionform.toggleAnswer));
     // this.questions.push(new Question(questionform.description_question, questionform.image_src, questionform.datetime, questionform.status, questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by, questionform.toggleAnswer) );
     // console.log(this.question_form);
-  }
-
-  showForm()
-  {
-    this.displayForm = true;
   }
 
 }

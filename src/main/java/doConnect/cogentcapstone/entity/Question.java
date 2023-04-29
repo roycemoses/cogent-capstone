@@ -40,7 +40,7 @@ public class Question {
 	//mappedBy = "question", fetch=FetchType.EAGER, 
 	@OneToMany(cascade=CascadeType.ALL,mappedBy = "question")
 	@JsonIgnore
-        //@JoinColumn(name = "question_id")
+//        @JoinColumn(name = "question_id",referencedColumnName = "question_id")
         @ToString.Exclude
 	private List<Answer> answers;
         

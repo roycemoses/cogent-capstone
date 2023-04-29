@@ -12,10 +12,19 @@ import { ExampleInterceptor } from './example.interceptor';
 import { LandingComponent } from './app-routing/landing/landing.component';
 import { AdminDashboardComponent } from './app-routing/admin-dashboard/admin-dashboard.component';
 import { CreateQuestionComponent } from './app-routing/create-question/create-question.component';
+import { QuestionDetailsComponent } from './app-routing/question-details/question-details';
 
 @NgModule({
   declarations: [
-    AppComponent, /*UserComponent,*/ LoginComponent, QuestionComponent, AnswerComponent, LandingComponent, AdminDashboardComponent, CreateQuestionComponent
+    AppComponent,
+    /*UserComponent,*/
+    LoginComponent,
+    QuestionComponent,
+    AnswerComponent,
+    LandingComponent,
+    AdminDashboardComponent,
+    CreateQuestionComponent,
+    QuestionDetailsComponent
   ],
   imports: [
     BrowserModule,
