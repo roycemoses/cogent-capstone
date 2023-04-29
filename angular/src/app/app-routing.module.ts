@@ -11,12 +11,13 @@ import { AdminDashboardComponent } from './app-routing/admin-dashboard/admin-das
 import { LandingComponent } from './app-routing/landing/landing.component';
 import { CreateQuestionComponent } from './app-routing/create-question/create-question.component';
 import { QuestionComponent } from './question.component';
+import { AdminGuard } from './services/admin.guard';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: LandingComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'admin-dashboard', component: AdminDashboardComponent },
+    { path: 'admin-dashboard', canActivate:[AdminGuard], component: AdminDashboardComponent },
     { path: 'create-question', component: QuestionComponent },
     // { path: 'about', canActivate:[AuthGuard], component: AboutComponent },
     // { path: 'careers', canActivate:[AuthGuard], component: CareersComponent },
