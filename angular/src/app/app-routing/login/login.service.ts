@@ -59,12 +59,12 @@ export class LoginService
             .set('Access-Control-Allow-Headers','*');            
 
         console.log(token);
-        this.httpClient.get<User>((`${this.baseUrl}/getbyname=${userName}`), {'headers':headers}).subscribe((data:User)=>{
+        this.httpClient.get<User>((`${this.baseUrl}/user/getbyname/${userName}`), {'headers':headers}).subscribe((data:User)=>{
             console.log("hey, it's data: " + data.userType);
             this.userType = data.userType;
         })
 
-        return this.httpClient.get<User>((`${this.baseUrl}/getbyname=${userName}`), {'headers':headers});
+        return this.httpClient.get<User>((`${this.baseUrl}/user/getbyname/${userName}`), {'headers':headers});
     }
 
     // getLogins():Observable<Login[]> {

@@ -22,8 +22,10 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import doConnect.cogentcapstone.entity.User;
+import doConnect.cogentcapstone.repository.AnswerRepository;
 import doConnect.cogentcapstone.repository.QuestionRepository;
 import doConnect.cogentcapstone.repository.UserRepository;
+import java.util.ArrayList;
 
 @SpringBootApplication
 public class CogentCapstoneApplication implements WebMvcConfigurer {
@@ -160,6 +162,9 @@ public class CogentCapstoneApplication implements WebMvcConfigurer {
         
     @Autowired
     private QuestionRepository qRepo;
+    
+    @Autowired
+    private AnswerRepository aRepo;
 
     @PostConstruct
     public void initUsers() {
@@ -171,12 +176,30 @@ public class CogentCapstoneApplication implements WebMvcConfigurer {
         ).collect(Collectors.toList());
         uRepo.saveAll(users);
         
-        List<Answer> answers = null;
+        
+        //List<Answer> answers = new ArrayList<Answer>();
+        Question q1 = new Question(100,"i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", new ArrayList<>(),"ok","hi");
+        Answer a1 = new Answer(1001,"it's 2","test_image1.png","accepted","4/4/3004",q1,"ok","hi");
+        
+        q1.getAnswers().add(a1);
+        
+        
         List<Question> questions = Stream.of(
-                new Question(100,"i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", answers, "ok", "hi"),
-                new Question(101,"q2", "q2", "q2", "q2", "asdfgasfd", "whasdfaat is the sqrt4", answers, "okasdf", "hadsfi")
+                new Question(100,"i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", new ArrayList<>(), "ok", "hi"),
+                new Question(101,"q2", "q2", "q2", "q2", "asdfgasfd", "whasdfaat is the sqrt4", new ArrayList<>(), "okasdf", "hadsfi")
         ).collect(Collectors.toList());
         qRepo.saveAll(questions);
+        
+        
+        
+        /*
+        List<Answer> answers_temp = Stream.of(
+                new Answer(1001,"it's 2","test_image1.png","accepted","4/4/3004",qRepo.findById(100).get(),"ok","hi")
+        ).collect(Collectors.toList());
+        aRepo.saveAll(answers_temp);
+        
+        qRepo.findById(100).get().setAnswers(answers_temp);
+*/
     }
 	
 }

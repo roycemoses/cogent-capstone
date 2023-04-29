@@ -22,7 +22,7 @@ public class QuestionService {
     
     //Get all qs
     public List<Question> getAll(){
-        return (List<Question>) qtr.findAll();
+        return qtr.findAll();
     }
 
     //Single Question get
@@ -51,5 +51,6 @@ public class QuestionService {
     public void deleteAll() {
             qtr.deleteAll();
     }
+    
     
 }

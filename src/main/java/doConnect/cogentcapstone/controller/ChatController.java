@@ -36,10 +36,11 @@ public class ChatController {
 		return chatRepository.save(chat);
 	}
 	
-	@DeleteMapping("deleteChatById/id={chatId}")
-	public void deleteChatById(@PathVariable Integer chatId)
+	@DeleteMapping("deleteChatById/{id}")
+	public void deleteChatById(@PathVariable("id") Integer id)
 	{
-		chatRepository.deleteById(chatId);
+		chatRepository.deleteById(id);
+                System.out.println("deleted.");
 	}
 	
 	@GetMapping("getAllChatMessages")

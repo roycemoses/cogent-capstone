@@ -4,6 +4,7 @@
  */
 package doConnect.cogentcapstone.controller;
 
+import doConnect.cogentcapstone.entity.Answer;
 import doConnect.cogentcapstone.entity.Question;
 import doConnect.cogentcapstone.service.QuestionService;
 import java.util.List;
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -42,13 +42,13 @@ public class QuestionController {
     }
     
     //update
-    @PutMapping("/updatequestion")
+    @PutMapping(value={"/updatequestion"})
     public Question updateQuestion(@RequestBody Question q) {
         return qtr.update(q);
     }
     
     //deletebyID
-    @DeleteMapping("/deletequestion/{id}")
+    @DeleteMapping(value={"/deletequestion/{id}"})
     public String deleteQuestionbyId(@PathVariable("id") Integer id) {
             Optional<Question> q = qtr.getById(id);
             qtr.delete(q.get());
@@ -57,7 +57,7 @@ public class QuestionController {
     
     
     //getAll
-    @GetMapping(value={"/getallquestion"})
+    @GetMapping("/getallquestion")
     public List<Question> getAllQuestion() {
         List<Question> q = qtr.getAll();
         System.out.println("all qs: " + q.size());
@@ -65,7 +65,7 @@ public class QuestionController {
     }
     
     //getAllFalse
-    @GetMapping(value={"/getallquestionFalse"})
+    @GetMapping("/getallquestionfalse")
     public List<Question> getAllQuestionFalse() {
         List<Question> q = qtr.getByStatus("denied");
         System.out.println("all denied qs: " + q.size());
@@ -86,6 +86,8 @@ public class QuestionController {
         Optional<Question> q = qtr.getById(id);
         return q;
     }
+    
+  
     
     
 }
