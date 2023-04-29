@@ -12,6 +12,7 @@ export class LoginService
     public isLoggedIn:boolean = false;
     public userType:string = "";
     public token:string = "";
+    public user!:User;
     private baseUrl = 'http://localhost:8080';
     
     constructor (private httpClient:HttpClient) {}
@@ -62,6 +63,7 @@ export class LoginService
         this.httpClient.get<User>((`${this.baseUrl}/user/getbyname/${userName}`), {'headers':headers}).subscribe((data:User)=>{
             console.log("hey, it's data: " + data.userType);
             this.userType = data.userType;
+            this.user = data;
         })
 
         return this.httpClient.get<User>((`${this.baseUrl}/user/getbyname/${userName}`), {'headers':headers});

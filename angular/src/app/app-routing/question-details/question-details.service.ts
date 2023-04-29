@@ -9,6 +9,8 @@ import { Question } from 'src/app/question';
 })
 export class QuestionDetailsService
 {
+    question!:Question;
+
     private baseUrl = 'http://localhost:8080/question';
     
     constructor (private httpClient:HttpClient, private loginService:LoginService) {}
@@ -19,7 +21,9 @@ export class QuestionDetailsService
             .set('Access-Control-Allow-Origin', '*')
             .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
             .set('Access-Control-Allow-Headers','*');
-        
+        this.httpClient.get<Question>(`${this.baseUrl}/getquestionbyid/`+id, {'headers':headers}).subscribe((data)=>{
+            this.question = data;
+        })
         return this.httpClient.get<Question>(`${this.baseUrl}/getquestionbyid/`+id, {'headers':headers});
     }
 }

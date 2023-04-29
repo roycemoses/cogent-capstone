@@ -1,12 +1,12 @@
 <form novalidate #ANSWER_FORM="ngForm" (ngSubmit)="onSubmitAnswer(answer_form)">
     <div>
         <label for="acreated_by">Answer Created By</label>
-        <input type="text" [(ngModel)]="answer_form.acreated_by" name="acreated_by" required>
+        <input type="text" [(ngModel)]="answer_form.created_by" name="acreated_by" required>
     </div>
     
     <div>
         <label for="aapproved_by">Answer Approved By</label>
-        <input type="text" [(ngModel)]="answer_form.aapproved_by" name="aapproved_by" required>
+        <input type="text" [(ngModel)]="answer_form.approved_by" name="aapproved_by" required>
     </div>
     
     <div>  

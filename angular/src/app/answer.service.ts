@@ -21,6 +21,19 @@ export class AnswerService
             .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
             .set('Access-Control-Allow-Headers','*');
         
+        console.log("successfully added an answer to question")
         return this.httpClient.post<Answer>(`${this.baseUrl}/addanswer`, answer, {'headers':headers});
+    }
+
+    setQuestionIdOfAnAnswer(answer:Answer):Observable<Answer>
+    {
+        const headers= new HttpHeaders()
+            .set('Authorization', 'Bearer ' + this.loginService.token)
+            .set('Access-Control-Allow-Origin', '*')
+            .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+            .set('Access-Control-Allow-Headers','*');
+        
+        console.log("updated the question_id of an answer")
+        return this.httpClient.put<Answer>(`${this.baseUrl}/updateanswer`, answer, {'headers':headers});
     }
 }
