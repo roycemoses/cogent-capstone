@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import doConnect.cogentcapstone.entity.AuthRequest;
@@ -25,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 //@CrossOrigin("*")
 @CrossOrigin(origins="http://localhost:4200/")
-@RequestMapping("/user")
+//@RequestMapping("/user")
 public class UserController {
 
 	@Autowired
@@ -35,11 +36,11 @@ public class UserController {
 	@Autowired
 	private UserService utr;
 
-	@GetMapping("/")
+	@GetMapping("/test")
 	public String home() {
 		return "This is home";
 	}
-
+	
 	@PostMapping("/authenticate")
 	public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
 		try {
@@ -52,7 +53,7 @@ public class UserController {
 	}
         
         //add
-        @PostMapping(value={"/adduser"})
+        @PostMapping("/user/adduser")
         public User addUser(@RequestBody @Validated User u) {
             return utr.addUser(u);
         }
@@ -62,19 +63,19 @@ public class UserController {
         //getlogin idk
         
         //getall
-        @GetMapping("/getall")
+        @GetMapping("/user/getall")
         public List<User> getAllUsers() {
             return utr.getAll();
         }
         
         //getbyid
-        @GetMapping("/getbyid/{id}")
+        @GetMapping("/user/getbyid/{id}")
         public Optional<User> getById(@PathVariable("id") Integer id) {
             return utr.getbyId(id);
         }
         
         //update
-	@PutMapping("/updateuser")
+	@PutMapping("/user/updateuser")
 	public User updateUser(@RequestBody User user) {
             System.out.println("User updated");
             return utr.update(user);
@@ -82,24 +83,19 @@ public class UserController {
 	}
 	
         //getbyusername
-	@GetMapping("/getbyname/{userName}")
+	@GetMapping("/user/getbyname/{userName}")
 	public User getUser(@PathVariable("userName") String userName) {
             return utr.getbyUserName(userName);
 	}
         
         //getbyusertype or something
-        @GetMapping("/getbyusertype/{userType}")
+        @GetMapping("/user/getbyusertype/{userType}")
         public List<User> getByUserType(@PathVariable("userType") String userType) {
             return utr.getAllUsersByUserType(userType);
         }
         
         
         //userloginverify?
-        
-        //getbyloggedin bool
-        @GetMapping("/getbylogged")
-        public List<User> getByislogged() {
-            return utr.getByislogged(true);
-        }
+        // idk
 	
 }

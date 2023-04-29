@@ -16,9 +16,10 @@ import search_func.search;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import doConnect.cogentcapstone.entity.User;
 import doConnect.cogentcapstone.repository.AnswerRepository;
@@ -27,7 +28,7 @@ import doConnect.cogentcapstone.repository.UserRepository;
 import java.util.ArrayList;
 
 @SpringBootApplication
-public class CogentCapstoneApplication {
+public class CogentCapstoneApplication implements WebMvcConfigurer {
 
 
                 
@@ -37,6 +38,29 @@ public class CogentCapstoneApplication {
 	   Use Authentication: Yes
 	   Port for TLS/STARTTLS: 587
 	 */
+//	@Override
+//    public void addCorsMappings(CorsRegistry registry) {
+//        registry.addMapping("/**")
+//                .allowedOrigins(
+//                        "http://localhost:4200"
+//                )
+//                .allowedMethods(
+//                        "GET",
+//                        "PUT",
+//                        "POST",
+//                        "DELETE",
+//                        "PATCH",
+//                        "OPTIONS"
+//                );
+//    }
+	
+	@Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowedOrigins("http://localhost:4200","http://localhost:8080");
+        WebMvcConfigurer.super.addCorsMappings(registry);
+    }
 	public static void main(String[] args) {
             
             
@@ -145,10 +169,10 @@ public class CogentCapstoneApplication {
     @PostConstruct
     public void initUsers() {
         List<User> users = Stream.of(
-                new User(101, "Gyanendra", "gyanendra", "password", "gsytec@gmail.com", "admin",true),
-                new User(102, "User1", "user1", "pwd1", "user1@gmail.com", "user",false),
-                new User(103, "User2", "user2", "pwd2", "user2@gmail.com", "user",true),
-                new User(104, "User3", "user3", "pwd3", "user3@gmail.com", "user",false)
+                new User(101, "Gyanendra", "gyanendra", "password", "gsytec@gmail.com", "admin"),
+                new User(102, "User1", "user1", "pwd1", "user1@gmail.com", "user"),
+                new User(103, "User2", "user2", "pwd2", "user2@gmail.com", "user"),
+                new User(104, "User3", "user3", "pwd3", "user3@gmail.com", "user")
         ).collect(Collectors.toList());
         uRepo.saveAll(users);
         
@@ -161,7 +185,8 @@ public class CogentCapstoneApplication {
         
         
         List<Question> questions = Stream.of(
-                q1
+                new Question(100,"i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", new ArrayList<>(), "ok", "hi"),
+                new Question(101,"q2", "q2", "q2", "q2", "asdfgasfd", "whasdfaat is the sqrt4", new ArrayList<>(), "okasdf", "hadsfi")
         ).collect(Collectors.toList());
         qRepo.saveAll(questions);
         

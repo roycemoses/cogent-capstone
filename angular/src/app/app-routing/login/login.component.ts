@@ -1,8 +1,11 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, Injectable } from '@angular/core';
 import { Login } from './login';
 import { LoginService } from './login.service';
 import { User } from 'src/app/user';
 
+@Injectable({
+    providedIn: 'root'
+})
 @Component({
     selector: 'login',
     templateUrl: './login.component.html',
@@ -10,6 +13,8 @@ import { User } from 'src/app/user';
 })
 export class LoginComponent implements OnInit {
     title = 'hi';
+
+    logins:Login[];
     loginForm:Login;
     token:String;
     loginSuccessful:boolean;
@@ -18,6 +23,7 @@ export class LoginComponent implements OnInit {
 
     constructor(private loginService:LoginService) 
     {
+        this.logins = [];
         this.loginForm = new Login();
         this.token = "";
         this.loginSuccessful = false;
@@ -25,9 +31,6 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
-
-
         // this.loginService.getLogins().subscribe((data:Login[])=>{
         //     console.log(data);
         // })
@@ -38,8 +41,35 @@ export class LoginComponent implements OnInit {
         console.log(this.loginForm.userName);
         console.log(this.loginForm.password);
         // console.log(loginform.value);
+        // this.generateToken(); // promise me you'll finish this one first
+
+        // const generateTokenPromise = new Promise<string>((resolve, reject) => {
+        //     this.generateToken(); // promise me you'll finish this one first
+        //     if (this.token != '')
+        //         resolve(this.token.toString());
+        //     else
+        //         reject("token has not been generated!");
+        // })
+        
+        
+        // generateTokenPromise.then((value) => {
+        //     console.log(value);
+        // }).catch((error) => {
+        //     console.log(error);
+        // }).finally(() => {
+        //     console.log("The promise is completed.");
+        //     this.generateUser(this.loginForm.userName, this.token.toString());
+        // })
+
+        // const generateTokenPromise = Promise.resolve(this.generateToken());
         this.generateToken();
-        // this.generateUser(this.loginForm.userName);
+        // generateTokenPromise.then(() => this.generateUser(this.loginForm.userName, this.token.toString()));
+
+        // this.generateToken(); // promise me you'll finish this one first
+        // this.generateUser(this.loginForm.userName, this.token.toString());
+        
+
+        console.log("this.user.userType: " + this.user.userType);
     }
 
     generateToken()
@@ -47,14 +77,20 @@ export class LoginComponent implements OnInit {
         this.loginService.postRequestForToken(this.loginForm).subscribe((data:String)=>{
             console.log(data.toString());
             this.token = new String(data.toString());
+            this.generateUser(this.loginForm.userName, this.token.toString());
         })
+        // console.log(this.token);
+        // return this.token.toString();
     }
 
-    generateUser(userName:string)
+    generateUser(userName:string, token:string)
     {
-        this.loginService.getUser(userName).subscribe((data:User)=>{
+        console.log("are you realasdasd?" + this.token);
+        this.loginService.getUser(userName, token).subscribe((data:User)=>{
             console.log(data);
             this.user = data;
+            console.log(this.user.userType);
+            console.log(this.user);
         })
     }
 

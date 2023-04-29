@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuestionService } from './QuestionService';
+import { QuestionService } from './question.service';
 import { Question } from './question';
 import { Answer } from './answer';
 import { CreateQuestionComponent } from './app-routing/create-question/create-question.component';
@@ -39,15 +39,16 @@ export class QuestionComponent implements OnInit {
       new Answer("i am bad at sqrts", "test_image2.png", "4/4/2004 22:22", "denied","ok", "hi")
     ];
 
-    this.questions = [
-      new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "denied", "math", "what is the sqrt4",[], "ok", "hi", false),
-      new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4",this.answers2, "ok", "hi", false)
-    ];
+    // this.questions = [
+    //   new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "denied", "math", "what is the sqrt4",[], "ok", "hi", false),
+    //   new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4",this.answers2, "ok", "hi", false)
+    // ];
+    this.questions = []; // updated in backend on ngOnInit
 
   }
   
   ngOnInit(): void {
-    console.log('hello');
+    console.log('hello, I am in the question component!!!');
     this.questionService.getQuestions().subscribe((data: Question[]) => {
       console.log(data);
       this.questions = data;

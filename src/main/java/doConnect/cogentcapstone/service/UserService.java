@@ -58,12 +58,5 @@ public class UserService implements UserDetailsService{
 	public List<User> getAllUsersByUserType(String userType) {
 		return utr.findAllByUserType(userType);
 	}
-        
-        //userloginverify
-	
-        //get by boolean loggedin
-        public List<User> getByislogged(boolean islogged) {
-            return utr.findByislogged(islogged);
-        }
 	
 }
