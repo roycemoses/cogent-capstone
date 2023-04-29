@@ -11,13 +11,14 @@ export class LoginService
 {
     public isLoggedIn:boolean = false;
     public userType:string = "";
+    public token:string = "";
     private baseUrl = 'http://localhost:8080';
     
     constructor (private httpClient:HttpClient) {}
     
     getLogins():Observable<Object> {
         const headers= new HttpHeaders()
-            .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTY4MjU2MTUzNCwiaWF0IjoxNjgyNTI1NTM0fQ.U6UkO2moV8JVvISiKrDwH7RN27gjOcJUsRsO0YNVyAc').set('ResponseType','text')
+            .set('Authorization', 'Bearer ' + this.token)
             .set('Access-Control-Allow-Origin', '*')
             .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
             .set('Access-Control-Allow-Headers','*');
@@ -28,6 +29,10 @@ export class LoginService
     postRequestForToken(login:Login):Observable<String> {
         // console.log(this.httpClient.post<String>(this.baseUrl, login));
         this.isLoggedIn = true;
+        this.httpClient.post(`${this.baseUrl}/authenticate`, login, { responseType: 'text' }).subscribe((data:String)=>{
+            this.token = data.toString();
+        })
+
         return this.httpClient.post(`${this.baseUrl}/authenticate`, login, { responseType: 'text' });
         // this.http.post(url, body, { responseType: 'text' }).subscribe();
     };

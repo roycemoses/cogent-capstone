@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { QuestionService } from 'src/app/QuestionService';
+import { QuestionService } from 'src/app/question.service';
 import { Answer } from 'src/app/answer';
 import { Question } from 'src/app/question';
 
@@ -10,27 +10,27 @@ import { Question } from 'src/app/question';
 export class DisplayAllQuestionsComponent
 {
     question_form: Question;
-  answers1: Answer[];
-  answers2: Answer[];
+//   answers1: Answer[];
+//   answers2: Answer[];
   questions: Question[];
 
   constructor(private questionService:QuestionService) {
 
     this.question_form=new Question("","","","","","",[],"","", false);    
 
-    this.answers1 = [
-      new Answer("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted","ok", "hi"),
-      new Answer("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted","ok", "hi")
-    ];
+    // this.answers1 = [
+    //   new Answer("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted","ok", "hi"),
+    //   new Answer("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted","ok", "hi")
+    // ];
 
-    this.answers2 = [
-      new Answer("i am bad at sqrts?", "test_image2.png", "4/4/2004 22:22", "accepted","ok", "hi"),
-      new Answer("i am bad at sqrts", "test_image2.png", "4/4/2004 22:22", "no","ok", "hi")
-    ];
+    // this.answers2 = [
+    //   new Answer("i am bad at sqrts?", "test_image2.png", "4/4/2004 22:22", "accepted","ok", "hi"),
+    //   new Answer("i am bad at sqrts", "test_image2.png", "4/4/2004 22:22", "no","ok", "hi")
+    // ];
 
     this.questions = [
       new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4",[], "ok", "hi", false),
-      new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4",this.answers2, "ok", "hi", false)
+    //   new Question("i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4",this.answers2, "ok", "hi", false)
     ];
 
   }
