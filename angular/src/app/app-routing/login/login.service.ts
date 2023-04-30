@@ -12,6 +12,7 @@ export class LoginService
     public isLoggedIn:boolean = false;
     public userType:string = "";
     public token:string = "";
+    public user!:User;
     private baseUrl = 'http://localhost:8080';
     
     constructor (private httpClient:HttpClient) {}
@@ -28,8 +29,8 @@ export class LoginService
 
     postRequestForToken(login:Login):Observable<String> {
         // console.log(this.httpClient.post<String>(this.baseUrl, login));
-        this.isLoggedIn = true;
         this.httpClient.post(`${this.baseUrl}/authenticate`, login, { responseType: 'text' }).subscribe((data:String)=>{
+            this.isLoggedIn = true;
             this.token = data.toString();
         })
 
@@ -62,6 +63,7 @@ export class LoginService
         this.httpClient.get<User>((`${this.baseUrl}/user/getbyname/${userName}`), {'headers':headers}).subscribe((data:User)=>{
             console.log("hey, it's data: " + data.userType);
             this.userType = data.userType;
+            this.user = data;
         })
 
         return this.httpClient.get<User>((`${this.baseUrl}/user/getbyname/${userName}`), {'headers':headers});

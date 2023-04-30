@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { QuestionService } from 'src/app/question.service';
 import { Question } from 'src/app/question';
+import { DatePipe } from '@angular/common';
 // import { Question.createQuestion }
 
 @Component({
@@ -10,11 +11,10 @@ import { Question } from 'src/app/question';
 export class CreateQuestionComponent
 {
     question_form: Question;
-    displayForm:boolean = false;
 
-    constructor(private questionService:QuestionService) {
+    constructor(private questionService:QuestionService, public datePipe:DatePipe) {
 
-    this.question_form=new Question("","","","","","",[],"","", false);    
+    this.question_form=new Question("","","","","","",[],"","");
 
   }
   
@@ -27,20 +27,12 @@ export class CreateQuestionComponent
 //   }
 
 
-  @Output()
-  newQuestionEvent = new EventEmitter<Question>();
   onSubmitQuestion(questionform:any) {
-    console.log("emitting?");
-    this.newQuestionEvent.emit(new Question(questionform.description_question, questionform.image_src, 
-                                questionform.datetime, questionform.status, questionform.topic, questionform.title, 
-                                [], questionform.qcreated_by, questionform.qapproved_by, questionform.toggleAnswer));
-    // this.questions.push(new Question(questionform.description_question, questionform.image_src, questionform.datetime, questionform.status, questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by, questionform.toggleAnswer) );
-    // console.log(this.question_form);
-  }
-
-  showForm()
-  {
-    this.displayForm = true;
+    let currentDateTime = this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss');
+    let str = String(currentDateTime);
+    console.log("hi i added a question to the backend");
+    this.questionService.addQuestion(new Question(questionform.description_question, questionform.image_src, str, 
+        questionform.status, questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by)).subscribe();
   }
 
 }
