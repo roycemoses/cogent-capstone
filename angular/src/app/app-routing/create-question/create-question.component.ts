@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { QuestionService } from 'src/app/question.service';
 import { Question } from 'src/app/question';
 import { DatePipe } from '@angular/common';
+import { LoginService } from '../login/login.service';
 // import { Question.createQuestion }
 
 @Component({
@@ -11,10 +12,11 @@ import { DatePipe } from '@angular/common';
 export class CreateQuestionComponent
 {
     question_form: Question;
+    userType:string='';
 
-    constructor(private questionService:QuestionService, public datePipe:DatePipe) {
-
-    this.question_form=new Question("","","","","","",[],"","");
+    constructor(private questionService:QuestionService, public datePipe:DatePipe, private loginService:LoginService) {
+        this.userType = loginService.userType;
+        this.question_form=new Question("","","","","","",[],"","");
 
   }
   

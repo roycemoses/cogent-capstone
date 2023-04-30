@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
+import { LoginService } from './app-routing/login/login.service';
 
 @Component({
     selector: 'app-root',
@@ -7,46 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'user-management-app';
-    showHome:boolean = false;
-    showLanding:boolean = true;
-    showLogin:boolean = false;
-    showAdminDashboard:boolean = false;
+    userType:string = '';
 
-    toggleLandingOn()
+    constructor()
     {
-        this.showLanding = true;
-    }
 
-    toggleLandingOff()
-    {
-        this.showLanding = false;
     }
-
-    toggleLoginOn()
-    {
-        this.showLogin = true;
-    }
-
-    toggleLoginOff()
-    {
-        this.showLogin = false;
-    }
-    
-    toggleAdminDashboardOn()
-    {
-        this.showAdminDashboard = true;    
-    }
-
-    toggleAdminDashboardOff()
-    {
-        this.showAdminDashboard = false;    
-    }
-    
-
-    toggleHome()
-    {
-        this.showHome = !this.showHome;    
-    }
-    
-
 }

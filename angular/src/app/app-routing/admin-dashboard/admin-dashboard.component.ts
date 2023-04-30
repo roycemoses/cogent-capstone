@@ -4,11 +4,4 @@ import { Component } from '@angular/core';
     selector: 'admin-dashboard',
     templateUrl: './admin-dashboard.component.html'
 })
-export class AdminDashboardComponent
-{
-    displayForm!:boolean;
-    showQuestionForm()
-    {
-        this.displayForm = true;
-    }
-}
+export class AdminDashboardComponent {}

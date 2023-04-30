@@ -1,0 +1,20 @@
+<p>I'm in the user-dashboard component!</p>
+
+<!-- <ng-container *ngIf="userType == 'user'"> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+    <div class="container">
+        <a class="navbar-brand" href="#">Home</a>
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <button class="nav-link" routerLinkActive="active" routerLink="/user-dashboard">Go to User Dash</button>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- </ng-container> -->
+
+<button class="nav-link" routerLinkActive="active" routerLink="/create-question">Go To Create Question</button>
+
+<br><br><br>
+
+<question></question>

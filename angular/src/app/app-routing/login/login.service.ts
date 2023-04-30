@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Login } from './login';
 import { BehaviorSubject, Observable, ObservedValueOf } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { User } from 'src/app/user';
+import { AppComponent } from 'src/app/app.component';
 
 @Injectable({
     providedIn:'root'
@@ -51,6 +52,7 @@ export class LoginService
         return this.httpClient.get(`${this.baseUrl}/test`, {'headers':headers, responseType:'text'});
     }
 
+
     getUser(userName:string, token:string):Observable<User> 
     {
         const headers= new HttpHeaders()
@@ -63,6 +65,8 @@ export class LoginService
         this.httpClient.get<User>((`${this.baseUrl}/user/getbyname/${userName}`), {'headers':headers}).subscribe((data:User)=>{
             console.log("hey, it's data: " + data.userType);
             this.userType = data.userType;
+            // this.appComponent.userType = data.userType;
+            // console.log("this.appComponent.userType: " + this.appComponent.userType);
             this.user = data;
         })
 
