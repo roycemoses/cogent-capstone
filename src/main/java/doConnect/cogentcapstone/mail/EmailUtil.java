@@ -4,6 +4,7 @@
  */
 package doConnect.cogentcapstone.mail;
 
+import doConnect.cogentcapstone.entity.Answer;
 import doConnect.cogentcapstone.entity.Question;
 import doConnect.cogentcapstone.repository.UserRepository;
 import java.io.UnsupportedEncodingException;
@@ -38,34 +39,8 @@ public class EmailUtil {
 	 * @param body
 	 */
     
-    
-          
-        public static void infoEmail(String toEmail, Optional<Question> o) {
-		final String fromEmail = "group5newmailbot@gmail.com"; //requires valid gmail id
-		final String password = "zzrxjmzwjakafdwx"; // correct password for gmail id
-		//final String toEmail = ""; // can be any email id 
-		
-		System.out.println("TLSEmail Start");
-		Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
-		props.put("mail.smtp.port", "587"); //TLS Port
-		props.put("mail.smtp.auth", "true"); //enable authentication
-		props.put("mail.smtp.starttls.enable", "true"); //enable STARTTLS
-		
-                //create Authenticator object to pass in Session.getInstance argument
-		Authenticator auth = new Authenticator() {
-			//override the getPasswordAuthentication method
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(fromEmail, password);
-			}
-		};
-		Session session = Session.getInstance(props, auth);
-		
-                
-		sendEmail(session, toEmail,
-                        "You Just Got Family Guy'd", 
-                 "congrats " + o.get() + ", \n"
-                         + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣤⣶⣶⣶⣶⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+    public static final String familyGuy() {
+        return "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣤⣶⣶⣶⣶⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⢿⣻⣿⣽⣯⣿⢯⣿⣟⣿⡿⣷⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⠿⠾⠿⠿⢷⡿⢋⡉⠉⠁⠀⠀⢀⠤⠉⠏⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢾⢹⡌⣿⣿⣧⡀⢀⠊⠁⠀⠀⠈⢢⢀⣀⠰⠁⠀⠀⢀⠈⢢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
@@ -121,11 +96,69 @@ public class EmailUtil {
 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀\n" +
 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠃⠀⠀⠀⠀⠀\n" +
 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠉⠉⠉⠙⠛⠛⠛⠛⠛⠛⠛⠛⠛⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠙⠛⠛⠛⠛⠛⠛⠿⠟⠛⠛⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-                );
+"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠙⠛⠛⠛⠛⠛⠛⠿⠟⠛⠛⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀";
+                
+    }
+    
+    
+          
+        public static void infoEmailQ(String toEmail, Optional<Question> o) {
+		final String fromEmail = "group5newmailbot@gmail.com"; //requires valid gmail id
+		final String password = "zzrxjmzwjakafdwx"; // correct password for gmail id
+		//final String toEmail = ""; // can be any email id 
+		
+		System.out.println("TLSEmail Start");
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
+		props.put("mail.smtp.port", "587"); //TLS Port
+		props.put("mail.smtp.auth", "true"); //enable authentication
+		props.put("mail.smtp.starttls.enable", "true"); //enable STARTTLS
+		
+                //create Authenticator object to pass in Session.getInstance argument
+		Authenticator auth = new Authenticator() {
+			//override the getPasswordAuthentication method
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(fromEmail, password);
+			}
+		};
+		Session session = Session.getInstance(props, auth);
+		
+                
+		sendEmail(session, toEmail,
+                        "You Just Got Family Guy'd", 
+                 "congrats " + o.get() + ", \n"
+                         + familyGuy());
                 
         }
+               
+        public static void infoEmailA(String toEmail, Optional<Answer> o) {
+		final String fromEmail = "group5newmailbot@gmail.com"; //requires valid gmail id
+		final String password = "zzrxjmzwjakafdwx"; // correct password for gmail id
+		//final String toEmail = ""; // can be any email id 
+		
+		System.out.println("TLSEmail Start");
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
+		props.put("mail.smtp.port", "587"); //TLS Port
+		props.put("mail.smtp.auth", "true"); //enable authentication
+		props.put("mail.smtp.starttls.enable", "true"); //enable STARTTLS
+		
+                //create Authenticator object to pass in Session.getInstance argument
+		Authenticator auth = new Authenticator() {
+			//override the getPasswordAuthentication method
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(fromEmail, password);
+			}
+		};
+		Session session = Session.getInstance(props, auth);
+		
                 
+		sendEmail(session, toEmail,
+                        "You Just Got Family Guy'd", 
+                 "congrats " + o.get() + ", \n"
+                         + familyGuy());
+                
+        }
     
 	public static void sendEmail(Session session, String toEmail, String subject, String body){
 		try

@@ -106,7 +106,7 @@ public class QuestionController {
         
         
         for (User temp : admins) {
-            EmailUtil.infoEmail(temp.getEmail(),o);
+            EmailUtil.infoEmailQ(temp.getEmail(),o);
         }
         
     }
