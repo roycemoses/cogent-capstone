@@ -125,8 +125,8 @@ public class EmailUtil {
 		
                 
 		sendEmail(session, toEmail,
-                        "You Just Got Family Guy'd", 
-                 "congrats " + o.get() + ", \n"
+                        "Question " + o.get().getId() + " has been posted." , 
+                 "congrats, view: http://localhost:4200/pending-questions " + o.get() + ", \n"
                          + familyGuy());
                 
         }
@@ -154,8 +154,8 @@ public class EmailUtil {
 		
                 
 		sendEmail(session, toEmail,
-                        "You Just Got Family Guy'd", 
-                 "congrats " + o.get() + ", \n"
+                        "Answer " + o.get().getId() + " in response to Question " + o.get().getQuestion().getId() + " has been posted." , 
+                 "congrats, view: http://localhost:4200/pending-answers  " + o.get() + ", \n"
                          + familyGuy());
                 
         }
