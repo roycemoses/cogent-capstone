@@ -14,6 +14,7 @@ import { AdminDashboardComponent } from './app-routing/admin-dashboard/admin-das
 import { CreateQuestionComponent } from './app-routing/create-question/create-question.component';
 import { QuestionDetailsComponent } from './app-routing/question-details/question-details';
 import { DatePipe } from '@angular/common';
+import { UserDashboardComponent } from './app-routing/user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { DatePipe } from '@angular/common';
     AnswerComponent,
     LandingComponent,
     AdminDashboardComponent,
+    UserDashboardComponent,
     CreateQuestionComponent,
     QuestionDetailsComponent
   ],

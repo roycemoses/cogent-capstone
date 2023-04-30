@@ -13,12 +13,15 @@ import { CreateQuestionComponent } from './app-routing/create-question/create-qu
 import { QuestionComponent } from './question.component';
 import { AdminGuard } from './services/admin.guard';
 import { QuestionDetailsComponent } from './app-routing/question-details/question-details';
+import { UserGuard } from './services/user.guard.ts';
+import { UserDashboardComponent } from './app-routing/user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: LandingComponent },
     { path: 'login', component: LoginComponent },
     { path: 'admin-dashboard', canActivate:[AdminGuard], component: AdminDashboardComponent },
+    { path: 'user-dashboard', canActivate:[UserGuard], component: UserDashboardComponent},
     { path: 'create-question', component: CreateQuestionComponent },
     { path: 'question-details', component: QuestionDetailsComponent },
     // { path: 'about', canActivate:[AuthGuard], component: AboutComponent },

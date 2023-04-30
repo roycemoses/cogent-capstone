@@ -1,15 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-    <div class="container">
-        <a class="navbar-brand" href="#">Home</a>
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <button class="nav-link" routerLinkActive="active" routerLink="/admin-dashboard">Go to Admin Dash</button>
-                </li>
-            </ul>
-    </div>
-</nav>
-
 <p>create-questionnnnn</p>
+<ng-container *ngIf="userType == 'admin'">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="#">Home</a>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <button class="nav-link" routerLinkActive="active" routerLink="/admin-dashboard">Go to Admin Dash</button>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+</ng-container>
+
+<ng-container *ngIf="userType == 'user'">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="#">Home</a>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <button class="nav-link" routerLinkActive="active" routerLink="/user-dashboard">Go to User Dash</button>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+</ng-container>
 
 <form novalidate #QUESTION_FORM="ngForm" (ngSubmit)="onSubmitQuestion(question_form)">
     <div>
