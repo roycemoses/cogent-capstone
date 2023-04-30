@@ -16,6 +16,7 @@ import { QuestionDetailsComponent } from './app-routing/question-details/questio
 import { DatePipe } from '@angular/common';
 import { UserDashboardComponent } from './app-routing/user-dashboard/user-dashboard.component';
 import { PendingQuestionsComponent } from './app-routing/pending-questions/pending-questions';
+import { PendingAnswersComponent } from './app-routing/pending-answers/pending-answers';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PendingQuestionsComponent } from './app-routing/pending-questions/pendi
     UserDashboardComponent,
     CreateQuestionComponent,
     QuestionDetailsComponent,
-    PendingQuestionsComponent
+    PendingQuestionsComponent,
+    PendingAnswersComponent
   ],
   imports: [
     BrowserModule,

@@ -49,7 +49,7 @@ export class QuestionService {
         return this.httpClient.put<Question>(`${this.baseUrl}/updatequestion`, question, {'headers': headers});
     }
 
-    deleteQuestionById(id:number):Observable<String>
+    deleteQuestionById(id:number)
     {
         const headers= new HttpHeaders()
         .set('Authorization', 'Bearer ' + this.loginService.token)
@@ -58,7 +58,7 @@ export class QuestionService {
         .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
         .set('Access-Control-Allow-Headers','*');
 
-        return this.httpClient.delete<String>(`${this.baseUrl}/deletequestion/`+id, {'headers': headers});
+        return this.httpClient.delete(`${this.baseUrl}/deletequestion/`+id, {'headers': headers});
     }
 
 }

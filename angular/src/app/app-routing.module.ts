@@ -16,6 +16,7 @@ import { QuestionDetailsComponent } from './app-routing/question-details/questio
 import { UserGuard } from './services/user.guard.ts';
 import { UserDashboardComponent } from './app-routing/user-dashboard/user-dashboard.component';
 import { PendingQuestionsComponent } from './app-routing/pending-questions/pending-questions';
+import { PendingAnswersComponent } from './app-routing/pending-answers/pending-answers';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes = [
     { path: 'create-question', component: CreateQuestionComponent },
     { path: 'question-details', component: QuestionDetailsComponent },
     { path: 'pending-questions', canActivate:[AdminGuard], component: PendingQuestionsComponent},
+    { path: 'pending-answers', canActivate:[AdminGuard], component: PendingAnswersComponent},
     // { path: 'about', canActivate:[AuthGuard], component: AboutComponent },
     // { path: 'careers', canActivate:[AuthGuard], component: CareersComponent },
     // { path: 'contact', component: ContactComponent },
