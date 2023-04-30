@@ -4,9 +4,14 @@
  */
 package doConnect.cogentcapstone.controller;
 
+import doConnect.cogentcapstone.CogentCapstoneApplication;
 import doConnect.cogentcapstone.entity.Answer;
 import doConnect.cogentcapstone.entity.Question;
+import doConnect.cogentcapstone.entity.User;
+import doConnect.cogentcapstone.mail.EmailUtil;
 import doConnect.cogentcapstone.service.QuestionService;
+import doConnect.cogentcapstone.service.UserService;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +39,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class QuestionController {
     @Autowired
     QuestionService qtr;
+    @Autowired
+    UserService utr;
+
     
     //add
     @PostMapping(value={"/addquestion"})
@@ -88,6 +96,19 @@ public class QuestionController {
     }
     
   
-    
+    //email //question or answerid
+    @GetMapping(value={"/sendemail/{id}"})
+    public void SendEmails(@PathVariable("id") Integer id) {
+        
+        Optional<Question> o = getQuestionbyId(id);
+        
+        List<User> admins = utr.getAllUsersByUserType("admin");
+        
+        
+        for (User temp : admins) {
+            EmailUtil.infoEmail(temp.getEmail(),o);
+        }
+        
+    }
     
 }
