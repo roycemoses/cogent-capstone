@@ -1,0 +1,19 @@
+<!-- <ng-container *ngFor="let question of questions">
+    <ng-container *ngIf="question.status != 'accepted'">
+        {{question.status}}
+    </ng-container>
+</ng-container> -->
+
+<ng-container *ngFor="let question of questions; let i = index">
+    <ng-container *ngIf="question.status == 'pending'">
+        {{question.id}}
+        {{question.qcreated_by}}
+        {{question.qapproved_by}}
+        {{question.topic}}
+        {{question.datetime}}
+        {{i}}
+        <button (click)="approve(i)">Approve</button>
+        <button (click)="remove(i)">Remove</button>
+        <br><br>
+    </ng-container>
+</ng-container>
