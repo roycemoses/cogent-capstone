@@ -23,11 +23,10 @@
         <th>Title</th>
         <th>Description</th>
         <tr>
-            <td>{{question.id}}</td>
-            <td>{{question.topic}}</td>
-            <td>{{question.title}}</td>
-            <td>{{question.description_question}}</td>
-            
+            <td style="padding: 0 50px">{{question.id}}</td>
+            <td style="padding: 0 50px">{{question.topic}}</td>
+            <td style="padding: 0 50px">{{question.title}}</td>
+            <td style="padding: 0 50px">{{question.description_question}}</td>
         </tr>
     </table>
 
@@ -38,10 +37,10 @@
         <th>Description</th>
         <th>Author</th>
         <tr *ngFor="let answer of answers">
-            <td *ngIf="answer.status=='accepted'">{{answer.id}}</td>
-            <td *ngIf="answer.status=='accepted'"><img src="answer.image_src"></td>
-            <td *ngIf="answer.status=='accepted'">{{answer.description_answer}}</td>
-            <td *ngIf="answer.status=='accepted'">{{answer.created_by}}</td>
+            <td style="padding: 0 50px" *ngIf="answer.status=='accepted'">{{answer.id}}</td>
+            <td style="padding: 0 50px" *ngIf="answer.status=='accepted'"><img src="answer.image_src"></td>
+            <td style="padding: 0 50px" *ngIf="answer.status=='accepted'">{{answer.description_answer}}</td>
+            <td style="padding: 0 50px" *ngIf="answer.status=='accepted'">{{answer.created_by}}</td>
 
         </tr>
     </table>

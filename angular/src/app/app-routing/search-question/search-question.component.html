@@ -9,11 +9,11 @@
         <a routerLinkActive="active" routerLink="/pending-questions">PENDING QUESTIONS</a>
         <a routerLinkActive="active" routerLink="/pending-answers">PENDING ANSWERS</a>
     </ng-container>
-    <a routerLinkActive="active" routerLink="/search-question">SEARCH QUESTION</a>
+    <a routerLinkActive="active" routerLink="/create-question">CREATE QUESTION</a>
     <a routerLinkActive="active" routerLink="/chat-homepage">CHAT</a>
     <a routerLinkActive="active" routerLink="/home">LOG OUT</a>
 </div>
-<br>
+<br> 
 
 
 <label for="query">Search Question</label>
@@ -24,20 +24,23 @@
     <th>Id</th>
     <th>Title</th>
     <th>Topic</th>
+    <th>Description</th>
     <th>Action</th>
     <tr *ngFor="let question of questions">
-        <td *ngIf="question.title.includes(query)">{{question.id}}</td>
-        <td *ngIf="question.title.includes(query)">{{question.title}}</td>
-        <td *ngIf="question.title.includes(query)">{{question.topic}}</td>
-        <td *ngIf="question.title.includes(query)"><button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
+        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.title.includes(query)">{{question.id}}</td>
+        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.title.includes(query)">{{question.title}}</td>
+        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.title.includes(query)">{{question.topic}}</td>
+        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.title.includes(query)">{{question.description_question}}</td>
+        <td style="padding: 0 50px" *ngIf="question.title.includes(query)"><button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
         </td>
     </tr>
 </table>
-<ng-container *ngFor="let question of questions">
+<!-- <ng-container *ngFor="let question of questions">
     <ng-container *ngIf="question.title.includes(query)">
         {{question.description_question}}
         {{question.title}}
         {{question.qcreated_by}}
+        <img [src]="ss_yoshigalint9.png">
         {{question.qapproved_by}}
         {{question.topic}}
         {{question.datetime}}
@@ -46,7 +49,7 @@
 
         <br>
     </ng-container>
-</ng-container>
+</ng-container> -->
 
 
 <!-- <form novalidate #SEARCH_QUESTION_FORM="ngForm" (ngSubmit)="onSubmitLogin()">

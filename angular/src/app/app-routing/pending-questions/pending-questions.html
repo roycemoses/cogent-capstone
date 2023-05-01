@@ -4,6 +4,7 @@
     <a routerLinkActive="active" routerLink="/admin-dashboard">ADMIN DASH</a>
     <a routerLinkActive="active" routerLink="/pending-answers">PENDING ANSWERS</a>
     <a routerLinkActive="active" routerLink="/search-question">SEARCH QUESTION</a>
+    <a routerLinkActive="active" routerLink="/create-question">CREATE QUESTION</a>
     <a routerLinkActive="active" routerLink="/chat-homepage">CHAT</a>
     <a routerLinkActive="active" routerLink="/home">LOG OUT</a>
 </div>
@@ -13,16 +14,16 @@
 <table>
     <th>Id</th>
     <th>Topic</th>
+    <th>Description</th>
     <th>Author</th>
     <th>Action</th>
     <tr *ngFor="let question of questions; let i=index">
-        <td *ngIf="question.status == 'pending'">{{question.id}}</td>
-        <td *ngIf="question.status == 'pending'">{{question.topic}}</td>
-        <td *ngIf="question.status == 'pending'">{{question.qcreated_by}}</td>
-        <td *ngIf="question.status == 'pending'"><button (click)="approve(i)">Approve</button>        <button (click)="remove(i)">Remove</button>
-
+        <td style="padding: 0 50px" *ngIf="question.status == 'pending'">{{question.id}}</td>
+        <td style="padding: 0 50px" *ngIf="question.status == 'pending'">{{question.topic}}</td>
+        <td style="padding: 0 50px" *ngIf="question.status == 'pending'">{{question.description_question}}</td>
+        <td style="padding: 0 50px" *ngIf="question.status == 'pending'">{{question.qcreated_by}}</td>
+        <td style="padding: 0 50px" *ngIf="question.status == 'pending'"><button (click)="approve(i)">Approve</button>        <button (click)="remove(i)">Remove</button>
         </td>
-
     </tr>
 </table>
 <!-- <ng-container *ngFor="let question of questions; let i = index">

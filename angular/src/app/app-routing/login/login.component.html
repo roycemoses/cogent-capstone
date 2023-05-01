@@ -4,7 +4,8 @@
     <link rel="stylesheet" type="text/css" href="login.component.css">
   </head>
 
-<body><h1>Welcome to Group 5's Capstone!</h1>
+<div>
+    <h1>Welcome to doConnect!</h1>
 
 
 <form class="center" novalidate #LOGIN_FORM="ngForm" (ngSubmit)="onSubmitLogin(LOGIN_FORM)">
@@ -18,11 +19,13 @@
     </div> 
 <div class="center">
     <button [disabled]="LOGIN_FORM.invalid" class="button1" type="submit">Login</button>
+    <br>
+    <br>
     <button routerLinkActive="active" class="button" routerLink="/register">Register</button>
 </div>
 </form>
 
-</body>
+</div>
 
 
 <br><br>
