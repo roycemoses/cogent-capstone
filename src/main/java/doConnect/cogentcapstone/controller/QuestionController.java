@@ -46,7 +46,15 @@ public class QuestionController {
     //add
     @PostMapping(value={"/addquestion"})
     public Question addQuestion(@RequestBody @Validated Question q) {
-        return qtr.update(q);
+    	Question returnQuestion = qtr.update(q);
+    	Optional<Question> o = getQuestionbyId(returnQuestion.getId());
+        
+        List<User> admins = utr.getAllUsersByUserType("admin");
+        
+        for (User temp : admins) {
+            EmailUtil.infoEmailQ(temp.getEmail(),o);
+        }
+        return returnQuestion;
     }
     
     //update
@@ -97,17 +105,17 @@ public class QuestionController {
     
   
     //email //question or answerid
-    @PostMapping(value={"/sendemail/{id}"})
-    public void SendEmails(@PathVariable("id") Integer id) {
-        System.out.println("im trying to send an email");
-        Optional<Question> o = getQuestionbyId(id);
-        
-        List<User> admins = utr.getAllUsersByUserType("admin");
-        
-        
-        for (User temp : admins) {
-            EmailUtil.infoEmailQ(temp.getEmail(),o);
-        }
-    }
+//    @PostMapping(value={"/sendemail/{id}"})
+//    public void SendEmails(@PathVariable("id") Integer id) {
+//        System.out.println("im trying to send an email");
+//        Optional<Question> o = getQuestionbyId(id);
+//        
+//        List<User> admins = utr.getAllUsersByUserType("admin");
+//        
+//        
+//        for (User temp : admins) {
+//            EmailUtil.infoEmailQ(temp.getEmail(),o);
+//        }
+//    }
     
 }

@@ -1,13 +1,8 @@
 package doConnect.cogentcapstone.controller;
 
-import doConnect.cogentcapstone.entity.Answer;
-import doConnect.cogentcapstone.entity.Question;
-import doConnect.cogentcapstone.entity.User;
-import doConnect.cogentcapstone.mail.EmailUtil;
-import doConnect.cogentcapstone.service.AnswerService;
-import doConnect.cogentcapstone.service.UserService;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -20,6 +15,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import doConnect.cogentcapstone.entity.Answer;
+import doConnect.cogentcapstone.entity.User;
+import doConnect.cogentcapstone.mail.EmailUtil;
+import doConnect.cogentcapstone.service.AnswerService;
+import doConnect.cogentcapstone.service.UserService;
 
 
 @Controller
@@ -37,7 +38,15 @@ public class AnswerController {
     //add
     @PostMapping(value={"/addanswer"})
     public Answer addAnswer(@RequestBody @Validated Answer a) {
-        return atr.update(a);
+        Answer returnAnswer = atr.update(a);
+    	Optional<Answer> o = getAnswerbyId(returnAnswer.getId());
+        
+        List<User> admins = utr.getAllUsersByUserType("admin");
+        
+        for (User temp : admins) {
+            EmailUtil.infoEmailA(temp.getEmail(),o);
+        }
+        return returnAnswer;
     }
     
     //update
