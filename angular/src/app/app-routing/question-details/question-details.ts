@@ -9,7 +9,8 @@ import { LoginService } from '../login/login.service';
 
 @Component({
     selector: 'question-details',
-    templateUrl: './question-details.html'
+    templateUrl: './question-details.html',
+    styleUrls:['./question-details.css']
 })
 export class QuestionDetailsComponent implements OnInit
 {

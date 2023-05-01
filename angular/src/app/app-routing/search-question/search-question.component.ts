@@ -5,7 +5,8 @@ import { LoginService } from '../login/login.service';
 
 @Component({
     selector: 'search-question',
-    templateUrl: './search-question.component.html'
+    templateUrl: './search-question.component.html',
+    styleUrls: ['./search-question.component.css']
 })
 export class SearchQuestionComponent 
 {

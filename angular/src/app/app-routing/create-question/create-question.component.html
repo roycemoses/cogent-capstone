@@ -1,49 +1,41 @@
-<p>create-questionnnnn</p>
-<ng-container *ngIf="userType == 'admin'">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-        <div class="container">
-            <a class="navbar-brand" href="#">Home</a>
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <button class="nav-link" routerLinkActive="active" routerLink="/admin-dashboard">Go to Admin Dash</button>
-                    </li>
-                </ul>
-        </div>
-    </nav>
-</ng-container>
+<div class="container cyan topBotomBordersOut">
+    <a style="font-size: xx-large; font-weight: 1000; color:white; ">CREATE QUESTION</a>
+    <br><br><br>
+    <ng-container *ngIf="userType == 'user'">
+        <a routerLinkActive="active" routerLink="/user-dashboard">USER DASH</a>
+    </ng-container>
+    <ng-container *ngIf="userType == 'admin'">
+        <a routerLinkActive="active" routerLink="/admin-dashboard">ADMIN DASH</a>
+        <a routerLinkActive="active" routerLink="/pending-questions">PENDING QUESTIONS</a>
+        <a routerLinkActive="active" routerLink="/pending-answers">PENDING ANSWERS</a>
+    </ng-container>
+    <a routerLinkActive="active" routerLink="/search-question">SEARCH QUESTION</a>
+    <a routerLinkActive="active" routerLink="/chat-homepage">CHAT</a>
+    <a routerLinkActive="active" routerLink="/home">LOG OUT</a>
+</div>
 
-<ng-container *ngIf="userType == 'user'">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-        <div class="container">
-            <a class="navbar-brand" href="#">Home</a>
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <button class="nav-link" routerLinkActive="active" routerLink="/user-dashboard">Go to User Dash</button>
-                    </li>
-                </ul>
-        </div>
-    </nav>
-</ng-container>
+<br>
 
+<p>Create Question</p>
 <form novalidate #QUESTION_FORM="ngForm" (ngSubmit)="onSubmitQuestion(question_form)">
     <div>
-        <label for="tile">Title</label>
+        <label for="tile">Title </label>
         <input type="text" [(ngModel)]="question_form.title" name="title" required>
     </div>
 
     <div> 
-        <label for="topic">Topic</label>
+        <label for="topic">Topic </label>
         <input type="text" [(ngModel)]="question_form.topic" name="topic" required>
     </div>
 
     <div>
-        <label for="description">Description</label>
+        <label for="description">Description </label>
         <input type="text" [(ngModel)]="question_form.description_question" name="description" required>
     </div>
 
     <div>
         <form action="/action_page.php">
-            <label for="img">Select image:</label>
+            <label for="img">Select image </label>
             <input type="file" [(ngModel)]="question_form.image_src" id="img" name="img" accept="image/*">
         </form>
     </div>

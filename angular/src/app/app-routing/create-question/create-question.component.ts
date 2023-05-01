@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'create-question',
-    templateUrl: './create-question.component.html'
+    templateUrl: './create-question.component.html',
+    styleUrls: ['./create-question.component.css']
 })
 export class CreateQuestionComponent
 {
@@ -42,7 +43,7 @@ export class CreateQuestionComponent
         });
     //this.mailtime = true;
     
-       
+    alert("Successfully created a question!");
 
     if(this.loginService.userType=='admin'){
       this.router.navigate(['/admin-dashboard']);

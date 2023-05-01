@@ -1,28 +1,19 @@
-<ng-container *ngIf="userType == 'admin'">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-        <div class="container">
-            <a class="navbar-brand" href="#">Home</a>
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <button class="nav-link" routerLinkActive="active" routerLink="/admin-dashboard">Go to Admin Dash</button>
-                    </li>
-                </ul>
-        </div>
-    </nav>
-</ng-container>
-
-<ng-container *ngIf="userType == 'user'">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-        <div class="container">
-            <a class="navbar-brand" href="#">Home</a>
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <button class="nav-link" routerLinkActive="active" routerLink="/user-dashboard">Go to User Dash</button>
-                    </li>
-                </ul>
-        </div>
-    </nav>
-</ng-container>
+<div class="container cyan topBotomBordersOut">
+    <a style="font-size: xx-large; font-weight: 1000; color:white; ">SEARCH QUESTION</a>
+    <br><br><br>
+    <ng-container *ngIf="userType == 'user'">
+        <a routerLinkActive="active" routerLink="/user-dashboard">USER DASH</a>
+    </ng-container>
+    <ng-container *ngIf="userType == 'admin'">
+        <a routerLinkActive="active" routerLink="/admin-dashboard">ADMIN DASH</a>
+        <a routerLinkActive="active" routerLink="/pending-questions">PENDING QUESTIONS</a>
+        <a routerLinkActive="active" routerLink="/pending-answers">PENDING ANSWERS</a>
+    </ng-container>
+    <a routerLinkActive="active" routerLink="/search-question">SEARCH QUESTION</a>
+    <a routerLinkActive="active" routerLink="/chat-homepage">CHAT</a>
+    <a routerLinkActive="active" routerLink="/home">LOG OUT</a>
+</div>
+<br>
 
 
 <label for="query">Search Question</label>

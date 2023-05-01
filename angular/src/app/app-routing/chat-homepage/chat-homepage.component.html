@@ -1,3 +1,20 @@
+<div class="container cyan topBotomBordersOut">
+    <a style="font-size: xx-large; font-weight: 1000; color:white; ">CHAT HOMEPAGE</a>
+    <br><br><br>
+    <ng-container *ngIf="userType == 'user'">
+        <a routerLinkActive="active" routerLink="/user-dashboard">USER DASH</a>
+    </ng-container>
+    <ng-container *ngIf="userType == 'admin'">
+        <a routerLinkActive="active" routerLink="/admin-dashboard">ADMIN DASH</a>
+        <a routerLinkActive="active" routerLink="/pending-questions">PENDING QUESTIONS</a>
+        <a routerLinkActive="active" routerLink="/pending-answers">PENDING ANSWERS</a>
+    </ng-container>
+    <a routerLinkActive="active" routerLink="/search-question">SEARCH QUESTION</a>
+    <a routerLinkActive="active" routerLink="/chat-homepage">CHAT</a>
+    <a routerLinkActive="active" routerLink="/home">LOG OUT</a>
+</div>
+<br>
+
 <ng-container *ngFor="let user of users">
     <ng-container *ngIf="user.userName != 'none' && user.userName != currUserName">
         {{user.userName}}

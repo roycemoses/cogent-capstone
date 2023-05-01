@@ -18,11 +18,13 @@ export class ChatDetailsComponent
     chatUser!:User; // incoming chat user
     chats!:Chat[];
     chat_form:Chat;
+    userType:string;
 
     constructor(private loginService:LoginService, private chatService:ChatService, public datePipe:DatePipe) {
         this.user = loginService.user;
         this.chatUser = chatService.currChatUser;
         this.chat_form = new Chat("", "", "", "");
+        this.userType = this.loginService.userType;
     }
   
     ngOnInit(): void {

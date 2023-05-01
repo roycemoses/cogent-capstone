@@ -5,7 +5,8 @@ import { QuestionService } from 'src/app/question.service';
 
 @Component({
     selector: 'pending-questions',
-    templateUrl: './pending-questions.html'
+    templateUrl: './pending-questions.html',
+    styleUrls: ['./pending-questions.css']
 })
 export class PendingQuestionsComponent implements OnInit
 {

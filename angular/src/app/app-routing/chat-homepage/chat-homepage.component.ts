@@ -6,16 +6,19 @@ import { ChatService } from 'src/app/chat.service';
 
 @Component({
     selector: 'chat-homepage',
-    templateUrl: './chat-homepage.component.html'
+    templateUrl: './chat-homepage.component.html',
+    styleUrls: ['./chat-homepage.component.css']
 })
 export class ChatHomepageComponent
 {
     users!:User[];
     currUserName:string;
+    userType!:string;
    
 
     constructor(private loginService:LoginService, private userService:UserService, private chatService:ChatService) {
         this.currUserName = loginService.user.userName;
+        this.userType = loginService.userType;
     }
   
     ngOnInit(): void {

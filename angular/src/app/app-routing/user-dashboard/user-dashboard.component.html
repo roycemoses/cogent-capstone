@@ -1,27 +1,10 @@
-<p>I'm in the user-dashboard component!</p>
-
-<!-- <ng-container *ngIf="userType == 'user'"> -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-    <div class="container">
-        <a class="navbar-brand" href="#">Home</a>
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <button class="nav-link" routerLinkActive="active" routerLink="/user-dashboard">Go to User Dash</button>
-                </li>
-                <li class="nav-item">
-                    <button class="nav-link" routerLinkActive="active" routerLink="/search-question">Go to Search Question</button>
-                </li>
-            </ul>
-    </div>
-</nav>
-<!-- </ng-container> -->
-
-<button class="nav-link" routerLinkActive="active" routerLink="/create-question">Go To Create Question</button>
-
-<br>
-
-<button class="nav-link" routerLinkActive="active" routerLink="/chat-homepage">Go To Chat</button>
-
-<br><br><br>
+<div class="container cyan topBotomBordersOut">
+    <a style="font-size: xx-large; font-weight: 1000; color:white; ">USER DASHBOARD</a>
+    <br><br><br>
+    <a routerLinkActive="active" routerLink="/search-question">SEARCH QUESTION</a>
+    <a routerLinkActive="active" routerLink="/create-question">CREATE QUESTION</a>
+    <a routerLinkActive="active" routerLink="/chat-homepage">CHAT</a>
+    <a routerLinkActive="active" routerLink="/home">LOG OUT</a>
+</div>
 
 <question></question>
