@@ -9,7 +9,23 @@
 </div>
 <br>
 
-<ng-container *ngFor="let answer of answers; let i = index">
+
+<table>
+    <th>Id</th>
+    <th>DateTime</th>
+    <th>Author</th>
+    <th>Action</th>
+    <tr *ngFor="let answer of answers; let i=index">
+        <td *ngIf="answer.status == 'pending'">{{answer.id}}</td>
+        <td *ngIf="answer.status == 'pending'">{{answer.datetime}}</td>
+        <td *ngIf="answer.status == 'pending'">{{answer.created_by}}</td>
+        <td *ngIf="answer.status == 'pending'"><button (click)="approve(i)">Approve</button>        <button (click)="remove(i)">Remove</button>
+
+        </td>
+
+    </tr>
+</table>
+<!-- <ng-container *ngFor="let answer of answers; let i = index">
     <ng-container *ngIf="answer.status == 'pending'">
         {{answer.id}}
         {{answer.description_answer}}
@@ -21,4 +37,4 @@
         <button (click)="remove(i)">Remove</button>
         <br><br>
     </ng-container>
-</ng-container>
+</ng-container> -->

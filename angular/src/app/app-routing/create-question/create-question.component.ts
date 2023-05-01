@@ -37,7 +37,7 @@ export class CreateQuestionComponent
     let str = String(currentDateTime);
     console.log("hi i added a question to the backend");
     this.questionService.addQuestion(new Question(questionform.description_question, questionform.image_src, str, 
-        'pending', questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by)).subscribe((data)=>{
+        'pending', questionform.topic, questionform.title, [], this.loginService.user.userName, questionform.qapproved_by)).subscribe((data)=>{
           this.questionService.sendEmail(data.id);
           console.log(data.id);
         });
