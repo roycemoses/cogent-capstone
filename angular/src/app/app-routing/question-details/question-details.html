@@ -23,9 +23,38 @@
         </div>
     </nav>
 </ng-container>
+<h1>Question Details</h1>
+<body>
+    <img src="{{question.image_src}}" height="100">
+    <table>
+        <th>Id</th>
+        <th>Topic</th>
+        <th>Title</th>
+        <th>Description</th>
+        <tr>
+            <td>{{question.id}}</td>
+            <td>{{question.topic}}</td>
+            <td>{{question.title}}</td>
+            <td>{{question.description_question}}</td>
+            
+        </tr>
+    </table>
 
+    <h1>Answers</h1>
+    <table>
+        <th>Id</th>
+        <th>Image</th>
+        <th>Description</th>
+        <th>Author</th>
+        <tr *ngFor="let answer of question.answers">
+            <td *ngIf="answer.status=='accepted'">{{answer.id}}</td>
+            <td *ngIf="answer.status=='accepted'"><img src="answer.image_src"></td>
+            <td *ngIf="answer.status=='accepted'">{{answer.description_answer}}</td>
+            <td *ngIf="answer.status=='accepted'">{{answer.created_by}}</td>
 
-<p>
+        </tr>
+    </table>
+<!-- <p>
     {{question_id}}
     {{question.description_question}}
     {{question.image_src}}
@@ -36,9 +65,9 @@
     {{question.answers}}
     {{question.qcreated_by}}
     {{question.qapproved_by}}
-</p>
+</p> -->
 
-<br><br><br>
+<!-- <br><br><br>
 <ng-container *ngFor="let answer of answers; let i = index">
 
     <ng-container *ngIf="answer.status == 'accepted'">
@@ -47,12 +76,13 @@
     {{answer.image_src}}
     {{answer.status}}
     {{answer.datetime}}
-    <!-- {{answer.question}} -->
+    {{answer.question}}
     {{answer.approved_by}}
     {{answer.created_by}}
     <br><br>
     </ng-container>
-</ng-container>
-
+</ng-container> -->
+<h2>Create Answer</h2>
 <answer></answer>
+</body>
 

@@ -23,17 +23,33 @@
     
     <button [disabled]="QUESTION_FORM.invalid" type="submit">Submit</button>
 </form> -->
+<h1>Questions</h1>
 
-<ng-container *ngFor="let question of questions; let i = index">
+<table>
+    <th>Id</th>
+    <th>Image</th>
+    <th>Topic</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Action</th>
+    <tr *ngFor="let question of questions">
+        <td *ngIf="question.status=='accepted'">{{question.id}}</td>
+        <td *ngIf="question.status=='accepted'"><img src="{{question.image_src}}"></td>
+        <td *ngIf="question.status=='accepted'">{{question.topic}}</td>
+        <td *ngIf="question.status=='accepted'">{{question.title}}</td>
+        <td *ngIf="question.status=='accepted'">{{question.description_question}}</td>
+        <td *ngIf="question.status=='accepted'">    <button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
+        </td>
+    </tr>
+</table>
+<!-- <ng-container *ngFor="let question of questions; let i = index">
+    <ng-container *ngIf="question.status=='accepted'">
     {{question.id}}
     {{question.qcreated_by}}
-    {{question.qapproved_by}}
     {{question.topic}}
     {{question.datetime}}
-    {{i}}
-
     <button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
-    
+    </ng-container> -->
     <!-- this is good code right here -->
     <!-- <button (click)="onOpenAnswerForm(question)">Answer</button> <br>
     
@@ -46,6 +62,6 @@
             {{answer.image_src}}
         </div>
     </ng-container> -->
-</ng-container>
+<!-- </ng-container> -->
 
 <!-- <create-question (newQuestionEvent)="addQuestion($event)"></create-question> -->
