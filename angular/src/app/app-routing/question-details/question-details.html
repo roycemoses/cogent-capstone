@@ -23,9 +23,24 @@
         </div>
     </nav>
 </ng-container>
-
-
-<p>
+<h1>Question Details</h1>
+<body>
+    <img src="{{question.image_src}}" height="100">
+    <table>
+        <th>Id</th>
+        <th>Topic</th>
+        <th>Title</th>
+        <th>Description</th>
+        <tr>
+            <td>{{question.id}}</td>
+            <td>{{question.topic}}</td>
+            <td>{{question.title}}</td>
+            <td>{{question.description_question}}</td>
+            
+        </tr>
+    </table>
+</body>
+<!-- <p>
     {{question_id}}
     {{question.description_question}}
     {{question.image_src}}
@@ -36,7 +51,7 @@
     {{question.answers}}
     {{question.qcreated_by}}
     {{question.qapproved_by}}
-</p>
+</p> -->
 
 <br><br><br>
 <ng-container *ngFor="let answer of answers; let i = index">

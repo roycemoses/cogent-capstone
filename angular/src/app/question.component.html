@@ -27,21 +27,19 @@
 
 <table>
     <th>Id</th>
+    <th>Image</th>
     <th>Topic</th>
     <th>Title</th>
     <th>Description</th>
     <th>Action</th>
     <tr *ngFor="let question of questions">
         <td *ngIf="question.status=='accepted'">{{question.id}}</td>
+        <td *ngIf="question.status=='accepted'"><img src="{{question.image_src}}"></td>
         <td *ngIf="question.status=='accepted'">{{question.topic}}</td>
         <td *ngIf="question.status=='accepted'">{{question.title}}</td>
         <td *ngIf="question.status=='accepted'">{{question.description_question}}</td>
         <td *ngIf="question.status=='accepted'">    <button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
         </td>
-
-
-
-
     </tr>
 </table>
 <!-- <ng-container *ngFor="let question of questions; let i = index">
