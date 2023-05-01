@@ -4,6 +4,7 @@ import { Question } from './question';
 import { Answer } from './answer';
 import { CreateQuestionComponent } from './app-routing/create-question/create-question.component';
 import { DatePipe } from '@angular/common';
+import { LoginService } from './app-routing/login/login.service';
 
 @Component({
   selector: 'question',
@@ -26,7 +27,7 @@ export class QuestionComponent implements OnInit {
     // * Output decorator & Emit is working
     // * 
 
-    constructor(private questionService:QuestionService, public datePipe:DatePipe) {
+    constructor(private questionService:QuestionService, public datePipe:DatePipe, private loginService:LoginService) {
 
         let currentDateTime = this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss');
         console.log(currentDateTime);
@@ -67,7 +68,7 @@ export class QuestionComponent implements OnInit {
     //     console.log(data);
     // })
     this.questionService.addQuestion(new Question(questionform.description_question, questionform.image_src, questionform.datetime, 
-        questionform.status, questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by)).subscribe();
+        'pending', questionform.topic, questionform.title, [], this.loginService.user.userName, '')).subscribe();
 
     console.log(this.questions);
     console.log("hi i added a question to the backend");
