@@ -46,7 +46,7 @@
         <th>Image</th>
         <th>Description</th>
         <th>Author</th>
-        <tr *ngFor="let answer of question.answers">
+        <tr *ngFor="let answer of answers">
             <td *ngIf="answer.status=='accepted'">{{answer.id}}</td>
             <td *ngIf="answer.status=='accepted'"><img src="answer.image_src"></td>
             <td *ngIf="answer.status=='accepted'">{{answer.description_answer}}</td>
