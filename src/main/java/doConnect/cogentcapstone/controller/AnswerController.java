@@ -2,7 +2,10 @@ package doConnect.cogentcapstone.controller;
 
 import doConnect.cogentcapstone.entity.Answer;
 import doConnect.cogentcapstone.entity.Question;
+import doConnect.cogentcapstone.entity.User;
+import doConnect.cogentcapstone.mail.EmailUtil;
 import doConnect.cogentcapstone.service.AnswerService;
+import doConnect.cogentcapstone.service.UserService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,8 @@ public class AnswerController {
 
     @Autowired
     AnswerService atr;
+    @Autowired
+    UserService utr;
     
     //add
     @PostMapping(value={"/addanswer"})
@@ -84,7 +89,20 @@ public class AnswerController {
         return a;
     }
     
-    
+    //email //question or answerid
+    @GetMapping(value={"/sendemail/{id}"})
+    public void SendEmails(@PathVariable("id") Integer id) {
+        
+        Optional<Answer> o = getAnswerbyId(id);
+        
+        List<User> admins = utr.getAllUsersByUserType("admin");
+        
+        
+        for (User temp : admins) {
+            EmailUtil.infoEmailA(temp.getEmail(),o);
+        }
+        
+    }
 }
 
         /*

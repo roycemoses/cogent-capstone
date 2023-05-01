@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -19,8 +21,16 @@ public class Chat {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String from_user;
-	private String to_user;
+        
+//        @ManyToOne
+//        @JoinColumn(name="from_user") //the underscore seems to break this.
+	private String fromUser;
+        
+//        @ManyToOne
+//        @JoinColumn(name="to_user")
+	private String toUser;
+        
+        
 	private String message;
 	private String datetime;
 }

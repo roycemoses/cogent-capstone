@@ -16,6 +16,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "USER_TABLE")
 public class User {
+
+    public static Object findByUserName(String userName) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -24,5 +28,9 @@ public class User {
 	private String password;
 	private String email;
 	private String userType;
+
+    public String getEmail() {
+        return this.email;
+    }
 	
 }
