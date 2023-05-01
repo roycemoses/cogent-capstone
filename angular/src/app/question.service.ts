@@ -37,7 +37,7 @@ export class QuestionService {
             .set('Access-Control-Allow-Headers','*');
 
         // this.sendEmail(this.currQuestionId);
-
+        this.httpClient.post(`${this.baseUrl}/sendemail/`+6, {'headers': headers});
         return this.httpClient.post<Question>(`${this.baseUrl}/addquestion`, question, {'headers': headers});
     }
 

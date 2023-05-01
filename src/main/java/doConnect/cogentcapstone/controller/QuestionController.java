@@ -97,9 +97,9 @@ public class QuestionController {
     
   
     //email //question or answerid
-    @GetMapping(value={"/sendemail/{id}"})
+    @PostMapping(value={"/sendemail/{id}"})
     public void SendEmails(@PathVariable("id") Integer id) {
-        
+        System.out.println("im trying to send an email");
         Optional<Question> o = getQuestionbyId(id);
         
         List<User> admins = utr.getAllUsersByUserType("admin");
@@ -108,8 +108,6 @@ public class QuestionController {
         for (User temp : admins) {
             EmailUtil.infoEmailQ(temp.getEmail(),o);
         }
-        
-        
     }
     
 }
