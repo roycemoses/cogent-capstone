@@ -49,10 +49,9 @@ public class AnswerController {
     
     //deletebyID
     @DeleteMapping(value={"/deleteanswer/{id}"})
-    public String deleteAnswerbyId(@PathVariable("id") Integer id) {
+    public void deleteAnswerbyId(@PathVariable("id") Integer id) {
             Optional<Answer> a = atr.getById(id);
             atr.delete(a.get());
-            return "Answer id "+id+" deleted successfully";
 	}
     
     

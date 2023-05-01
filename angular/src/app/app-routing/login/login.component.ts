@@ -25,10 +25,10 @@ export class LoginComponent implements OnInit {
     constructor(private loginService:LoginService, private router:Router) 
     {
         this.logins = [];
-        this.loginForm = new Login();
+        this.loginForm = new Login("", "");
         this.token = "";
         this.loginSuccessful = false;
-        this.user = new User(-1, "", "", "", "", "User");
+        this.user = new User("", "", "", "", "User");
     }
 
     ngOnInit(): void {

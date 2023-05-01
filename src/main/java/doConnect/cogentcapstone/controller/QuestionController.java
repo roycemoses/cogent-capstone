@@ -57,10 +57,10 @@ public class QuestionController {
     
     //deletebyID
     @DeleteMapping(value={"/deletequestion/{id}"})
-    public String deleteQuestionbyId(@PathVariable("id") Integer id) {
+    public void deleteQuestionbyId(@PathVariable("id") Integer id) {
             Optional<Question> q = qtr.getById(id);
             qtr.delete(q.get());
-            return "Question id "+id+" deleted successfully";
+//            return "Question id "+id+" deleted successfully";
 	}
     
     

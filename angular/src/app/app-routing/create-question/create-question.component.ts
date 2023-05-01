@@ -34,7 +34,7 @@ export class CreateQuestionComponent
     let str = String(currentDateTime);
     console.log("hi i added a question to the backend");
     this.questionService.addQuestion(new Question(questionform.description_question, questionform.image_src, str, 
-        questionform.status, questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by)).subscribe();
+        'pending', questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by)).subscribe();
   }
 
 }

@@ -15,15 +15,21 @@ import { AdminGuard } from './services/admin.guard';
 import { QuestionDetailsComponent } from './app-routing/question-details/question-details';
 import { UserGuard } from './services/user.guard.ts';
 import { UserDashboardComponent } from './app-routing/user-dashboard/user-dashboard.component';
+import { PendingQuestionsComponent } from './app-routing/pending-questions/pending-questions';
+import { PendingAnswersComponent } from './app-routing/pending-answers/pending-answers';
+import { RegisterComponent } from './app-routing/register/register.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: LandingComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent},
     { path: 'admin-dashboard', canActivate:[AdminGuard], component: AdminDashboardComponent },
     { path: 'user-dashboard', canActivate:[UserGuard], component: UserDashboardComponent},
-    { path: 'create-question', component: CreateQuestionComponent },
-    { path: 'question-details', component: QuestionDetailsComponent },
+    { path: 'create-question', canActivate:[AdminGuard, UserGuard], component: CreateQuestionComponent },
+    { path: 'question-details', canActivate:[AdminGuard, UserGuard], component: QuestionDetailsComponent },
+    { path: 'pending-questions', canActivate:[AdminGuard], component: PendingQuestionsComponent},
+    { path: 'pending-answers', canActivate:[AdminGuard], component: PendingAnswersComponent},
     // { path: 'about', canActivate:[AuthGuard], component: AboutComponent },
     // { path: 'careers', canActivate:[AuthGuard], component: CareersComponent },
     // { path: 'contact', component: ContactComponent },

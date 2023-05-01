@@ -47,4 +47,37 @@ export class AnswerService
         
         return this.httpClient.get<Answer[]>(`${this.baseUrl}/getanswerbyquestionid/`+question_id, {'headers':headers}); 
     }
+
+    getAllAnswers():Observable<Answer[]>
+    {
+        const headers= new HttpHeaders()
+            .set('Authorization', 'Bearer ' + this.loginService.token)
+            .set('Access-Control-Allow-Origin', '*')
+            .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+            .set('Access-Control-Allow-Headers','*');
+        
+            return this.httpClient.get<Answer[]>(`${this.baseUrl}/getallanswer/`, {'headers':headers}); 
+    }
+
+    updateAnswer(answer:Answer):Observable<Answer> {
+        const headers= new HttpHeaders()
+            .set('Authorization', 'Bearer ' + this.loginService.token)
+            .set('Access-Control-Allow-Origin', '*')
+            .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+            .set('Access-Control-Allow-Headers','*');
+
+        return this.httpClient.put<Answer>(`${this.baseUrl}/updateanswer`, answer, {'headers': headers});
+    }
+
+    deleteAnswerById(id:number)
+    {
+        const headers= new HttpHeaders()
+        .set('Authorization', 'Bearer ' + this.loginService.token)
+        .set('responseType', 'text')
+        .set('Access-Control-Allow-Origin', '*')
+        .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+        .set('Access-Control-Allow-Headers','*');
+
+        return this.httpClient.delete(`${this.baseUrl}/deleteanswer/`+id, {'headers': headers});
+    }
 }

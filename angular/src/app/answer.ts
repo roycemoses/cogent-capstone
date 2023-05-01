@@ -1,6 +1,7 @@
 import { Question } from "./question";
 
 export class Answer {
+    id!:number;
 	description_answer:string;
 	image_src:string;
     status:string;

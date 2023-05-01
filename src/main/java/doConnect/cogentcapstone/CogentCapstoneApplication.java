@@ -91,7 +91,8 @@ public class CogentCapstoneApplication implements WebMvcConfigurer {
                 new User(101, "Gyanendra", "gyanendra", "password", "group5newmailbot@gmail.com", "admin"),
                 new User(102, "User1", "user1", "pwd1", "group5newmailbot@gmail.com", "user"),
                 new User(103, "User2", "user2", "pwd2", "user2@gmail.com", "user"),
-                new User(104, "User3", "user3", "pwd3", "user3@gmail.com", "user")
+                new User(104, "User3", "user3", "pwd3", "user3@gmail.com", "user"),
+                new User(104, "none", "none", "none", "none", "none")
         ).collect(Collectors.toList());
         uRepo.saveAll(users);
         
