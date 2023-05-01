@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Question } from 'src/app/question';
 import { QuestionService } from 'src/app/question.service';
+import { LoginService } from '../login/login.service';
 
 @Component({
     selector: 'search-question',
@@ -11,9 +12,10 @@ export class SearchQuestionComponent
     questions!:Question[];
     query:string="";
     topic:string="";
+    userType!:string;
 
-    constructor(private questionService:QuestionService) {
-        
+    constructor(private questionService:QuestionService,private loginService:LoginService) {
+        this.userType=loginService.userType;
     }
 
     ngOnInit() {

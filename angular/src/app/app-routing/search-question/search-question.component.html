@@ -1,8 +1,47 @@
+<ng-container *ngIf="userType == 'admin'">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="#">Home</a>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <button class="nav-link" routerLinkActive="active" routerLink="/admin-dashboard">Go to Admin Dash</button>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+</ng-container>
+
+<ng-container *ngIf="userType == 'user'">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="#">Home</a>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <button class="nav-link" routerLinkActive="active" routerLink="/user-dashboard">Go to User Dash</button>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+</ng-container>
+
+
 <label for="query">Search Question</label>
 <input type="text" [(ngModel)]="query" name="query" placeholder="Enter a question">
 
 <br>
-
+<table>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Topic</th>
+    <th>Action</th>
+    <tr *ngFor="let question of questions">
+        <td *ngIf="question.title.includes(query)">{{question.id}}</td>
+        <td *ngIf="question.title.includes(query)">{{question.title}}</td>
+        <td *ngIf="question.title.includes(query)">{{question.topic}}</td>
+        <td *ngIf="question.title.includes(query)"><button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
+        </td>
+    </tr>
+</table>
 <ng-container *ngFor="let question of questions">
     <ng-container *ngIf="question.title.includes(query)">
         {{question.description_question}}
