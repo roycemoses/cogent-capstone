@@ -13,12 +13,14 @@ import { CreateQuestionComponent } from './app-routing/create-question/create-qu
 import { QuestionComponent } from './question.component';
 import { AdminGuard } from './services/admin.guard';
 import { QuestionDetailsComponent } from './app-routing/question-details/question-details';
-import { UserGuard } from './services/user.guard.ts';
+import { UserGuard } from './services/user.guard';
 import { UserDashboardComponent } from './app-routing/user-dashboard/user-dashboard.component';
 import { PendingQuestionsComponent } from './app-routing/pending-questions/pending-questions';
 import { PendingAnswersComponent } from './app-routing/pending-answers/pending-answers';
 import { RegisterComponent } from './app-routing/register/register.component';
 import { AdminAndUserGuard } from './services/admin-and-user.guard';
+import { ChatHomepageComponent } from './app-routing/chat-homepage/chat-homepage.component';
+import { ChatDetailsComponent } from './app-routing/chat-details/chat-details.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -31,6 +33,8 @@ const routes: Routes = [
     { path: 'question-details', canActivate:[AdminAndUserGuard], component: QuestionDetailsComponent },
     { path: 'pending-questions', canActivate:[AdminGuard], component: PendingQuestionsComponent},
     { path: 'pending-answers', canActivate:[AdminGuard], component: PendingAnswersComponent},
+    { path: 'chat-homepage', canActivate:[AdminAndUserGuard], component: ChatHomepageComponent},
+    { path: 'chat-details', canActivate:[AdminAndUserGuard], component: ChatDetailsComponent },
     // { path: 'about', canActivate:[AuthGuard], component: AboutComponent },
     // { path: 'careers', canActivate:[AuthGuard], component: CareersComponent },
     // { path: 'contact', component: ContactComponent },

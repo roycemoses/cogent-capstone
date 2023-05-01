@@ -1,0 +1,7 @@
+<ng-container *ngFor="let user of users">
+    <ng-container *ngIf="user.userName != 'none' && user.userName != currUserName">
+        {{user.userName}}
+        <button routerLinkActive="active" routerLink="/chat-details" (click)="setCurrChatUser(user)">Chat</button>
+        <br>
+    </ng-container>
+</ng-container>

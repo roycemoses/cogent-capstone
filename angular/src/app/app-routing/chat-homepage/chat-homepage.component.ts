@@ -1,9 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { QuestionService } from 'src/app/question.service';
-import { Question } from 'src/app/question';
-import { DatePipe } from '@angular/common';
+import { Component } from '@angular/core';
 import { LoginService } from '../login/login.service';
-// import { Question.createQuestion }
+import { User } from 'src/app/user';
+import { UserService } from 'src/app/user.service';
+import { ChatService } from 'src/app/chat.service';
 
 @Component({
     selector: 'chat-homepage',
@@ -11,30 +10,24 @@ import { LoginService } from '../login/login.service';
 })
 export class ChatHomepageComponent
 {
-    userType!: string;
+    users!:User[];
+    currUserName:string;
    
 
-    constructor(private loginService:LoginService, private chatService:ChatService) {
-        this.userType = loginService.userType;
-        // this.question_form=new Question("","","","","","",[],"","");
-
-  }
+    constructor(private loginService:LoginService, private userService:UserService, private chatService:ChatService) {
+        this.currUserName = loginService.user.userName;
+    }
   
     ngOnInit(): void {
-        console.log('hello');
-        this.questionService.getQuestions().subscribe((data: Question[]) => {
+        this.userService.getUsers().subscribe((data: User[]) => {
         console.log(data);
-        this.questions = data;
+        this.users = data;
         });
     }
 
-
-  onSubmitQuestion(questionform:any) {
-    let currentDateTime = this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss');
-    let str = String(currentDateTime);
-    console.log("hi i added a question to the backend");
-    this.questionService.addQuestion(new Question(questionform.description_question, questionform.image_src, str, 
-        'pending', questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by)).subscribe();
-  }
+    setCurrChatUser(user:User)
+    {
+        this.chatService.setCurrChatUser(user);
+    }
 
 }

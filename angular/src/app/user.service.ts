@@ -3,6 +3,7 @@ import { User } from './user';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Login } from './app-routing/login/login';
+import { LoginService } from './app-routing/login/login.service';
 
 @Injectable({
     providedIn:`root`
@@ -11,10 +12,17 @@ export class UserService
 {
     private baseUrl = 'http://localhost:8080';
     
-    constructor (private httpClient:HttpClient) {}
+    constructor (private httpClient:HttpClient, private loginService:LoginService) {}
 
     getUsers():Observable<User[]> {
-        return this.httpClient.get<User[]>((`${this.baseUrl}`));
+        const headers= new HttpHeaders()
+            .set('Authorization', 'Bearer ' + this.loginService.token)
+            .set('responseType', 'text')
+            .set('Access-Control-Allow-Origin', '*')
+            .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+            .set('Access-Control-Allow-Headers','*');
+
+        return this.httpClient.get<User[]>((`${this.baseUrl}/user/getall`), {'headers':headers});
     }
 
     updateUser(user: User): Observable<User> {
