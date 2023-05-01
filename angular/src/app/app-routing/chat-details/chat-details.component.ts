@@ -8,7 +8,8 @@ import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'chat-details',
-    templateUrl: './chat-details.component.html'
+    templateUrl: './chat-details.component.html',
+    styleUrls: ['./chat-details.component.css']
 })
 export class ChatDetailsComponent
 {
@@ -38,6 +39,7 @@ export class ChatDetailsComponent
 
         this.chatService.addMessage(new Chat(this.user.userName, this.chatUser.userName, str, this.chat_form.message)).subscribe((data:Chat) => {
             console.log(data);
+            this.chat_form.message = "";
             this.ngOnInit();
         });
     }

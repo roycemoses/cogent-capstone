@@ -8,4 +8,8 @@ body {
     background-position: center;
     height: 100vh;
     margin: 0 !important;
-  }
+  } 
+* {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight:750;
+}

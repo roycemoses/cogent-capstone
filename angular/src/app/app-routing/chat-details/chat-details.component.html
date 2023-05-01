@@ -1,14 +1,35 @@
-<h1 style='text-align:left'>{{user.name}}<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>{{chatUser.name}}</h1>
+<div id="textbox">
+    <p class="alignleft">{{user.userName}} ({{user.name}})</p>
+    <p class="alignright">{{chatUser.userName}} ({{chatUser.name}})</p>
+</div>
+<div style="clear: both;"></div>
 
-<ng-container *ngFor="let chat of chats">
-    {{chat.message}}
-    {{chat.datetime}}
-</ng-container>
+<br><br>
 
-<form novalidate #CHAT_FORM="ngForm" (ngSubmit)="onSubmitChat()">
-    <div>
-        <label for="message">Message</label>
-        <input type="text" [(ngModel)]="chat_form.message" name="message" required>
-    </div>    
-    <button [disabled]="CHAT_FORM.invalid" type="submit">Send</button>
-</form>
+<div>
+    <ng-container *ngFor="let chat of chats">
+        <ng-container *ngIf="chat.fromUser == user.userName">
+            <p class="alignleft">{{chat.datetime}}</p> <br>
+            <p class="alignleft">{{chat.message}}</p>
+            <div style="clear: both;"></div>
+        </ng-container>
+        <ng-container *ngIf="chat.fromUser == chatUser.userName">
+            <p class="alignright">{{chat.datetime}}</p> <br>
+            <p class="alignright">{{chat.message}}</p>
+            <div style="clear: both;"></div>
+        </ng-container>
+    </ng-container>
+</div>
+<div style="clear: both;"></div>
+
+<br><br><br>
+
+<div>
+    <form novalidate #CHAT_FORM="ngForm" (ngSubmit)="onSubmitChat()">
+        <div>
+            <label for="message">Message</label> <br>
+            <input type="text" [(ngModel)]="chat_form.message" name="message" style="padding-bottom: 50px; padding-right:200px" required>
+        </div>    
+        <button [disabled]="CHAT_FORM.invalid" type="submit">Send</button>
+    </form>
+</div>

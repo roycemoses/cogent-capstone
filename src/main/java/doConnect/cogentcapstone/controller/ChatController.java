@@ -17,6 +17,8 @@ import doConnect.cogentcapstone.entity.Chat;
 import doConnect.cogentcapstone.repository.ChatRepository;
 import doConnect.cogentcapstone.service.ChatService;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 @RestController
 @CrossOrigin("*")
@@ -63,6 +65,20 @@ public class ChatController {
                     all.add(c);
                 }
             }
+            
+            class sortByDateTime implements Comparator<Chat>
+            {
+            	@Override
+            	public int compare(Chat o1, Chat o2) {
+            		if (o1.getDatetime().compareTo(o2.getDatetime()) < 0)
+            			return -1;
+            		if (o1.getDatetime().compareTo(o2.getDatetime()) > 0)
+            			return 1;
+            		return 0;
+            	}
+            }
+            
+            Collections.sort(all, new sortByDateTime());
                 
             return all;
 	}
