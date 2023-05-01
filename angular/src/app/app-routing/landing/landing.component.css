@@ -1,0 +1,39 @@
+/* CSS code for landing page */
+
+/* Set the background image */
+body {
+    background-image: url("generic_bg.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    /* margin: 0; */
+  }
+  
+  /* Create a container for the login/register button */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  /* Style the button */
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
+  
+  /* Hover effect */
+  .button:hover {
+    background-color: #3e8e41;
+  }
+  
