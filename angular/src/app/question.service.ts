@@ -36,6 +36,8 @@ export class QuestionService {
             .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
             .set('Access-Control-Allow-Headers','*');
 
+        // this.sendEmail(this.currQuestionId);
+
         return this.httpClient.post<Question>(`${this.baseUrl}/addquestion`, question, {'headers': headers});
     }
 
@@ -61,4 +63,16 @@ export class QuestionService {
         return this.httpClient.delete(`${this.baseUrl}/deletequestion/`+id, {'headers': headers});
     }
 
+    sendEmail(id:number) {
+        const headers= new HttpHeaders()
+        .set('Authorization', 'Bearer ' + this.loginService.token)
+        .set('responseType', 'text')
+        .set('Access-Control-Allow-Origin', '*')
+        .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+        .set('Access-Control-Allow-Headers','*');
+
+        console.log("is this happening?");
+        console.log(id);
+        return this.httpClient.get(`${this.baseUrl}/sendemail/` + id, {'headers': headers});
+    }
 }
