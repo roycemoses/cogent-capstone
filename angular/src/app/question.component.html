@@ -34,7 +34,8 @@
     <th>Action</th>
     <tr *ngFor="let question of questions">
         <td style="padding: 0 50px" *ngIf="question.status=='accepted'">{{question.id}}</td>
-        <td style="padding: 0 50px" *ngIf="question.status=='accepted'"><img src="{{question.image_src}}"></td>
+        <td style="padding: 0 50px" *ngIf="question.status=='accepted'"> <img src='assets/ss_yoshigalint9.png' height='100px' width="100px"></td>
+        <!-- <td style="padding: 0 50px" *ngIf="question.status=='accepted'"><img src="{{question.image_src}}"></td> -->
         <td style="padding: 0 50px" *ngIf="question.status=='accepted'">{{question.topic}}</td>
         <td style="padding: 0 50px" *ngIf="question.status=='accepted'">{{question.title}}</td>
         <td style="padding: 0 50px" *ngIf="question.status=='accepted'">{{question.description_question}}</td>
@@ -42,6 +43,7 @@
         </td>
     </tr>
 </table>
+<img src='ss_yoshigalint9.png'>
 <!-- <ng-container *ngFor="let question of questions; let i = index">
     <ng-container *ngIf="question.status=='accepted'">
     {{question.id}}
