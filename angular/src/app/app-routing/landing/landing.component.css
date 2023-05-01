@@ -2,11 +2,11 @@
 
 /* Set the background image */
 body {
-    background-image: url("generic_bg.jpg");
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    /* margin: 0; */
+    /* background-image: url("generic_bg.jpg"); */
+    /* background-size: cover; */
+    /* background-position: center; */
+    /* height: 100vh; */
+    /* margin: 0 !important; */
   }
   
   /* Create a container for the login/register button */

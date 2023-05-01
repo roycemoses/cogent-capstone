@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+/* CSS code for landing page */
+
+/* Set the background image */
+body {
+    background-image: url("generic_bg.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0 !important;
+  }
