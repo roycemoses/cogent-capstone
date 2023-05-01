@@ -3,6 +3,7 @@ import { QuestionService } from 'src/app/question.service';
 import { Question } from 'src/app/question';
 import { DatePipe } from '@angular/common';
 import { LoginService } from '../login/login.service';
+import { Router } from '@angular/router';
 // import { Question.createQuestion }
 
 @Component({
@@ -15,7 +16,7 @@ export class CreateQuestionComponent
     userType:string='';
     //mailtime!:boolean;
 
-    constructor(private questionService:QuestionService, public datePipe:DatePipe, private loginService:LoginService) {
+    constructor(private questionService:QuestionService, public datePipe:DatePipe, private loginService:LoginService,private router:Router) {
         this.userType = loginService.userType;
         this.question_form=new Question("","","","","","",[],"","");
 
@@ -41,6 +42,13 @@ export class CreateQuestionComponent
         });
     //this.mailtime = true;
     
+       
+
+    if(this.loginService.userType=='admin'){
+      this.router.navigate(['/admin-dashboard']);
+    }else if(this.loginService.userType=='user'){
+      this.router.navigate(['/user-dashboard']);
+    }
   }
 
   // subMail() {
