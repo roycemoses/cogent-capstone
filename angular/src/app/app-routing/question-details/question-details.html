@@ -39,7 +39,21 @@
             
         </tr>
     </table>
-</body>
+
+    <h1>Answers</h1>
+    <table>
+        <th>Id</th>
+        <th>Image</th>
+        <th>Description</th>
+        <th>Author</th>
+        <tr *ngFor="let answer of question.answers">
+            <td *ngIf="answer.status=='accepted'">{{answer.id}}</td>
+            <td *ngIf="answer.status=='accepted'"><img src="answer.image_src"></td>
+            <td *ngIf="answer.status=='accepted'">{{answer.description_answer}}</td>
+            <td *ngIf="answer.status=='accepted'">{{answer.created_by}}</td>
+
+        </tr>
+    </table>
 <!-- <p>
     {{question_id}}
     {{question.description_question}}
@@ -53,7 +67,7 @@
     {{question.qapproved_by}}
 </p> -->
 
-<br><br><br>
+<!-- <br><br><br>
 <ng-container *ngFor="let answer of answers; let i = index">
 
     <ng-container *ngIf="answer.status == 'accepted'">
@@ -62,12 +76,13 @@
     {{answer.image_src}}
     {{answer.status}}
     {{answer.datetime}}
-    <!-- {{answer.question}} -->
+    {{answer.question}}
     {{answer.approved_by}}
     {{answer.created_by}}
     <br><br>
     </ng-container>
-</ng-container>
-
+</ng-container> -->
+<h2>Create Answer</h2>
 <answer></answer>
+</body>
 

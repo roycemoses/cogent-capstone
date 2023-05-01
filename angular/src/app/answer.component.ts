@@ -6,6 +6,7 @@ import { QuestionDetailsService } from './app-routing/question-details/question-
 import { Question } from './question';
 import { LoginService } from './app-routing/login/login.service';
 import { Routes, RouterModule, Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'answer',
@@ -15,7 +16,7 @@ export class AnswerComponent implements OnInit {
   answer_form=new Answer("","","","",new Question("","","","","","",[],"",""),"","");
   answers:Answer[];
   constructor(private questionService:QuestionService, private questionDetailsService:QuestionDetailsService,
-    private answerService:AnswerService, private loginService:LoginService, private router:Router) {
+    private answerService:AnswerService, private loginService:LoginService, private router:Router,private datePipe:DatePipe) {
     this.answers = [];
   }
   
@@ -34,15 +35,21 @@ export class AnswerComponent implements OnInit {
     answer_form.question_id = this.questionService.currQuestionId;
     console.log(this.loginService.user.userName);
     console.log(typeof answer_form.acreated_by);
-    this.answerService.addAnswerToQuestion(new Answer(answer_form.description_answer, answer_form.image_src, answer_form.status,
-        answer_form.datetime, this.questionDetailsService.question, answer_form.approved_by, this.loginService.user.userName))
+    let currentDateTime = this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss');
+    let str = String(currentDateTime);
+    this.answerService.addAnswerToQuestion(new Answer(answer_form.description_answer, answer_form.image_src, 'pending',
+        str, this.questionDetailsService.question, "", this.loginService.user.userName))
         .subscribe((data:Answer)=>{
             console.log(data);
             // this.question = data;
     })
 
     alert("Your answer has succesfully been submitted!");
-    this.router.navigate(['/admin-dashboard']);
+    if(this.loginService.userType=='admin'){
+      this.router.navigate(['/admin-dashboard']);
+    }else if(this.loginService.userType=='user'){
+      this.router.navigate(['/user-dashboard']);
+    }
   }
 
 //   answerSubmittedAlert()
