@@ -27,18 +27,18 @@
 
 <form novalidate #QUESTION_FORM="ngForm" (ngSubmit)="onSubmitQuestion(question_form)">
     <div>
-        <label for="qcreated_by">Creator</label>
-        <input type="text" [(ngModel)]="question_form.qcreated_by" name="qcreated_by" required>
-    </div>
-
-    <div>
-        <label for="qapproved_by">Acceptor</label>
-        <input type="text" [(ngModel)]="question_form.qapproved_by" name="qapproved_by" required>
+        <label for="tile">Title</label>
+        <input type="text" [(ngModel)]="question_form.title" name="title" required>
     </div>
 
     <div> 
         <label for="topic">Topic</label>
         <input type="text" [(ngModel)]="question_form.topic" name="topic" required>
+    </div>
+
+    <div>
+        <label for="description">Description</label>
+        <input type="text" [(ngModel)]="question_form.description_question" name="description" required>
     </div>
 
     <div>

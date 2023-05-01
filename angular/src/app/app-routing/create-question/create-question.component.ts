@@ -3,6 +3,7 @@ import { QuestionService } from 'src/app/question.service';
 import { Question } from 'src/app/question';
 import { DatePipe } from '@angular/common';
 import { LoginService } from '../login/login.service';
+import { Router } from '@angular/router';
 // import { Question.createQuestion }
 
 @Component({
@@ -14,7 +15,7 @@ export class CreateQuestionComponent
     question_form: Question;
     userType:string='';
 
-    constructor(private questionService:QuestionService, public datePipe:DatePipe, private loginService:LoginService) {
+    constructor(private questionService:QuestionService, public datePipe:DatePipe, private loginService:LoginService,private router:Router) {
         this.userType = loginService.userType;
         this.question_form=new Question("","","","","","",[],"","");
 
@@ -35,6 +36,12 @@ export class CreateQuestionComponent
     console.log("hi i added a question to the backend");
     this.questionService.addQuestion(new Question(questionform.description_question, questionform.image_src, str, 
         'pending', questionform.topic, questionform.title, [], questionform.qcreated_by, questionform.qapproved_by)).subscribe();
+
+    if(this.loginService.userType=='admin'){
+      this.router.navigate(['/admin-dashboard']);
+    }else if(this.loginService.userType=='user'){
+      this.router.navigate(['/user-dashboard']);
+    }
   }
 
 }
