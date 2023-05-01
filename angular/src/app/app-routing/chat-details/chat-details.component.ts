@@ -3,6 +3,8 @@ import { LoginService } from '../login/login.service';
 import { User } from 'src/app/user';
 import { UserService } from 'src/app/user.service';
 import { ChatService } from 'src/app/chat.service';
+import { Chat } from 'src/app/chat';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'chat-details',
@@ -11,13 +13,34 @@ import { ChatService } from 'src/app/chat.service';
 export class ChatDetailsComponent
 {
 
-    constructor() {}
-        
+    user!:User;
+    chatUser!:User; // incoming chat user
+    chats!:Chat[];
+    chat_form:Chat;
+
+    constructor(private loginService:LoginService, private chatService:ChatService, public datePipe:DatePipe) {
+        this.user = loginService.user;
+        this.chatUser = chatService.currChatUser;
+        this.chat_form = new Chat("", "", "", "");
+    }
   
     ngOnInit(): void {
-        // this.userService.getUsers().subscribe((data: User[]) => {
-        // console.log(data);
-        // this.users = data;
-        // });
+        this.chatService.getAllMessagesBetweenUsers(this.user, this.chatUser).subscribe((data: Chat[]) => {
+            console.log(data);
+            this.chats = data;
+        });
     }
+
+    onSubmitChat()
+    {
+        let currentDateTime = this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss');
+        let str = String(currentDateTime);
+
+        this.chatService.addMessage(new Chat(this.user.userName, this.chatUser.userName, str, this.chat_form.message)).subscribe((data:Chat) => {
+            console.log(data);
+            this.ngOnInit();
+        });
+    }
+
+
 }

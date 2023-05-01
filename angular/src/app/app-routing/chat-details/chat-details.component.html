@@ -1,1 +1,14 @@
-<p>hi</p>
+<h1 style='text-align:left'>{{user.name}}<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>{{chatUser.name}}</h1>
+
+<ng-container *ngFor="let chat of chats">
+    {{chat.message}}
+    {{chat.datetime}}
+</ng-container>
+
+<form novalidate #CHAT_FORM="ngForm" (ngSubmit)="onSubmitChat()">
+    <div>
+        <label for="message">Message</label>
+        <input type="text" [(ngModel)]="chat_form.message" name="message" required>
+    </div>    
+    <button [disabled]="CHAT_FORM.invalid" type="submit">Send</button>
+</form>

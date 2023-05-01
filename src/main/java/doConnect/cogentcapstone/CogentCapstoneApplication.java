@@ -2,6 +2,7 @@ package doConnect.cogentcapstone;
 
 
 import doConnect.cogentcapstone.entity.Answer;
+import doConnect.cogentcapstone.entity.Chat;
 import doConnect.cogentcapstone.entity.Question;
 import doConnect.cogentcapstone.mail.EmailUtil;
 import java.util.Properties;
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import doConnect.cogentcapstone.entity.User;
 import doConnect.cogentcapstone.repository.AnswerRepository;
+import doConnect.cogentcapstone.repository.ChatRepository;
 import doConnect.cogentcapstone.repository.QuestionRepository;
 import doConnect.cogentcapstone.repository.UserRepository;
 import java.util.ArrayList;
@@ -84,6 +86,9 @@ public class CogentCapstoneApplication implements WebMvcConfigurer {
     
     @Autowired
     private AnswerRepository aRepo;
+    
+    @Autowired
+    private ChatRepository cRepo;
 
     @PostConstruct
     public void initUsers() {
@@ -120,6 +125,12 @@ public class CogentCapstoneApplication implements WebMvcConfigurer {
         
         qRepo.findById(100).get().setAnswers(answers_temp);
 */
+        List<Chat> chats = Stream.of(
+                new Chat(300,"gyanendra","user1","i like cats","4/4/4"),
+                new Chat(301,"user1","gyanendra","i like dogs","4/4/4")
+        ).collect(Collectors.toList());
+        cRepo.saveAll(chats);
+        
     }
 	
 }
