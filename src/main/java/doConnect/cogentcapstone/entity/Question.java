@@ -38,6 +38,7 @@ public class Question {
 	private String topic;
 	private String title;
 	//mappedBy = "question", fetch=FetchType.EAGER, 
+        
 	@OneToMany(cascade=CascadeType.ALL,mappedBy = "question")
 	@JsonIgnore
 //        @JoinColumn(name = "question_id",referencedColumnName = "question_id")
