@@ -46,6 +46,7 @@ public class QuestionController {
     //add
     @PostMapping(value={"/addquestion"})
     public Question addQuestion(@RequestBody @Validated Question q) {
+    	q.setImage_src(q.getImage_src().replace("C:\\fakepath\\", "assets/"));
     	Question returnQuestion = qtr.update(q);
     	Optional<Question> o = getQuestionbyId(returnQuestion.getId());
         
@@ -54,6 +55,8 @@ public class QuestionController {
         for (User temp : admins) {
             EmailUtil.infoEmailQ(temp.getEmail(),o);
         }
+        
+        
         return returnQuestion;
     }
     

@@ -52,6 +52,21 @@ export class CreateQuestionComponent
     }
   }
 
+  url!:any;
+  readUrl(event:any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+  
+      reader.onload = (event: ProgressEvent) => {
+        this.url = (<FileReader>event.target).result;
+      }
+  
+      console.log(reader.readAsDataURL(event.target.files[0]));
+      console.log(this.url);
+    }
+  }
+  
+
   // subMail() {
   //   this.questionService.sendEmail(this.question_form.id);
   //   this.mailtime = false;

@@ -34,7 +34,7 @@
     <th>Action</th>
     <tr *ngFor="let question of questions">
         <td style="padding: 0 50px" *ngIf="question.status=='accepted'">{{question.id}}</td>
-        <td style="padding: 0 50px" *ngIf="question.status=='accepted'"> <img src='assets/ss_yoshigalint9.png' height='100px' width="100px"></td>
+        <td style="padding: 0 50px" *ngIf="question.status=='accepted'"> <img src='{{question.image_src}}' height='100px' width="100px"></td>
         <!-- <td style="padding: 0 50px" *ngIf="question.status=='accepted'"><img src="{{question.image_src}}"></td> -->
         <td style="padding: 0 50px" *ngIf="question.status=='accepted'">{{question.topic}}</td>
         <td style="padding: 0 50px" *ngIf="question.status=='accepted'">{{question.title}}</td>

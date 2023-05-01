@@ -36,6 +36,7 @@
     <div>
         <form action="/action_page.php">
             <label for="img">Select image </label>
+            <!-- <input type='file' (change)="readUrl($event)"> -->
             <input type="file" [(ngModel)]="question_form.image_src" id="img" name="img" accept="image/*">
         </form>
     </div>
