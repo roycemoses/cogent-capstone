@@ -21,6 +21,7 @@ import { PendingAnswersComponent } from './app-routing/pending-answers/pending-a
 import { RegisterComponent } from './app-routing/register/register.component';
 import { ChatHomepageComponent } from './app-routing/chat-homepage/chat-homepage.component';
 import { ChatDetailsComponent } from './app-routing/chat-details/chat-details.component';
+import { SearchQuestionComponent } from './app-routing/search-question/search-question.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ChatDetailsComponent } from './app-routing/chat-details/chat-details.co
     PendingAnswersComponent,
     RegisterComponent,
     ChatHomepageComponent,
-    ChatDetailsComponent
+    ChatDetailsComponent,
+    SearchQuestionComponent
   ],
   imports: [
     BrowserModule,

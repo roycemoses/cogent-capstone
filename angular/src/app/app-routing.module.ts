@@ -21,6 +21,7 @@ import { RegisterComponent } from './app-routing/register/register.component';
 import { AdminAndUserGuard } from './services/admin-and-user.guard';
 import { ChatHomepageComponent } from './app-routing/chat-homepage/chat-homepage.component';
 import { ChatDetailsComponent } from './app-routing/chat-details/chat-details.component';
+import { SearchQuestionComponent } from './app-routing/search-question/search-question.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -35,6 +36,7 @@ const routes: Routes = [
     { path: 'pending-answers', canActivate:[AdminGuard], component: PendingAnswersComponent},
     { path: 'chat-homepage', canActivate:[AdminAndUserGuard], component: ChatHomepageComponent},
     { path: 'chat-details', canActivate:[AdminAndUserGuard], component: ChatDetailsComponent },
+    { path: 'search-question', canActivate:[AdminAndUserGuard], component: SearchQuestionComponent },
     // { path: 'about', canActivate:[AuthGuard], component: AboutComponent },
     // { path: 'careers', canActivate:[AuthGuard], component: CareersComponent },
     // { path: 'contact', component: ContactComponent },

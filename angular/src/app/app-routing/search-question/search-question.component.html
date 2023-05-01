@@ -1,0 +1,32 @@
+<label for="query">Search Question</label>
+<input type="text" [(ngModel)]="query" name="query" placeholder="Enter a question">
+
+<br>
+
+<ng-container *ngFor="let question of questions">
+    <ng-container *ngIf="question.title.includes(query)">
+        {{question.description_question}}
+        {{question.title}}
+        {{question.qcreated_by}}
+        {{question.qapproved_by}}
+        {{question.topic}}
+        {{question.datetime}}
+
+    <button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
+
+        <br>
+    </ng-container>
+</ng-container>
+
+
+<!-- <form novalidate #SEARCH_QUESTION_FORM="ngForm" (ngSubmit)="onSubmitLogin()">
+    <div>
+        <label for="userName">Username</label>
+        <input type="text" [(ngModel)]="loginForm.userName" name="userName" required>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="text" [(ngModel)]="loginForm.password" name="password" required minlength="4">
+    </div> 
+    <button [disabled]="LOGIN_FORM.invalid" type="submit">Login</button>
+</form> -->
