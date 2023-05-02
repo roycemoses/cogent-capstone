@@ -26,12 +26,14 @@
 <h1>Questions</h1>
 
 <table>
+    <tr>
     <th>Id</th>
     <th>Image</th>
     <th>Topic</th>
     <th>Title</th>
     <th>Description</th>
     <th>Action</th>
+    </tr>
     <tr *ngFor="let question of questions">
         <td style="padding: 0 50px" *ngIf="question.status=='accepted'">{{question.id}}</td>
         <td style="padding: 0 50px" *ngIf="question.status=='accepted'"> <img src='{{question.image_src}}' height='100px' width="100px"></td>
