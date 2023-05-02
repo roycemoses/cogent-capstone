@@ -38,7 +38,7 @@
         <th>Author</th>
         <tr *ngFor="let answer of answers">
             <td style="padding: 0 50px" *ngIf="answer.status=='accepted'">{{answer.id}}</td>
-            <td style="padding: 0 50px" *ngIf="answer.status=='accepted'"><img src="answer.image_src"></td>
+            <td style="padding: 0 50px" *ngIf="answer.status=='accepted'"><img src="{{answer.image_src}}" height="100"></td>
             <td style="padding: 0 50px" *ngIf="answer.status=='accepted'">{{answer.description_answer}}</td>
             <td style="padding: 0 50px" *ngIf="answer.status=='accepted'">{{answer.created_by}}</td>
 

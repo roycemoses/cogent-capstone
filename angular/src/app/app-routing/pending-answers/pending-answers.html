@@ -10,7 +10,9 @@
 </div>
 <br>
 
+<div *ngIf="answers.length==0; else elseBlock">No pending answers to display.</div>
 
+<ng-template #elseBlock>
 <table>
     <th>Id</th>
     <th>DateTime</th>
@@ -27,6 +29,8 @@
 
     </tr>
 </table>
+
+</ng-template>
 <!-- <ng-container *ngFor="let answer of answers; let i = index">
     <ng-container *ngIf="answer.status == 'pending'">
         {{answer.id}}

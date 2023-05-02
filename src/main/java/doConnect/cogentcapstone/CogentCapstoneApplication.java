@@ -103,15 +103,16 @@ public class CogentCapstoneApplication implements WebMvcConfigurer {
         
         
         //List<Answer> answers = new ArrayList<Answer>();
-        Question q1 = new Question(100,"i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", new ArrayList<>(),"ok","hi");
-        Answer a1 = new Answer(1001,"it's 2","test_image1.png","accepted","4/4/3004",q1,"ok","hi");
+        Question q1 = new Question(100,"i am bad at sqrts", "/assets/test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", new ArrayList<>(),"ok","hi");
+        Answer a1 = new Answer(1001,"it's 2","assets/test_image1.png","accepted","4/4/3004",q1,"ok","hi");
         
         q1.getAnswers().add(a1);
         
         
         List<Question> questions = Stream.of(
-                new Question(100,"i am bad at sqrts", "test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", new ArrayList<>(), "ok", "hi"),
-                new Question(101,"q2", "q2", "q2", "q2", "asdfgasfd", "whasdfaat is the sqrt4", new ArrayList<>(), "okasdf", "hadsfi")
+                new Question(100,"i am bad at sqrts", "/assets/test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", new ArrayList<>(), "ok", "hi"),
+                new Question(101,"q2", "q2", "q2", "accepted", "asdfgasfd", "whasdfaat is the sqrt4", new ArrayList<>(), "okasdf", "hadsfi"),
+                q1
         ).collect(Collectors.toList());
         qRepo.saveAll(questions);
         

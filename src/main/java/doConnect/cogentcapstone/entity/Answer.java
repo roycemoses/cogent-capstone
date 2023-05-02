@@ -24,7 +24,7 @@ public class Answer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String description_answer;
-	private String img_src;
+	private String image_src;
 	private String status;
 	private String datetime;
 	
