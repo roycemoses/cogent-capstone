@@ -35,11 +35,14 @@ export class PendingQuestionsComponent implements OnInit
 
     remove(i:number)
     {
-        this.questions[i].status='deleted!!!'; // we should never see this
-        this.questionService.updateQuestion(this.questions[i]).subscribe((data: Question) => {
-            console.log(data);
-            this.questionService.deleteQuestionById(this.questions[i].id).subscribe();  
-          });
+        if (confirm("Are you sure you want to delete " + this.questions[i].title + " (created by " + this.questions[i].qcreated_by + ") ?"))
+        {
+            this.questions[i].status='deleted!!!'; // we should never see this
+            this.questionService.updateQuestion(this.questions[i]).subscribe((data: Question) => {
+                console.log(data);
+                this.questionService.deleteQuestionById(this.questions[i].id).subscribe();  
+            });
+        }
     }
 
 }
