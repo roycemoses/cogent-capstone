@@ -23,14 +23,16 @@ export class PendingQuestionsComponent implements OnInit
         this.questionService.getQuestions().subscribe((data: Question[]) => {
             console.log(data);
             this.questions = data;
+            for(let i=0;i<this.questions.length;i++){
+                console.log(i);
+                if(this.questions[i].status=='pending'){
+                    this.pending=this.pending+1;
+                }
+              }
+              console.log(this.questions);
+              console.log("Pending"+this.pending);
           });
-          for(let i=0;i<this.questions.length;i++){
-            if(this.questions[i].status=='pending'){
-                this.pending++;
-            }
-          }
-          console.log(this.questions);
-          console.log("Pending"+this.pending);
+          
     }    
 
     approve(i:number)
