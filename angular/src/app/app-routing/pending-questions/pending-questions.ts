@@ -11,6 +11,7 @@ import { QuestionService } from 'src/app/question.service';
 export class PendingQuestionsComponent implements OnInit
 {
     questions:Question[];
+    pending!:number;
 
     constructor(private questionService:QuestionService) 
     {
@@ -23,6 +24,13 @@ export class PendingQuestionsComponent implements OnInit
             console.log(data);
             this.questions = data;
           });
+          for(let i=0;i<this.questions.length;i++){
+            if(this.questions[i].status=='pending'){
+                this.pending++;
+            }
+          }
+          console.log(this.questions);
+          console.log("Pending"+this.pending);
     }    
 
     approve(i:number)
