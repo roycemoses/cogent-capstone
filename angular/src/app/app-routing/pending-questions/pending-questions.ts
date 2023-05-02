@@ -41,6 +41,7 @@ export class PendingQuestionsComponent implements OnInit
         this.questions[i].status='accepted';
         this.questionService.updateQuestion(this.questions[i]).subscribe((data: Question) => {
             console.log(data);
+            this.ngOnInit();
           });
     }
 

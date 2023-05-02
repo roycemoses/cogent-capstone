@@ -40,6 +40,7 @@ export class PendingAnswersComponent implements OnInit
         this.answers[i].status='accepted';
         this.answerService.updateAnswer(this.answers[i]).subscribe((data: Answer) => {
             console.log(data);
+            this.ngOnInit();
           });
     }
 
