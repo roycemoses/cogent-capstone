@@ -18,7 +18,7 @@ export class AdminGuard implements CanActivate {
             //this.router.navigate(['/'])
             return new Promise((resolve, reject) => {
                 console.log(this.loginService.isLoggedIn);
-                // console.log("User type: " + this.login.getUserType());
+                console.log("User type: " + this.loginService.userType);
                 if (this.loginService.userType == 'admin') {
                     resolve(true);
                 } else {    

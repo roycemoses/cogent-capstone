@@ -22,6 +22,7 @@ import { RegisterComponent } from './app-routing/register/register.component';
 import { ChatHomepageComponent } from './app-routing/chat-homepage/chat-homepage.component';
 import { ChatDetailsComponent } from './app-routing/chat-details/chat-details.component';
 import { SearchQuestionComponent } from './app-routing/search-question/search-question.component';
+import { PageNotFoundComponent } from './app-routing/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { SearchQuestionComponent } from './app-routing/search-question/search-qu
     RegisterComponent,
     ChatHomepageComponent,
     ChatDetailsComponent,
-    SearchQuestionComponent
+    SearchQuestionComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

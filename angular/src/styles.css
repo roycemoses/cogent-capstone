@@ -14,3 +14,24 @@ body {
     font-weight:750;
 }
 
+table,th,td{
+  border: 1px solid;
+}
+
+table{
+  border-collapse: collapse;
+}
+
+
+td{
+  color: black;
+}
+tr:nth-child(even) {
+  background-color: #dcfbfe;
+  background-blend-mode: multiply;
+}
+tr:nth-child(odd){ 
+  background-color:#d0eef0;
+  background-blend-mode: multiply;
+}
+

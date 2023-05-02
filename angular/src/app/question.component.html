@@ -26,20 +26,25 @@
 <h1>Questions</h1>
 
 <table>
+    <tr style="background-color: rgb(0, 195, 255);">
     <th>Id</th>
     <th>Image</th>
+    <th>Author</th>
+    <th>Time</th>
     <th>Topic</th>
     <th>Title</th>
-    <th>Description</th>
+    <th>Question</th>
     <th>Action</th>
+    </tr>
     <tr *ngFor="let question of questions">
-        <td style="padding: 0 50px" *ngIf="question.status=='accepted'">{{question.id}}</td>
-        <td style="padding: 0 50px" *ngIf="question.status=='accepted'"> <img src='{{question.image_src}}' height='100px' width="100px"></td>
-        <!-- <td style="padding: 0 50px" *ngIf="question.status=='accepted'"><img src="{{question.image_src}}"></td> -->
-        <td style="padding: 0 50px" *ngIf="question.status=='accepted'">{{question.topic}}</td>
-        <td style="padding: 0 50px" *ngIf="question.status=='accepted'">{{question.title}}</td>
-        <td style="padding: 0 50px" *ngIf="question.status=='accepted'">{{question.description_question}}</td>
-        <td style="padding: 0 50px" *ngIf="question.status=='accepted'">    <button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
+        <td style="padding: 0 5px" *ngIf="question.status=='accepted'">{{question.id}}</td>
+        <td style="padding: 0 0px" *ngIf="question.status=='accepted'"> <img src='{{question.image_src}}' height='100px' width="100px"></td>
+        <td style="padding: 0 5px" *ngIf="question.status=='accepted'">{{question.qcreated_by}}</td>
+        <td style="padding: 0 5px" *ngIf="question.status=='accepted'">{{question.datetime}}</td>
+        <td style="padding: 0 5px" *ngIf="question.status=='accepted'">{{question.topic}}</td>
+        <td style="padding: 0 5px" *ngIf="question.status=='accepted'">{{question.title}}</td>
+        <td style="padding: 0 5px" *ngIf="question.status=='accepted'">{{question.description_question}}</td>
+        <td style="padding: 0 5px" *ngIf="question.status=='accepted'">    <button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
         </td>
     </tr>
 </table>
