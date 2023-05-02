@@ -11,6 +11,7 @@ import { AnswerService } from 'src/app/answer.service';
 export class PendingAnswersComponent implements OnInit
 {
     answers:Answer[];
+    pending!:number;
 
     constructor(private answerService:AnswerService) 
     {
@@ -22,6 +23,15 @@ export class PendingAnswersComponent implements OnInit
         this.answerService.getAllAnswers().subscribe((data: Answer[]) => {
             console.log(data);
             this.answers = data;
+            this.pending=0;
+            for(let i=0;i<this.answers.length;i++){
+                console.log(this.pending);
+                if(this.answers[i].status=='pending'){
+                    this.pending=this.pending+1;
+                }
+              }
+              console.log(this.answers);
+              console.log("Pending"+this.pending);
           });
     }    
 
