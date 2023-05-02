@@ -41,6 +41,7 @@ export class PendingAnswersComponent implements OnInit
             this.answerService.updateAnswer(this.answers[i]).subscribe((data: Answer) => {
                 console.log(data);
                 this.answerService.deleteAnswerById(this.answers[i].id).subscribe();  
+                this.ngOnInit(); // correct placement
             });
         }
     }
