@@ -38,6 +38,7 @@ public class AnswerController {
     //add
     @PostMapping(value={"/addanswer"})
     public Answer addAnswer(@RequestBody @Validated Answer a) {
+        a.setImage_src(a.getImage_src().replace("C:\\fakepath\\", "assets/"));
         Answer returnAnswer = atr.update(a);
     	Optional<Answer> o = getAnswerbyId(returnAnswer.getId());
         
