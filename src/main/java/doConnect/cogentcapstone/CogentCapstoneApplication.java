@@ -93,30 +93,51 @@ public class CogentCapstoneApplication implements WebMvcConfigurer {
     @PostConstruct
     public void initUsers() {
         List<User> users = Stream.of(
-                new User(101, "Gyanendra", "gyanendra", "password", "group5newmailbot@gmail.com", "admin"),
-                new User(102, "User1", "user1", "pwd1", "group5newmailbot@gmail.com", "user"),
-                new User(103, "User2", "user2", "pwd2", "user2@gmail.com", "user"),
-                new User(104, "User3", "user3", "pwd3", "user3@gmail.com", "user"),
-                new User(104, "none", "none", "none", "none", "none")
+                new User("Gyanendra", "gyanendra", "password", "group5newmailbot@gmail.com", "admin"),
+                new User("User1", "user1", "pwd1", "group5newmailbot@gmail.com", "user"),
+                new User("User2", "user2", "pwd2", "user2@gmail.com", "user"),
+                new User("s", "s", "asdf", "user3@gmail.com", "admin"),
+                new User("none", "none", "none", "none", "none")
         ).collect(Collectors.toList());
         uRepo.saveAll(users);
         
         
         //List<Answer> answers = new ArrayList<Answer>();
-        Question q1 = new Question(100,"i am bad at sqrts", "/assets/test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", new ArrayList<>(),"ok","hi");
-        Answer a1 = new Answer(1001,"it's 2","assets/test_image1.png","accepted","4/4/3004",q1,"ok","hi");
-        
-        q1.getAnswers().add(a1);
-        
+//        Question q1 = new Question(100,"i am bad at sqrts", "/assets/test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", new ArrayList<>(),"ok","hi");
+//        Answer a1 = new Answer(1001,"it's 2","assets/test_image1.png","accepted","4/4/3004",q1,"ok","hi");
+//        
+//        q1.getAnswers().add(a1);
+//        
+//        
+//        List<Question> questions = Stream.of(
+//                new Question(100,"i am bad at sqrts", "/assets/test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", new ArrayList<>(), "ok", "hi"),
+//                new Question(101,"q2", "q2", "q2", "accepted", "asdfgasfd", "whasdfaat is the sqrt4", new ArrayList<>(), "okasdf", "hadsfi"),
+//                q1
+//        ).collect(Collectors.toList());
+//        qRepo.saveAll(questions);
+
+        List<Answer> answers = new ArrayList<>();
         
         List<Question> questions = Stream.of(
-                new Question(100,"i am bad at sqrts", "/assets/test_image1.png", "4/4/2004 22:22", "accepted", "math", "what is the sqrt4", new ArrayList<>(), "ok", "hi"),
-                new Question(101,"q2", "q2", "q2", "accepted", "asdfgasfd", "whasdfaat is the sqrt4", new ArrayList<>(), "okasdf", "hadsfi"),
-                q1
+                new Question("What is the capital city of France?", "assets/test_image1.png", "pending", "Geography", "French Capital", answers, "John Doe", "Jane Smith"),
+                new Question("What are the three primary colors?", "assets/ss_comic.png", "accepted", "Art", "Primary Colors", answers, "Alice Lee", "Bob Johnson"),
+                new Question("Who was the first president of the United States?", "", "pending", "History", "US President", answers, "Mary Kim", "Tom Chen"),
+                new Question("What is the highest mountain in the world?", "", "accepted", "Geography", "Highest Mountain", answers, "Peter Brown", "Sarah Davis"),
+                new Question("Who wrote the book 'To Kill a Mockingbird'?", "assets/ss_space.jpg", "pending", "Literature", "To Kill a Mockingbird", answers, "David Lee", "Susan Chang")
         ).collect(Collectors.toList());
         qRepo.saveAll(questions);
         
-        
+        answers = Stream.of(
+                new Answer("The capital city of France is Paris.", "assets/test_image1.png", "accepted", qRepo.findById(users.size()+1).get(), "Jane Smith", "John Doe"),
+                new Answer("The three primary colors are red, blue, and yellow.", "assets/ss_yoshigalint9.png", "accepted", qRepo.findById(users.size()+2).get(), "Bob Johnson", "Alice Lee"),
+                new Answer("Red, blue, and yellow are the primary colors.", "", "accepted",  qRepo.findById(users.size()+2).get(),"Alice Lee", "Bob Johnson"),
+                new Answer("George Washington was the first president of the United States.", "", "pending",  qRepo.findById(users.size()+3).get(), "Tom Chen", "Mary Kim"),
+                new Answer("The first president of the United States was George Washington.", "", "accepted", qRepo.findById(users.size()+3).get(), "Mary Kim", "Tom Chen"),
+                new Answer("Mount Everest is the highest mountain in the world.", "assets/ss_yoshigalint9.png", "pending", qRepo.findById(users.size()+4).get(), "Peter Brown", "Sarah Davis"),
+                new Answer("Harper Lee wrote the book 'To Kill a Mockingbird'.", "assets/ss_yoshigalint9.png", "accepted", qRepo.findById(users.size()+5).get(), "Susan Chang", "David Lee"),
+                new Answer("The author of 'To Kill a Mockingbird' is Harper Lee.", "", "pending", qRepo.findById(users.size()+5).get(), "David Lee", "Susan Chang")
+        ).collect(Collectors.toList());
+        aRepo.saveAll(answers);
         
         /*
         List<Answer> answers_temp = Stream.of(

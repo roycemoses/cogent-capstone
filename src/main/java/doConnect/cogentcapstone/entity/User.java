@@ -32,5 +32,15 @@ public class User {
     public String getEmail() {
         return this.email;
     }
+
+    public User(String name, String userName, String password, String email, String userType) {
+        this.name = name;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.userType = userType;
+    }
+    
+    
 	
 }
