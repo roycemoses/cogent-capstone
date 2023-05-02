@@ -35,15 +35,24 @@ export class CreateQuestionComponent
   onSubmitQuestion(questionform:any) {
     let currentDateTime = this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss');
     let str = String(currentDateTime);
+    let status = 'pending';
     console.log("hi i added a question to the backend");
+
+    if (this.loginService.userType == 'admin')
+        status = 'accepted';
+
     this.questionService.addQuestion(new Question(questionform.description_question, questionform.image_src, str, 
-        'pending', questionform.topic, questionform.title, [], this.loginService.user.userName, questionform.qapproved_by)).subscribe((data)=>{
+        status, questionform.topic, questionform.title, [], this.loginService.user.userName, questionform.qapproved_by)).subscribe((data)=>{
           this.questionService.sendEmail(data.id);
           console.log(data.id);
         });
     //this.mailtime = true;
     
-    alert("Successfully created a question!");
+    if (this.loginService.userType == 'admin')
+        alert("Successfully created a question!\nYou are an admin. Your questions are auto-approved!");
+    else
+        alert("Successfully created a question!");
+        
 
     if(this.loginService.userType=='admin'){
       this.router.navigate(['/admin-dashboard']);

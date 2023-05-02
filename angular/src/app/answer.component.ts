@@ -37,14 +37,22 @@ export class AnswerComponent implements OnInit {
     console.log(typeof answer_form.acreated_by);
     let currentDateTime = this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss');
     let str = String(currentDateTime);
-    this.answerService.addAnswerToQuestion(new Answer(answer_form.description_answer, answer_form.image_src, 'pending',
+    let status = 'pending';
+    if (this.loginService.userType == 'admin')
+        status = 'accepted';
+    
+    this.answerService.addAnswerToQuestion(new Answer(answer_form.description_answer, answer_form.image_src, status,
         str, this.questionDetailsService.question, "", this.loginService.user.userName))
         .subscribe((data:Answer)=>{
             console.log(data);
             // this.question = data;
     })
 
-    alert("Your answer has succesfully been submitted!");
+    if (this.loginService.userType == 'admin')
+        alert("Successfully created an answer!\nYou are an admin. Your answers are auto-approved!");
+    else
+        alert("Successfully created an answer!");
+
     if(this.loginService.userType=='admin'){
       this.router.navigate(['/admin-dashboard']);
     }else if(this.loginService.userType=='user'){
