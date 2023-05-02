@@ -10,7 +10,7 @@
 </div>
 <br>
 
-<div *ngIf="answers.length==0; else elseBlock">No pending answers to display.</div>
+<div *ngIf="pending==0; else elseBlock">No pending answers to display.</div>
 
 <ng-template #elseBlock>
 <table>
