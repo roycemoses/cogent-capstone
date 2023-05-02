@@ -35,11 +35,14 @@ export class PendingAnswersComponent implements OnInit
 
     remove(i:number)
     {
-        this.answers[i].status='deleted!!!'; // we should never see this
-        this.answerService.updateAnswer(this.answers[i]).subscribe((data: Answer) => {
-            console.log(data);
-            this.answerService.deleteAnswerById(this.answers[i].id).subscribe();  
-          });
+        if (confirm("Are you sure you want to delete this answer? (created by " + this.answers[i].created_by + ")?"))
+        {
+            this.answers[i].status='deleted!!!'; // we should never see this
+            this.answerService.updateAnswer(this.answers[i]).subscribe((data: Answer) => {
+                console.log(data);
+                this.answerService.deleteAnswerById(this.answers[i].id).subscribe();  
+            });
+        }
     }
 
 }
