@@ -14,13 +14,17 @@
 
 <ng-template #elseBlock>
 <table>
+    <tr style="background-color: rgb(0, 195, 255);">
     <th>Id</th>
+    <th>Image</th>
     <th>Topic</th>
-    <th>Description</th>
+    <th>Question</th>
     <th>Author</th>
     <th>Action</th>
+    </tr>
     <tr *ngFor="let question of questions; let i=index">
         <td style="padding: 0 50px" *ngIf="question.status == 'pending'">{{question.id}}</td>
+        <td style="padding: 0 50px" *ngIf="question.status == 'pending'"><img src="{{question.image_src}}"></td>
         <td style="padding: 0 50px" *ngIf="question.status == 'pending'">{{question.topic}}</td>
         <td style="padding: 0 50px" *ngIf="question.status == 'pending'">{{question.description_question}}</td>
         <td style="padding: 0 50px" *ngIf="question.status == 'pending'">{{question.qcreated_by}}</td>
