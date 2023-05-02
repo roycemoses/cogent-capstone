@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, ObservedValueOf } from 'rxjs';
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { User } from 'src/app/user';
 import { AppComponent } from 'src/app/app.component';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn:'root'
@@ -15,8 +16,9 @@ export class LoginService
     public token:string = "";
     public user!:User;
     private baseUrl = 'http://localhost:8080';
+    showErrorMessage!:boolean;
     
-    constructor (private httpClient:HttpClient) {}
+    constructor (private httpClient:HttpClient,private router:Router) {}
     
     getLogins():Observable<Object> {
         const headers= new HttpHeaders()
@@ -33,7 +35,10 @@ export class LoginService
         this.httpClient.post(`${this.baseUrl}/authenticate`, login, { responseType: 'text' }).subscribe((data:String)=>{
             this.isLoggedIn = true;
             this.token = data.toString();
-        })
+        },
+        (error)=>{
+            this.showErrorMessage=true;
+        alert("Login failed try again")})
 
         return this.httpClient.post(`${this.baseUrl}/authenticate`, login, { responseType: 'text' });
         // this.http.post(url, body, { responseType: 'text' }).subscribe();
@@ -68,7 +73,14 @@ export class LoginService
             // this.appComponent.userType = data.userType;
             // console.log("this.appComponent.userType: " + this.appComponent.userType);
             this.user = data;
-        })
+            if (this.user.userType == 'admin')
+                this.router.navigate(['/admin-dashboard']);
+            else if (this.user.userType == 'user')
+                this.router.navigate(['/user-dashboard']);
+            console.log(this.user);
+            console.log("show error "+this.showErrorMessage);
+        },
+        (error)=>{this.showErrorMessage=true;})
 
         return this.httpClient.get<User>((`${this.baseUrl}/user/getbyname/${userName}`), {'headers':headers});
     }

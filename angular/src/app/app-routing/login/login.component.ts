@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
     token:String;
     loginSuccessful:boolean;
     user:User;
+    showErrorMessage!:boolean;
 
 
     constructor(private loginService:LoginService, private router:Router) 
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
         this.token = "";
         this.loginSuccessful = false;
         this.user = new User("", "", "", "", "User");
+        this.showErrorMessage=loginService.showErrorMessage;
     }
 
     ngOnInit(): void {
@@ -90,11 +92,12 @@ export class LoginComponent implements OnInit {
             console.log(data);
             this.user = data;
             console.log(this.user.userType);
-            if (this.user.userType == 'admin')
-                this.router.navigate(['/admin-dashboard']);
-            else if (this.user.userType == 'user')
-                this.router.navigate(['/user-dashboard']);
-            console.log(this.user);
+            console.log("routing");
+            // if (this.user.userType == 'admin')
+            //     this.router.navigate(['/admin-dashboard']);
+            // else if (this.user.userType == 'user')
+            //     this.router.navigate(['/user-dashboard']);
+            // console.log(this.user);
         })
     }
 

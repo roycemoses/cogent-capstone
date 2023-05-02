@@ -29,11 +29,11 @@
     <th>Action</th>
     </tr>
     <tr *ngFor="let question of questions">
-        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.title.includes(query)">{{question.id}}</td>
-        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.title.includes(query)">{{question.title}}</td>
-        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.title.includes(query)">{{question.topic}}</td>
-        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.title.includes(query)">{{question.description_question}}</td>
-        <td style="padding: 0 50px" *ngIf="question.title.includes(query)"><button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
+        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.description_question.toLowerCase().includes(query.toLowerCase())">{{question.id}}</td>
+        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.description_question.toLowerCase().includes(query.toLowerCase())">{{question.title}}</td>
+        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.description_question.toLowerCase().includes(query.toLowerCase())">{{question.topic}}</td>
+        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.description_question.toLowerCase().includes(query.toLowerCase())">{{question.description_question}}</td>
+        <td style="padding: 0 50px" *ngIf="question.description_question.toLowerCase().includes(query.toLowerCase())"><button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
         </td>
     </tr>
 </table>
