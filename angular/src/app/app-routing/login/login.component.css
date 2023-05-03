@@ -14,7 +14,13 @@
     width: 300px;
     font-size:14px;
   }
-
+  input[type="password"] {
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    font-size:14px;
+  }
+  
     /* Style the heading */
 h1 {
     color: black; /* Sets the text color to black */

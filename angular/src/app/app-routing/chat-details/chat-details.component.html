@@ -46,7 +46,7 @@
     <form novalidate #CHAT_FORM="ngForm" (ngSubmit)="onSubmitChat()" class="alignright">
         <div>
             <label for="message">Message</label> <br>
-            <input type="text" [(ngModel)]="chat_form.message" name="message" style="padding-bottom: 50px; padding-right:200px" required>
+            <textarea type="text" rows="5" cols="50" [(ngModel)]="chat_form.message" name="message" ng-style="{width: '150px', height: '50px'}" style="width:150px; height: 50px;" style="padding-bottom: 50px;" required></textarea>
         </div>    
         <button [disabled]="CHAT_FORM.invalid" type="submit">Send</button>
     </form>
