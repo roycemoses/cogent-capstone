@@ -21,9 +21,9 @@ export class AdminAndUserGuard implements CanActivate {
                 // console.log("User type: " + this.login.getUserType());
                 if (this.loginService.userType == 'admin' || this.loginService.userType == 'user') {
                     resolve(true);
-                } else {    
+                } else {   
+                    this.router.navigate(['/error/403']);
                     resolve(false);
-                    this.router.navigate(['/error'])
                 }
                 //end of verify
     })

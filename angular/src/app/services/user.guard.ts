@@ -22,8 +22,8 @@ export class UserGuard implements CanActivate {
                 if (this.loginService.userType == 'user') {
                     resolve(true);
                 } else {    
+                    this.router.navigate(['/error/403']);
                     resolve(false);
-                    this.router.navigate(['/error'])
                 }
                 //end of verify
     })

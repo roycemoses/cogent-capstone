@@ -17,6 +17,7 @@ export class QuestionDetailsComponent implements OnInit
     question_id:number;
     question!:Question;
     answers!:Answer[];
+    numOfAnswersAccepted:number = 0;
     userType:string='';
     constructor(private questionService:QuestionService, private questionDetailsService:QuestionDetailsService, private answerService:AnswerService,
         private loginService:LoginService) 
@@ -36,6 +37,13 @@ export class QuestionDetailsComponent implements OnInit
         this.answerService.getAllAnswersByQuestionId(this.question_id).subscribe((data:Answer[])=>{
             console.log(data);
             this.answers = data;
+            // this.answersLength = this.answers.length;
+            for (let i = 0; i < this.answers.length; i++)
+                if (this.answers[i].status == 'accepted')
+                    ++this.numOfAnswersAccepted;
+            
+            console.log("this.answers.length = " + this.answers.length);
+            console.log("this.numOfAnswersAccepted = " + this.numOfAnswersAccepted);
         })
     }    
 

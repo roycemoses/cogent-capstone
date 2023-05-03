@@ -22,16 +22,19 @@
     <th>Answer</th>
     <th>Action</th>
     </tr>
-    <tr *ngFor="let answer of answers; let i=index">
-        <td style="padding: 0 5px" *ngIf="answer.status == 'pending'">{{answer.id}}</td>
-        <td style="padding: 0 0px" *ngIf="answer.status == 'pending'"><img src="{{answer.image_src}}" height="100" width="100"></td>
-        <td style="padding: 0 5px" *ngIf="answer.status == 'pending'">{{answer.created_by}}</td>
-        <td style="padding: 0 5px" *ngIf="answer.status == 'pending'">{{answer.datetime}}</td>
-        <td style="padding: 0 5px" *ngIf="answer.status == 'pending'">{{answer.description_answer}}</td>
-        <td style="padding: 0 5px" *ngIf="answer.status == 'pending'"><button (click)="approve(i)">Approve</button>        <button (click)="remove(i)">Remove</button>
-        </td>
-
-    </tr>
+    <ng-container *ngFor = "let answer of answers; let i = index">
+        <ng-container *ngIf = "answer.status == 'pending'">
+            <tr>
+                <td style="padding: 0 5px">{{answer.id}}</td>
+                <td style="padding: 0 0px"><img src="{{answer.image_src}}" height="100" width="100"></td>
+                <td style="padding: 0 5px">{{answer.created_by}}</td>
+                <td style="padding: 0 5px">{{answer.datetime}}</td>
+                <td style="padding: 0 5px">{{answer.description_answer}}</td>
+                <td style="padding: 0 5px"><button (click)="approve(i)">Approve</button> &nbsp; <button style="background-color:rgb(217, 0, 0)" (click)="remove(i)">Remove</button>
+                </td>
+            </tr>
+        </ng-container>
+    </ng-container>
 </table>
 
 </ng-template>

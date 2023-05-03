@@ -22,9 +22,12 @@ import { AdminAndUserGuard } from './services/admin-and-user.guard';
 import { ChatHomepageComponent } from './app-routing/chat-homepage/chat-homepage.component';
 import { ChatDetailsComponent } from './app-routing/chat-details/chat-details.component';
 import { SearchQuestionComponent } from './app-routing/search-question/search-question.component';
+import { FailedAuthGuardComponent } from './app-routing/failed-auth-guard/failed-auth-guard.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'error/403', component: FailedAuthGuardComponent },
+    { path: 'error/404', component: PageNotFoundComponent },
     { path: 'home', component: LandingComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent},
@@ -40,7 +43,7 @@ const routes: Routes = [
     // { path: 'about', canActivate:[AuthGuard], component: AboutComponent },
     // { path: 'careers', canActivate:[AuthGuard], component: CareersComponent },
     // { path: 'contact', component: ContactComponent },
-    { path: '**', component: PageNotFoundComponent }
+    { path: '**', redirectTo: 'error/404', pathMatch:'full'}
 ]
 
 @NgModule({

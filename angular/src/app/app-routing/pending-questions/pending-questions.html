@@ -20,19 +20,25 @@
     <th>Author</th>
     <th>Time</th>
     <th>Topic</th>
+    <th>Title</th>
     <th>Question</th>
     <th>Action</th>
     </tr>
-    <tr *ngFor="let question of questions; let i=index">
-        <td style="padding: 0 5px" *ngIf="question.status == 'pending'">{{question.id}}</td>
-        <td style="padding: 0 0px" *ngIf="question.status == 'pending'"><img src="{{question.image_src}}" width="100px" height="100px"></td>
-        <td style="padding: 0 5px" *ngIf="question.status == 'pending'">{{question.qcreated_by}}</td>
-        <td style="padding: 0 5px" *ngIf="question.status == 'pending'">{{question.datetime}}</td>
-        <td style="padding: 0 5px" *ngIf="question.status == 'pending'">{{question.topic}}</td>
-        <td style="padding: 0 5px" *ngIf="question.status == 'pending'">{{question.description_question}}</td>
-        <td style="padding: 0 5px" *ngIf="question.status == 'pending'"><button (click)="approve(i)">Approve</button>        <button (click)="remove(i)">Remove</button>
-        </td>
-    </tr>
+    <ng-container *ngFor = "let question of questions; let i = index;">
+        <ng-container *ngIf = "question.status == 'pending'">
+            <tr>
+                <td style="padding: 0 5px">{{question.id}}</td>
+                <td style="padding: 0 0px"><img src="{{question.image_src}}" width="100px" height="100px"></td>
+                <td style="padding: 0 5px">{{question.qcreated_by}}</td>
+                <td style="padding: 0 5px">{{question.datetime}}</td>
+                <td style="padding: 0 5px">{{question.topic}}</td>
+                <td style="padding: 0 5px">{{question.title}}</td>
+                <td style="padding: 0 5px">{{question.description_question}}</td>
+                <td style="padding: 0 5px"><button (click)="approve(i)">Approve</button> &nbsp; <button style="background-color:rgb(217, 0, 0)" (click)="remove(i)">Remove</button>
+                </td>   
+            </tr>
+        </ng-container>
+    </ng-container>
 </table>
 </ng-template>
 <!-- <ng-container *ngFor="let question of questions; let i = index">

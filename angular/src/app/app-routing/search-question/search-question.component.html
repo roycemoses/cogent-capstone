@@ -23,8 +23,11 @@
 <table>
     <tr style="background-color: rgb(0, 195, 255);">
     <th>Id</th>
-    <th>Title</th>
+    <th>Image</th>
+    <th>Author</th>
+    <th>Time</th>
     <th>Topic</th>
+    <th>Title</th>
     <th>Question</th>
     <th>Action</th>
     </tr>
@@ -32,11 +35,14 @@
         <ng-container *ngFor="let question of questions">
             <ng-container *ngIf="question.status=='accepted' && question.description_question.toLowerCase().includes(query.toLowerCase())">
                 <tr>
-                <td style="padding: 0 50px"  style="padding: 0 50px">{{question.id}}</td>
-                <td style="padding: 0 50px"  style="padding: 0 50px" >{{question.title}}</td>
-                <td style="padding: 0 50px"  style="padding: 0 50px">{{question.topic}}</td>
-                <td style="padding: 0 50px"  style="padding: 0 50px">{{question.description_question}}</td>
-                <td style="padding: 0 50px"><button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
+                <td style="padding: 0 5px">{{question.id}}</td>
+                <td style="padding: 0 0px"><img src="{{question.image_src}}" width="100px" height="100px"></td>
+                <td style="padding: 0 5px">{{question.qcreated_by}}</td>
+                <td style="padding: 0 5px">{{question.datetime}}</td>
+                <td style="padding: 0 5px">{{question.topic}}</td>
+                <td style="padding: 0 5px">{{question.title}}</td>
+                <td style="padding: 0 5px">{{question.description_question}}</td>
+                <td style="padding: 0 5px"><button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
                 </td>
                 </tr>
             </ng-container>

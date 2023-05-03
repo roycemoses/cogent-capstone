@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, 
 RouterStateSnapshot, Router } from '@angular/router';
 import { LoginComponent } from '../app-routing/login/login.component';
+import { LoginService } from '../app-routing/login/login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private login:LoginComponent,private router:Router)
+  constructor(private loginService:LoginService,private router:Router)
   {
 
   }
@@ -17,12 +18,12 @@ export class AuthGuard implements CanActivate {
       
     //this.router.navigate(['/'])
     return new Promise((resolve, reject) => {
-    console.log("User type: " + this.login.getUserType());
-    if (this.login.getUserType() == 'User' || this.login.getUserType() == 'Admin') {
+    console.log("User type: " + this.loginService.userType);
+    if (this.loginService.userType == 'user' || this.loginService.userType == 'admin') {
         resolve(true);
     } else {
+        this.router.navigate(['/error/403']);
         resolve(false);
-        this.router.navigate(['/error'])
     }
     //end of verify
   })

@@ -21,9 +21,9 @@ export class AdminGuard implements CanActivate {
                 console.log("User type: " + this.loginService.userType);
                 if (this.loginService.userType == 'admin') {
                     resolve(true);
-                } else {    
+                } else {
+                    this.router.navigate(['error/403']);
                     resolve(false);
-                    this.router.navigate(['/error'])
                 }
                 //end of verify
     })
