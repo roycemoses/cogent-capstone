@@ -39,10 +39,11 @@ public class Answer {
 	// @OneToOne
 	private String created_by;
 
-    public Answer(String description_answer, String image_src, String status, Question question, String approved_by, String created_by) {
+    public Answer(String description_answer, String image_src, String status, String datetime, Question question, String approved_by, String created_by) {
         this.description_answer = description_answer;
         this.image_src = image_src;
         this.status = status;
+        this.datetime = datetime;
         this.question = question;
         this.approved_by = approved_by;
         this.created_by = created_by;

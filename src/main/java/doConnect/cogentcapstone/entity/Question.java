@@ -63,9 +63,10 @@ public class Question {
 	//@OneToOne
 	private String qapproved_by;
 
-    public Question(String description_question, String image_src, String status, String topic, String title, List<Answer> answers, String qcreated_by, String qapproved_by) {
+    public Question(String description_question, String image_src, String datetime, String status, String topic, String title, List<Answer> answers, String qcreated_by, String qapproved_by) {
         this.description_question = description_question;
         this.image_src = image_src;
+        this.datetime = datetime;
         this.status = status;
         this.topic = topic;
         this.title = title;
