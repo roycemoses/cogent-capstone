@@ -28,14 +28,19 @@
     <th>Question</th>
     <th>Action</th>
     </tr>
-    <tr *ngFor="let question of questions">
-        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.description_question.toLowerCase().includes(query.toLowerCase())">{{question.id}}</td>
-        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.description_question.toLowerCase().includes(query.toLowerCase())">{{question.title}}</td>
-        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.description_question.toLowerCase().includes(query.toLowerCase())">{{question.topic}}</td>
-        <td style="padding: 0 50px"  style="padding: 0 50px" *ngIf="question.description_question.toLowerCase().includes(query.toLowerCase())">{{question.description_question}}</td>
-        <td style="padding: 0 50px" *ngIf="question.description_question.toLowerCase().includes(query.toLowerCase())"><button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
-        </td>
-    </tr>
+    
+        <ng-container *ngFor="let question of questions">
+            <ng-container *ngIf="question.status=='accepted' && question.description_question.toLowerCase().includes(query.toLowerCase())">
+                <tr>
+                <td style="padding: 0 50px"  style="padding: 0 50px">{{question.id}}</td>
+                <td style="padding: 0 50px"  style="padding: 0 50px" >{{question.title}}</td>
+                <td style="padding: 0 50px"  style="padding: 0 50px">{{question.topic}}</td>
+                <td style="padding: 0 50px"  style="padding: 0 50px">{{question.description_question}}</td>
+                <td style="padding: 0 50px"><button routerLinkActive="active" routerLink="/question-details" (click)="setCurrQuestionId(question.id)">Question Details</button> <br>
+                </td>
+                </tr>
+            </ng-container>
+        </ng-container>
 </table>
 <!-- <ng-container *ngFor="let question of questions">
     <ng-container *ngIf="question.title.includes(query)">

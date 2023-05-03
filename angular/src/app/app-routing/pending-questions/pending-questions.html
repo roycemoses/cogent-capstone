@@ -25,7 +25,7 @@
     </tr>
     <tr *ngFor="let question of questions; let i=index">
         <td style="padding: 0 5px" *ngIf="question.status == 'pending'">{{question.id}}</td>
-        <td style="padding: 0 0px" *ngIf="question.status == 'pending'"><img src="{{question.image_src}}"></td>
+        <td style="padding: 0 0px" *ngIf="question.status == 'pending'"><img src="{{question.image_src}}" height="100" width="100"></td>
         <td style="padding: 0 5px" *ngIf="question.status == 'pending'">{{question.qcreated_by}}</td>
         <td style="padding: 0 5px" *ngIf="question.status == 'pending'">{{question.datetime}}</td>
         <td style="padding: 0 5px" *ngIf="question.status == 'pending'">{{question.topic}}</td>
