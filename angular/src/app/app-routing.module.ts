@@ -40,7 +40,7 @@ const routes: Routes = [
     { path: 'chat-homepage', canActivate:[AdminAndUserGuard], component: ChatHomepageComponent},
     { path: 'chat-details', canActivate:[AdminAndUserGuard], component: ChatDetailsComponent },
     { path: 'search-question', canActivate:[AdminAndUserGuard], component: SearchQuestionComponent },
-    // { path: 'about', canActivate:[AuthGuard], component: AboutComponent },
+    { path: 'about', component: AboutComponent },
     // { path: 'careers', canActivate:[AuthGuard], component: CareersComponent },
     // { path: 'contact', component: ContactComponent },
     { path: '**', redirectTo: 'error/404', pathMatch:'full'}
