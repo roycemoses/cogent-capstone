@@ -28,10 +28,10 @@ td{
 }
 tr:nth-child(even) {
   background-color: #dcfbfe;
-  background-blend-mode: multiply;
+  /* background-blend-mode: multiply; */
 }
 tr:nth-child(odd){ 
   background-color:#d0eef0;
-  background-blend-mode: multiply;
+  /* background-blend-mode: multiply; */
 }
 
