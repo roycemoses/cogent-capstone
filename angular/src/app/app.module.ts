@@ -23,12 +23,13 @@ import { ChatHomepageComponent } from './app-routing/chat-homepage/chat-homepage
 import { ChatDetailsComponent } from './app-routing/chat-details/chat-details.component';
 import { SearchQuestionComponent } from './app-routing/search-question/search-question.component';
 import { PageNotFoundComponent } from './app-routing/page-not-found/page-not-found.component';
+import { AboutComponent } from './app-routing/about/about.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    /*UserComponent,*/
+    AboutComponent,
     LoginComponent,
     QuestionComponent,
     AnswerComponent,
