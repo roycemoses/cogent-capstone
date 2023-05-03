@@ -30,7 +30,11 @@
 
     <div>
         <label for="description">Description </label>
-        <input type="text" [(ngModel)]="question_form.description_question" name="description" style="padding-bottom: 50px; padding-right: 200px" required>
+        <!-- <input type="text" [(ngModel)]="question_form.description_question" name="description" style="padding: 15px; margin:-5px; border:1px solid black; box-sizing: border-box;" required> -->
+        <!-- <textarea type="text" [(ngModel)]="question_form.description_question" name="text" rows="14" cols="10" wrap="soft" required></textarea> -->
+        <textarea type="text" rows="5" cols="50" [(ngModel)]="question_form.description_question" name="description" ng-style="{width: '150px', height: '50px'}" style="width:150px; height: 50px;" style="padding-bottom: 50px;" required>
+        </textarea>
+        <!-- style="padding-bottom: 50px; padding-right: 200px" -->
     </div>
 
     <div>
