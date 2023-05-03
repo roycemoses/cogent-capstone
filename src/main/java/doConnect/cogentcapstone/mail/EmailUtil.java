@@ -126,7 +126,7 @@ public class EmailUtil {
                 
 		sendEmail(session, toEmail,
                         "Question " + o.get().getId() + " has been posted." , 
-                 "congrats, view: http://localhost:4200/pending-questions " + o.get() + ", \n"
+                 "congrats, view: http://localhost:4200/login " + o.get() + ", \n"
                          + familyGuy());
                 
         }
@@ -155,7 +155,7 @@ public class EmailUtil {
                 
 		sendEmail(session, toEmail,
                         "Answer " + o.get().getId() + " in response to Question " + o.get().getQuestion().getId() + " has been posted." , 
-                 "congrats, view: http://localhost:4200/pending-answers  " + o.get() + ", \n"
+                 "congrats, view: http://localhost:4200/login  " + o.get() + ", \n"
                          + familyGuy());
                 
         }

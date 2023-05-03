@@ -155,8 +155,8 @@ public class CogentCapstoneApplication implements WebMvcConfigurer {
         qRepo.findById(100).get().setAnswers(answers_temp);
 */
         List<Chat> chats = Stream.of(
-                new Chat(300,"gyanendra","user1","i like cats","4/4/4"),
-                new Chat(301,"user1","gyanendra","i like dogs","4/4/4")
+                new Chat(300,"gyanendra","user1","i like cats",formatter.format(date)),
+                new Chat(301,"user1","gyanendra","i like dogs",formatter.format(date))
         ).collect(Collectors.toList());
         cRepo.saveAll(chats);
         
