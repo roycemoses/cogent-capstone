@@ -13,8 +13,11 @@
                 <input type="text" [(ngModel)]="registerForm.userName" name="userName" required>
             </div>
             <div>
-                <label for="password" p style="font-family:Arial, Helvetica, sans-serif">Password</label>
+                <label for="password" style="font-family:Arial, Helvetica, sans-serif">Password</label>
                 <input type="text" [(ngModel)]="registerForm.password" name="password" required minlength="4">
+                <div *ngIf="registerForm.password.length > 0 && registerForm.password.length < 4">
+                    <div style="padding:0px; font-size:smaller; color:red">&nbsp;&nbsp;&nbsp;&nbsp;Required minlength: 4</div><br>
+                </div>  
             </div>
             <div>
                 <label for="email" p style="font-family:Arial, Helvetica, sans-serif">Email</label>
@@ -36,7 +39,6 @@
                 <button [disabled]="REGISTER_FORM.invalid" type="submit">Register</button>
             </div>
         </form>
-
 
     </div>
 
