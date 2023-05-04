@@ -5,7 +5,7 @@
     <!-- </head> -->
     
     <div>
-        <h1>Register:</h1>
+        <h1>Register</h1>
     
         <form class="center" novalidate #REGISTER_FORM="ngForm" (ngSubmit)="onSubmitRegister()">
             <div>
@@ -30,7 +30,8 @@
             <br>
             <div>
                 <label for="userType" p style="font-family:Arial, Helvetica, sans-serif">User Type </label>
-                <select name="userType" [(ngModel)]="registerForm.userType">
+                <select name="userType" [(ngModel)]="registerForm.userType" required>
+                    <option value="" disabled selected>Select your user type</option>
                     <option *ngFor="let u of userTypes" [ngValue]="u">{{u}}</option>
                 </select>
             </div>
