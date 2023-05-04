@@ -24,8 +24,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-//@CrossOrigin("*")
-@CrossOrigin(origins="http://localhost:4200/")
+@CrossOrigin("*")
+//@CrossOrigin(origins="http://localhost:4200/")
 //@RequestMapping("/user")
 public class UserController {
 
