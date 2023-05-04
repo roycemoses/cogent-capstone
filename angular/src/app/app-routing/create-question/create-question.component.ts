@@ -36,10 +36,14 @@ export class CreateQuestionComponent
     let currentDateTime = this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss');
     let str = String(currentDateTime);
     let status = 'pending';
+    let qapproved_by = '';
     console.log("hi i added a question to the backend");
 
     if (this.loginService.userType == 'admin')
+    {
         status = 'accepted';
+        qapproved_by = this.loginService.user.userName;
+    }
 
     this.questionService.addQuestion(new Question(questionform.description_question, questionform.image_src, str, 
         status, questionform.topic, questionform.title, [], this.loginService.user.userName, questionform.qapproved_by)).subscribe((data)=>{
