@@ -38,11 +38,15 @@ export class AnswerComponent implements OnInit {
     let currentDateTime = this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss');
     let str = String(currentDateTime);
     let status = 'pending';
+    let qapproved_by = '';
     if (this.loginService.userType == 'admin')
+    {
         status = 'accepted';
-    
+        qapproved_by = this.loginService.user.userName;
+    }
+
     this.answerService.addAnswerToQuestion(new Answer(answer_form.description_answer, answer_form.image_src, status,
-        str, this.questionDetailsService.question, "", this.loginService.user.userName))
+        str, this.questionDetailsService.question, qapproved_by, this.loginService.user.userName))
         .subscribe((data:Answer)=>{
             console.log(data);
             // this.question = data;

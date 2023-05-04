@@ -46,7 +46,7 @@ export class CreateQuestionComponent
     }
 
     this.questionService.addQuestion(new Question(questionform.description_question, questionform.image_src, str, 
-        status, questionform.topic, questionform.title, [], this.loginService.user.userName, questionform.qapproved_by)).subscribe((data)=>{
+        status, questionform.topic, questionform.title, [], this.loginService.user.userName, qapproved_by)).subscribe((data)=>{
           this.questionService.sendEmail(data.id);
           console.log(data.id);
         });
