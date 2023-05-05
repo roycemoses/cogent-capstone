@@ -1,10 +1,11 @@
-<form novalidate #ANSWER_FORM="ngForm" (ngSubmit)="onSubmitAnswer(answer_form)">
+<form style="margin-right: 150px;" novalidate #ANSWER_FORM="ngForm" (ngSubmit)="onSubmitAnswer(answer_form)">
     
     
     <div>  
         <label for="description_answer">Answer Description</label>
-        <input type="text" [(ngModel)]="answer_form.description_answer" name="description_answer" required>
+        <textarea type="text" rows="5" cols="50" [(ngModel)]="answer_form.description_answer" name="description" ng-style="{width: '150px', height: '50px'}" style="width:150px; height: 50px;" style="padding-bottom: 50px;" required></textarea>
     </div>
+    <br>
     
     <div>
         <form action="/action_page.php">
@@ -12,6 +13,8 @@
             <input type="file" [(ngModel)]="answer_form.image_src" id="img" name="img" accept="image/*">
             </form>
     </div>
+
+    <br><br>
     
     <button [disabled]="ANSWER_FORM.invalid" type="submit">Submit</button>
 </form>

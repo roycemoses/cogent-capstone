@@ -16,8 +16,12 @@
 <br> 
 
 
-<label for="query">Search Question</label>
-<input type="text" [(ngModel)]="query" name="query" placeholder="Enter a question">
+<div style="margin-left:300px;">
+    <label for="query">Search Question&nbsp;</label>
+    <!-- <input type="text" [(ngModel)]="query" name="query" placeholder="Enter a question"> -->
+    <textarea type="text" rows="1" cols="50" [(ngModel)]="query" name="query" placeholder="Enter a question" style="padding-bottom: 5px;"></textarea>
+</div>
+
 
 <br>
 <table>

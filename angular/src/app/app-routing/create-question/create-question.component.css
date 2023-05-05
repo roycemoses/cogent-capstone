@@ -523,3 +523,61 @@ div.highlightTextIn a:before
 {
     transform: scale(1.2);
 } 
+
+/* Style the login form */
+.create-question-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* height: 100vh; */
+  }
+  
+  /* Style the input fields */
+  input[type="text"] {
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    font-size:14px;
+  }
+
+    /* Style the input fields */
+    input[type="password"] {
+        padding: 10px;
+        margin: 10px;
+        width: 300px;
+        font-size:14px;
+        }
+
+    /* Style the heading */
+h1 {
+    color: black; /* Sets the text color to black */
+    font-size: 4rem; /* Adjusts the font size of the heading */
+    text-align: center; /* Centers the text horizontally */
+    /* margin-top: 10%; Adds top margin to push the heading down from the top of the page */
+  }
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+  }
+
+  /* Style the button */
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Hover effect */
+  .button:hover {
+    background-color: #3e8e41;
+  }

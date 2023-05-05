@@ -19,7 +19,11 @@ table,th,td{
 }
 
 table{
-  border-collapse: collapse;
+    border-collapse: collapse;
+    text-align: center; 
+    align-items: center;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 
@@ -52,4 +56,9 @@ tr:nth-child(odd){
   /* Hover effect */
   button:hover {
     background-color: #3e8e41;
+  }
+
+  .centeralign {
+    text-align: center; 
+    align-items: center;
   }
