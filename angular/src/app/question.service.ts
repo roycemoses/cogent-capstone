@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Question } from './question';
 import { LoginService } from './app-routing/login/login.service';
+import * as myGlobals from './globals';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class QuestionService {
 
     currQuestionId!:number;
 
-    private baseUrl = "http://localhost:8080/question";
+    private baseUrl = 'http://' + myGlobals.ip + ':8080/question';
     constructor(private httpClient: HttpClient, private loginService:LoginService) { }
 
     setCurrQuestionId(id:number)

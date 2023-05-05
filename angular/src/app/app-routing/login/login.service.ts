@@ -5,6 +5,7 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 import { User } from 'src/app/user';
 import { AppComponent } from 'src/app/app.component';
 import { Router } from '@angular/router';
+import * as myGlobals from '../../globals';
 
 @Injectable({
     providedIn:'root'
@@ -15,7 +16,7 @@ export class LoginService
     public userType:string = "";
     public token:string = "";
     public user!:User;
-    private baseUrl = 'http://localhost:8080';
+    private baseUrl = 'http://' + myGlobals.ip + ':8080';
     showErrorMessage!:boolean;
     
     constructor (private httpClient:HttpClient,private router:Router) {}

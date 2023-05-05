@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, ObservedValueOf } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { LoginService } from '../login/login.service';
 import { Question } from 'src/app/question';
+import * as myGlobals from '../../globals';
 
 @Injectable({
     providedIn:'root'
@@ -11,7 +12,7 @@ export class QuestionDetailsService
 {
     question!:Question;
 
-    private baseUrl = 'http://localhost:8080/question';
+    private baseUrl = 'http://' + myGlobals.ip + ':8080/question';
     
     constructor (private httpClient:HttpClient, private loginService:LoginService) {}
     

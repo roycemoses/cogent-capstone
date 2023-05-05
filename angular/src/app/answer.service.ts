@@ -4,13 +4,14 @@ import { Injectable } from '@angular/core';
 import { Question } from 'src/app/question';
 import { LoginService } from './app-routing/login/login.service';
 import { Answer } from './answer';
+import * as myGlobals from './globals';
 
 @Injectable({
     providedIn:'root'
 })
 export class AnswerService
 {
-    private baseUrl = 'http://localhost:8080/answer';
+    private baseUrl = 'http://' + myGlobals.ip + ':8080/answer';
     
     constructor (private httpClient:HttpClient, private loginService:LoginService) {}
     

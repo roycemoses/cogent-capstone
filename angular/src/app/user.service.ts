@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Login } from './app-routing/login/login';
 import { LoginService } from './app-routing/login/login.service';
+import * as myGlobals from './globals';
 
 @Injectable({
     providedIn:`root`
 })
 export class UserService
 {
-    private baseUrl = 'http://localhost:8080';
+    private baseUrl = 'http://' + myGlobals.ip + ':8080';
     
     constructor (private httpClient:HttpClient, private loginService:LoginService) {}
 

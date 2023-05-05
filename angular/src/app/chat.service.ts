@@ -5,6 +5,7 @@ import { Question } from './question';
 import { LoginService } from './app-routing/login/login.service';
 import { User } from './user';
 import { Chat } from './chat';
+import * as myGlobals from './globals';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ChatService {
 
     currChatUser!:User;
 
-    private baseUrl = "http://localhost:8080/chat";
+    private baseUrl = 'http://' + myGlobals.ip + ':8080/chat';
     constructor(private httpClient: HttpClient, private loginService:LoginService) { }
 
     setCurrChatUser(user:User)
