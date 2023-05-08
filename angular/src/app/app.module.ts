@@ -24,6 +24,7 @@ import { ChatDetailsComponent } from './app-routing/chat-details/chat-details.co
 import { SearchQuestionComponent } from './app-routing/search-question/search-question.component';
 import { PageNotFoundComponent } from './app-routing/page-not-found/page-not-found.component';
 import { AboutComponent } from './app-routing/about/about.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -53,9 +54,13 @@ import { AboutComponent } from './app-routing/about/about.component';
     FormsModule
   ],
   providers: [LoginComponent, DatePipe,
-{
-    provide: HTTP_INTERCEPTORS, useClass: ExampleInterceptor, multi: true   
-}],
+    {
+        provide: HTTP_INTERCEPTORS, useClass: ExampleInterceptor, multi: true   
+    },
+    {
+        provide: LocationStrategy, useClass: HashLocationStrategy
+    }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
