@@ -1,5 +1,3 @@
-USE rice;
-
 DROP DATABASE do_connect;
 CREATE DATABASE do_connect;
 
